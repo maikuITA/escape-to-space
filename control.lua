@@ -130,13 +130,13 @@ local function setup_platform_for_player(player)
     if hub then
         local inv = hub.get_inventory(defines.inventory.chest)
         inv.clear()
-        inv.insert({ name = "crusher", count = 1 })
+        inv.insert({ name = "crusher", count = 2 })
         inv.insert({ name = "asteroid-collector", count = 1 })
         inv.insert({ name = "inserter", count = 20 })
         inv.insert({ name = "assembling-machine-1", count = 5 })
-        inv.insert({ name = "electric-furnace", count = 2 })
-        inv.insert({ name = "solar-panel", count = 5 })
-        inv.insert({ name = "space-platform-foundation", count = 200})
+        inv.insert({ name = "electric-furnace", count = 3 })
+        inv.insert({ name = "solar-panel", count = 10 })
+        inv.insert({ name = "space-platform-foundation", count = 250})
     end
     return platform
 end

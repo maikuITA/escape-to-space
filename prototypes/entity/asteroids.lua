@@ -93,6 +93,30 @@ local asteroids_data =
         ambient_light = {0.01, 0.01, 0.01},
       }
     },
+  rocky =
+    {
+      order = "e",
+      mass = shared_mass,
+      max_health = shared_health,
+      resistances = shared_resistances,
+      shading_data =
+      {
+        normal_strength = 1.2,
+        light_width = 0,
+        brightness = 0.9,
+        specular_strength = 2,
+        specular_power = 2,
+        specular_purity = 0,
+        sss_contrast = 1,
+        sss_amount = 0,
+        lights = {
+          { color = {0.96,1,0.99}, direction = {0.7,0.6,-1} },
+          { color = {0.57,0.33,0.23}, direction = {-0.72,-0.46,1} },
+          { color = {0.1,0.1,0.1}, direction = {-0.4,-0.25,-0.5} },
+        },
+        ambient_light = {0.01, 0.01, 0.01},
+      }
+    },
 }
 
 local collision_radiuses =
@@ -125,7 +149,8 @@ local letter = {"a","b","c","d","e","f","g","h","i"}
 
   local asteroid_map = {
     ["irony"] = "metallic",
-    ["coppery"] = "metallic"
+    ["coppery"] = "metallic",
+    ["rocky"] = "metallic"
   }
 
   local function asteroid_variation(asteroid_type, suffix, scale, size)

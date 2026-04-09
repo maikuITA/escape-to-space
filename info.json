@@ -1,7 +1,7 @@
 {
   "name": "escape-to-space",
-  "version": "0.1.0",
-  "title": "Escape to Space Modpack",
+  "version": "0.2.0",
+  "title": "Escape to Space",
   "author": "maikuu",
   "contact": "",
   "homepage": "",
@@ -9,8 +9,15 @@
   "dependencies": [
     "base >= 2.0.0",
     "space-age >= 2.0.0",
+    "VoidChestInstant >= 2.7.1",
     "? flib",
-    "? FNEI"
+    "? FNEI",
+    "? textplates >= 0.7.2",
+	  "? nixie-tubes >= 2.0.9",
+	  "? newly-constructed-machines-wait-for-their-modules >= 1.1.19",
+	  "? RateCalculator >= 3.3.8",
+	  "!let-me-laser-down-asteroids",
+	  "!Disable_vanilla_spoilage"
   ],
   "description": "Start your adventure directly in deep space on an orbital platform. Planets are locked. Harvest asteroids, synthesize materials, and survive in the void. Inspired by SpaceBlock."
 }

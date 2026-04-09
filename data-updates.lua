@@ -20,6 +20,13 @@ if nauvis then
         speed = 0.01,
         angle_when_stopped = 1.0,
     })
+    table.insert(nauvis.asteroid_spawn_definitions, {
+        type = "asteroid-chunk",
+        asteroid = "rocky-asteroid-chunk",
+        probability = 0.01,
+        speed = 0.01,
+        angle_when_stopped = 1.0,
+    })
 end
 
 if axos then
@@ -38,6 +45,13 @@ if axos then
         speed = 0.01,
         angle_when_stopped = 1.0,
     })
+    table.insert(axos.asteroid_spawn_definitions, {
+        type = "asteroid-chunk",
+        asteroid = "rocky-asteroid-chunk",
+        probability = 0.01,
+        speed = 0.01,
+        angle_when_stopped = 1.0,
+    })
 end
 
 if keria then
@@ -52,6 +66,13 @@ if keria then
     table.insert(keria.asteroid_spawn_definitions, {
         type = "asteroid-chunk",
         asteroid = "coppery-asteroid-chunk",
+        probability = 0.01,
+        speed = 0.01,
+        angle_when_stopped = 1.0,
+    })
+    table.insert(keria.asteroid_spawn_definitions, {
+        type = "asteroid-chunk",
+        asteroid = "rocky-asteroid-chunk",
         probability = 0.01,
         speed = 0.01,
         angle_when_stopped = 1.0,
@@ -106,4 +127,45 @@ if planet then
 
     -- 2) Remove vanilla Nauvis chunk spawns.
     remove_default_nauvis_chunks(planet)
+end
+
+-- CREDITS: yunrus-space-block
+-- Hide and disable the void chest recipe to prevent bypassing intended progression,
+-- while keeping the prototype available for internal/indirect usage.
+local recipe = data.raw.recipe["void-chest"]
+if recipe then
+    recipe.enabled = false   -- disables crafting
+    recipe.hidden = true     -- hides from crafting menu and techs
+    recipe.allow_as_intermediate = false -- optional: stops auto-use in factories
+    recipe.ingredients = recipe.ingredients or {} -- keep ingredients, don't touch
+end
+
+local item = data.raw.item["void-chest"]
+if item then
+  -- Retheme the item to match the platform trash depot identity in this scenario.
+  item.icon = "__escape-to-space__/graphics/icons/platform-trash-depot.png"
+  item.icon_size = 64
+end
+
+local chest = data.raw["infinity-container"]["void-chest"]
+if chest then
+  -- Override visuals for consistency: avoid exposing default art that suggests base behavior.
+  chest.picture = {
+    layers = {
+      {
+        filename = "__escape-to-space__/graphics/entity/platform-trash-depot/platform-trash-depot.png",
+        width = 66,
+        height = 76,
+        shift = util.by_pixel(0, -2),
+        scale = 0.5,
+        hr_version = {
+          filename = "__escape-to-space__/graphics/entity/platform-trash-depot/platform-trash-depot.png",
+          width = 66,
+          height = 76,
+          shift = util.by_pixel(0, -2),
+          scale = 0.5
+        }
+      }
+    }
+  }
 end
