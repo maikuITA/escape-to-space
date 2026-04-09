@@ -1,22 +1,79 @@
 -- data-updates.lua
 
-local planet = data.raw["planet"]["nauvis"]
-if planet then
-    planet.asteroid_spawn_definitions = planet.asteroid_spawn_definitions or {}
-    table.insert(planet.asteroid_spawn_definitions, {
+local nauvis = data.raw["planet"]["nauvis"]
+local axos = data.raw["planet"]["axos"]
+local keria = data.raw["planet"]["keria"]
+
+if nauvis then
+    nauvis.asteroid_spawn_definitions = nauvis.asteroid_spawn_definitions or {}
+    table.insert(nauvis.asteroid_spawn_definitions, {
         type = "asteroid-chunk",    -- keep as-is
         asteroid = "irony-asteroid-chunk",
         probability = 0.01,        -- tweak spawn frequency relative to others
         speed = 0.01,                -- optional: orbital drift
         angle_when_stopped = 1.0,   -- optional
     })
-    table.insert(planet.asteroid_spawn_definitions, {
+    table.insert(nauvis.asteroid_spawn_definitions, {
         type = "asteroid-chunk",
         asteroid = "coppery-asteroid-chunk",
         probability = 0.01,
         speed = 0.01,
         angle_when_stopped = 1.0,
     })
+end
+
+if axos then
+    axos.asteroid_spawn_definitions = axos.asteroid_spawn_definitions or {}
+    table.insert(axos.asteroid_spawn_definitions, {
+        type = "asteroid-chunk",    -- keep as-is
+        asteroid = "irony-asteroid-chunk",
+        probability = 0.01,        -- tweak spawn frequency relative to others
+        speed = 0.01,                -- optional: orbital drift
+        angle_when_stopped = 1.0,   -- optional
+    })
+    table.insert(axos.asteroid_spawn_definitions, {
+        type = "asteroid-chunk",
+        asteroid = "coppery-asteroid-chunk",
+        probability = 0.01,
+        speed = 0.01,
+        angle_when_stopped = 1.0,
+    })
+end
+
+if keria then
+    keria.asteroid_spawn_definitions = keria.asteroid_spawn_definitions or {}
+    table.insert(keria.asteroid_spawn_definitions, {
+        type = "asteroid-chunk",    -- keep as-is
+        asteroid = "irony-asteroid-chunk",
+        probability = 0.01,        -- tweak spawn frequency relative to others
+        speed = 0.01,                -- optional: orbital drift
+        angle_when_stopped = 1.0,   -- optional
+    })
+    table.insert(keria.asteroid_spawn_definitions, {
+        type = "asteroid-chunk",
+        asteroid = "coppery-asteroid-chunk",
+        probability = 0.01,
+        speed = 0.01,
+        angle_when_stopped = 1.0,
+    })
+end
+
+local function is_default_nauvis_chunk(name)
+    return name == "metallic-asteroid-chunk"
+        or name == "carbonic-asteroid-chunk"
+        or name == "oxide-asteroid-chunk"
+end
+
+local function remove_default_nauvis_chunks(plan)
+    local defs = plan.asteroid_spawn_definitions or {}
+    for i = #defs, 1, -1 do
+        local def = defs[i]
+        if def
+            and def.type == "asteroid-chunk"
+            and is_default_nauvis_chunk(def.asteroid) then
+            table.remove(defs, i)
+        end
+    end
 end
 
 local function find_spawn_def(defs, asteroid_name)
@@ -43,6 +100,10 @@ end
 
 local planet = data.raw["planet"]["nauvis"]
 if planet then
+    -- 1) Copy metallic spawn profile to custom chunks (no hardcoded probability).
     insert_chunk_like(planet, "metallic-asteroid-chunk", "irony-asteroid-chunk")
     insert_chunk_like(planet, "metallic-asteroid-chunk", "coppery-asteroid-chunk")
+
+    -- 2) Remove vanilla Nauvis chunk spawns.
+    remove_default_nauvis_chunks(planet)
 end
