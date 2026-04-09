@@ -47,13 +47,13 @@ data:extend({
     type = "item",
     name = "sand",
     icon = "__escape-to-space__/graphics/icons/sand.png",
-    subgroup = "space-material",
-    order = "f[sand]",
+    subgroup = "intermediate-product",
+    order = "z[sand]",
     inventory_move_sound = space_age_item_sounds.rock_inventory_move,
     pick_sound = space_age_item_sounds.rock_inventory_pickup,
     drop_sound = space_age_item_sounds.rock_inventory_move,
-    stack_size = 1,
-    weight = data.raw.item["stone"].weight or 100 * kg,
+    stack_size = 50,
+    weight = data.raw.item["stone"].weight/2,
     random_tint_color = item_tints.iron_rust
   }
 })

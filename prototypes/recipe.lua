@@ -73,10 +73,10 @@ data:extend({
         subgroup="space-crushing",
         icon = "__escape-to-space__/graphics/icons/crush-stone.png",
         ingredients = {
-            {type = "item", name = "stone", amount = 10}
+            {type = "item", name = "stone", amount = 5}
         },
         results = {
-            {type = "item", name = "sand", amount = 2},
+            {type = "item", name = "sand", amount = 10},
         },
         energy_required = 5,
         allow_productivity = true,

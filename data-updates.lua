@@ -172,7 +172,7 @@ local to_hide = {
     "space-platform-starter-pack",
     "cargo-landing-pad",
     "wooden-chest",
-    "iron-chest",
+    --"iron-chest",
     "steel-chest"
 }
 
@@ -212,7 +212,28 @@ if crusher then
     }
 end
 
+local cargo_bay = data.raw.recipe["cargo-bay"]
+if cargo_bay then
+    cargo_bay.ingredients = {
+        {type = "item", name = "iron-gear-wheel", amount = 10},
+        {type = "item", name = "iron-chest", amount = 10},
+    }
+end
+
 local melting = data.raw.recipe["ice-melting"]
 if melting then
     table.insert(melting.results, {type = "item", name = "sand", amount = 1, probability = 0.05})
+    melting.main_product = "water"
+end
+
+local thrust_fuel = data.raw.recipe["thruster-fuel"]
+if thrust_fuel then
+    table.insert(thrust_fuel.results, {type = "item", name = "sand", amount = 1, probability = 0.05})
+    thrust_fuel.main_product = "thruster-fuel"
+end
+
+local thrust_oxy = data.raw.recipe["thruster-oxidizer"]
+if thrust_oxy then
+    table.insert(thrust_oxy.results, {type = "item", name = "sand", amount = 1, probability = 0.05})
+    thrust_oxy.main_product = "thruster-oxidizer"
 end
