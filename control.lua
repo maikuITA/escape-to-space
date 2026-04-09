@@ -35,7 +35,59 @@ end
 -- Centralizes event registration so init/load/config-change stay consistent.
 local function init_events()
     script.on_nth_tick(30, on_tick)
+end
 
+local HOME_PLATFORM_NAME = "Noah's Ark"
+local setup_platform_for_player
+
+local function get_force_platform_by_index(force, platform_index)
+    if not force or not platform_index then
+        return nil
+    end
+
+    for _, platform in pairs(force.platforms) do
+        if platform and platform.valid and platform.index == platform_index then
+            return platform
+        end
+    end
+    return nil
+end
+
+local function find_named_home_platform(force)
+    if not force then
+        return nil
+    end
+
+    for _, platform in pairs(force.platforms) do
+        if platform and platform.valid and platform.name == HOME_PLATFORM_NAME then
+            return platform
+        end
+    end
+
+    return nil
+end
+
+local function get_or_create_home_platform(player)
+    local force = player.force
+    local force_index = force.index
+
+    storage.home_platform_by_force = storage.home_platform_by_force or {}
+
+    local saved_index = storage.home_platform_by_force[force_index]
+    local platform = get_force_platform_by_index(force, saved_index)
+    if platform then
+        return platform
+    end
+
+    platform = find_named_home_platform(force)
+    if platform then
+        storage.home_platform_by_force[force_index] = platform.index
+        return platform
+    end
+
+    platform = setup_platform_for_player(player)
+    storage.home_platform_by_force[force_index] = platform.index
+    return platform
 end
 
 -- Default techs that need to be granted to avoid progression deadlocks in a space-first start.
@@ -59,12 +111,15 @@ local default_techs = {
     "logistic-robotics",
     "circuit-network",
     "space-platform-thruster",
-    "electronics"
+    "electronics",
+    "oil-gathering",
+    "oil-processing"
 }
 
 script.on_init(function()
     -- Pending teleports are deferred until the character entity exists.
     storage.pending_teleport = {}
+    storage.home_platform_by_force = {}
 
     -- Grant baseline technologies to avoid planet-first progression deadlocks.
     for _, tech_name in ipairs(default_techs) do
@@ -73,6 +128,13 @@ script.on_init(function()
             tech.researched = true
         end
     end
+
+    -- Auto researching trigger tech(s)
+    --for name, tech in pairs(game.forces.player.technologies) do
+        --if tech.prototype.research_trigger and next(tech.prototype.research_trigger) ~= nil then
+            --tech.researched = true
+        --end
+    --end
 
     -- Enforce the core rule: players can orbit planets but cannot land on them.
     game.permissions
@@ -99,6 +161,7 @@ end)
 script.on_load(function()
     -- Reinitialize transient tables and rebind handlers after save load.
     storage.pending_teleport = storage.pending_teleport or {}
+    storage.home_platform_by_force = storage.home_platform_by_force or {}
     init_events()
 end)
 
@@ -114,7 +177,7 @@ end)
 -- Why: this scenario's core loop begins in orbit and must be deterministic.
 -- Edge cases: force may not have platforms unlocked yet; hub might be unavailable
 -- briefly, so inventory setup is guarded by a hub check.
-local function setup_platform_for_player(player)
+setup_platform_for_player = function(player)
     local force = player.force
 
     if not force.is_space_platforms_unlocked() then
@@ -146,24 +209,33 @@ end
 -- Why: immediate teleport in the same event can fail before character creation finishes.
 script.on_event(defines.events.on_player_created, function(event)
     local player = game.get_player(event.player_index)
-    local platform = setup_platform_for_player(player)
-    storage.pending_teleport[player.index] = platform
+    local platform = get_or_create_home_platform(player)
+    storage.pending_teleport[player.index] = platform.index
 end)
 
 -- Deferred transfer worker.
 -- Edge cases: waits for a valid character, keeps pending entry until success,
 -- and only then clears it to avoid losing state during spawn timing races.
 script.on_event(defines.events.on_tick, function(event)
-    for player_index, platform in pairs(storage.pending_teleport) do
+    for player_index, platform_index in pairs(storage.pending_teleport) do
         local player = game.get_player(player_index)
-        if player.character and player.character.valid then
+
+        if player and player.valid and player.character and player.character.valid then
+            local platform = get_force_platform_by_index(player.force, platform_index)
+
+            if not platform then
+                platform = get_or_create_home_platform(player)
+                storage.pending_teleport[player_index] = platform.index
+            end
+
             player.get_main_inventory().clear()
             player.enter_space_platform(platform)
+
             local hub = platform.hub
             if hub then
                 player.teleport(hub.position, platform.surface)
             end
-            -- Keep the player in remote controller mode for platform-centric gameplay.
+
             player.set_controller{ type = defines.controllers.remote }
             storage.pending_teleport[player_index] = nil
         end
@@ -173,6 +245,6 @@ end)
 -- Respawn path mirrors first spawn to keep scenario constraints consistent.
 script.on_event(defines.events.on_player_respawned, function(event)
     local player = game.get_player(event.player_index)
-    local platform = setup_platform_for_player(player)
-    storage.pending_teleport[player.index] = platform
+    local platform = get_or_create_home_platform(player)
+    storage.pending_teleport[player.index] = platform.index
 end)

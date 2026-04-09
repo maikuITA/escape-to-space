@@ -1,5 +1,7 @@
 data:extend({
     -- Modded items recipes
+
+    -- Crafting
     {
 		type = "recipe",
 		name = "platform-trash-depot",
@@ -13,6 +15,31 @@ data:extend({
     },
     {
 		type = "recipe",
+		name = "carbon-wheel",
+        category = "crafting",
+		ingredients = {
+          {type = "item", name = "carbon", amount = 2}
+        },
+        results = {{type = "item", name = "carbon-wheel", amount = 1}},
+        energy_required = 0.5,
+        enabled = true
+    },
+    {
+		type = "recipe",
+		name = "carbon-stick",
+        category = "crafting",
+		ingredients = {
+          {type = "item", name = "carbon", amount = 1}
+        },
+        results = {{type = "item", name = "carbon-stick", amount = 1}},
+        energy_required = 0.5,
+        enabled = true
+    },
+
+    -- Smelting
+
+    {
+		type = "recipe",
 		name = "glass-bottle",
         category = "smelting",
 		ingredients = {
@@ -22,6 +49,9 @@ data:extend({
         energy_required = 1,
         enabled = true
     },
+
+    -- Science packs
+
     {
 		type = "recipe",
 		name = "earth-science-pack",
@@ -33,6 +63,42 @@ data:extend({
         results = {{type = "item", name = "earth-science-pack", amount = 1}},
         energy_required = 1,
         enabled = true
+    },
+    {
+		type = "recipe",
+		name = "axkeria-science-pack",
+        category = "crafting",
+		ingredients = {
+          {type = "item", name = "carbon-wheel", amount = 1},
+          {type = "item", name = "ice", amount = 1}
+        },
+        results = {{type = "item", name = "axkeria-science-pack", amount = 1}},
+        energy_required = 1,
+        enabled = true
+    },
+    {
+		type = "recipe",
+		name = "t-one-science-pack",
+        category = "crafting",
+		ingredients = {
+          {type = "item", name = "iron-gear-wheel", amount = 1},
+          {type = "item", name = "copper-plate", amount = 2}
+        },
+        results = {{type = "item", name = "t-one-science-pack", amount = 1}},
+        energy_required = 1,
+        enabled = false
+    },
+    {
+		type = "recipe",
+		name = "t-two-science-pack",
+        category = "crafting",
+		ingredients = {
+          {type = "item", name = "iron-gear-wheel", amount = 1},
+          {type = "item", name = "copper-plate", amount = 2}
+        },
+        results = {{type = "item", name = "t-two-science-pack", amount = 1}},
+        energy_required = 1,
+        enabled = false
     },
 
     -- Asteroid crushing recipes

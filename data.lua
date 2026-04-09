@@ -4,6 +4,7 @@ require("prototypes.entity.asteroids")
 require("prototypes.item")
 require("prototypes.planet")
 require("prototypes.recipe")
+require("prototypes.technology")
 
 -- Remove recipe surface restrictions globally.
 -- Why: this scenario shifts progression to space; planet-locked recipes can cause

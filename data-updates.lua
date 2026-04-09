@@ -205,7 +205,7 @@ end
 local ast_collector = data.raw.recipe["asteroid-collector"]
 if ast_collector then
     ast_collector.ingredients = {
-        {type = "item", name = "iron-gear-wheel", amount = 10},
+        {type = "item", name = "carbon-wheel", amount = 10},
         {type = "item", name = "electronic-circuit", amount = 10},
         {type = "item", name = "engine-unit", amount = 10}
     }
@@ -214,34 +214,74 @@ end
 local crusher = data.raw.recipe["crusher"]
 if crusher then
     crusher.ingredients = {
+        {type = "item", name = "carbon-wheel", amount = 10},
+        {type = "item", name = "electronic-circuit", amount = 10},
+        {type = "item", name = "engine-unit", amount = 10}
+    }
+    
+end
+
+local cargo_bay = data.raw.recipe["cargo-bay"]
+if cargo_bay then
+    cargo_bay.ingredients = {
+        {type = "item", name = "carbon-wheel", amount = 10},
+        {type = "item", name = "iron-chest", amount = 10},
+    }
+end
+
+local thruster = data.raw.recipe["thruster"]
+if thruster then
+    thruster.ingredients = {
         {type = "item", name = "iron-gear-wheel", amount = 10},
         {type = "item", name = "electronic-circuit", amount = 10},
         {type = "item", name = "engine-unit", amount = 10}
     }
 end
 
-local cargo_bay = data.raw.recipe["cargo-bay"]
-if cargo_bay then
-    cargo_bay.ingredients = {
-        {type = "item", name = "iron-gear-wheel", amount = 10},
-        {type = "item", name = "iron-chest", amount = 10},
+local gun_turret = data.raw.recipe["gun-turret"]
+if gun_turret then
+    gun_turret.ingredients = {
+        {type = "item", name = "iron-plate", amount = 20},
+        {type = "item", name = "copper-plate", amount = 10},
+        {type = "item", name = "carbon-wheel", amount = 10}
     }
 end
 
 local melting = data.raw.recipe["ice-melting"]
 if melting then
-    table.insert(melting.results, {type = "item", name = "sand", amount = 1, probability = 0.05})
+    table.insert(melting.results, {type = "item", name = "sand", amount = 1, probability = 0.01})
     melting.main_product = "water"
 end
 
 local thrust_fuel = data.raw.recipe["thruster-fuel"]
 if thrust_fuel then
-    table.insert(thrust_fuel.results, {type = "item", name = "sand", amount = 1, probability = 0.05})
+    thrust_fuel.ingredients = {
+        {type = "item", name = "sand", amount = 4},
+        {type = "item", name = "copper-ore", amount = 2}
+    }
+    thrust_fuel.results = {
+        {type = "fluid", name = "thruster-fuel", amount = 240},
+    }
     thrust_fuel.main_product = "thruster-fuel"
 end
 
 local thrust_oxy = data.raw.recipe["thruster-oxidizer"]
 if thrust_oxy then
-    table.insert(thrust_oxy.results, {type = "item", name = "sand", amount = 1, probability = 0.05})
+    thrust_oxy.ingredients = {
+        {type = "item", name = "sand", amount = 4},
+        {type = "item", name = "iron-ore", amount = 2}
+    }
+    thrust_oxy.results = {
+        {type = "fluid", name = "thruster-oxidizer", amount = 240},
+    }
     thrust_oxy.main_product = "thruster-oxidizer"
+end
+
+-- Adding custom science packs as a lab input to allow researching trigger techs that require it.
+
+local lab = data.raw.lab["lab"]
+if lab then
+    lab.inputs = lab.inputs or {}
+    table.insert(lab.inputs, "earth-science-pack")
+    table.insert(lab.inputs, "axkeria-science-pack")
 end
