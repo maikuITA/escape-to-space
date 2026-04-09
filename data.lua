@@ -1,5 +1,7 @@
 -- data.lua
 
+require("prototypes.entity.asteroids")
+require("prototypes.planet")
 
 -- Remove recipe surface restrictions globally.
 -- Why: this scenario shifts progression to space; planet-locked recipes can cause
@@ -37,15 +39,6 @@ if thrust and thrust.unit and thrust.effects then
         {"space-science-pack", 1}
     }
     --table.insert(thrust.effects, { type = "unlock-space-location", space_location = "ignis" })
-end
-
-local tech5 = data.raw["technology"]["planet-discovery-vulcanus"]
-if tech5 and tech5.unit and tech5.effects then
-    tech5.unit.ingredients = {
-        {"automation-science-pack", 1},
-        {"logistic-science-pack", 1},
-        {"space-science-pack", 1}
-    }
 end
 
 -- CREDITS: yunrus-space-block

@@ -38,6 +38,7 @@ local function init_events()
 
 end
 
+-- Default techs that need to be granted to avoid progression deadlocks in a space-first start.
 local default_techs = {
     "rocket-silo",
     "automation",
@@ -123,42 +124,19 @@ local function setup_platform_for_player(player)
         name = player.name .. "'s Elia",
         starter_pack = { name = "space-platform-starter-pack", count = 1}
     }
-
     platform:apply_starter_pack()
-
     local hub = platform.hub
-    local setting_name = "yunrus-space-block-quick-start"
-    -- Optional accelerated bootstrap for testing or faster scenario starts.
-    if settings.global[setting_name] and settings.global[setting_name].value then
-        if hub then
-            local inv = hub.get_inventory(defines.inventory.chest)
-            inv.clear()
-            inv.insert({ name = "crusher", count = 10 })
-            inv.insert({ name = "asteroid-collector", count = 10 })
-            inv.insert({ name = "inserter", count = 150 })
-            inv.insert({ name = "assembling-machine-1", count = 50 })
-            inv.insert({ name = "electric-furnace", count = 50 })
-            inv.insert({ name = "solar-panel", count = 50 })
-            inv.insert({ name = "transport-belt", count = 400})
-            inv.insert({ name = "space-platform-foundation", count = 2000})
-        end
-    else
-        if hub then
-            local inv = hub.get_inventory(defines.inventory.chest)
-            inv.clear()
-            inv.insert({ name = "crusher", count = 1 })
-            inv.insert({ name = "asteroid-collector", count = 1 })
-            inv.insert({ name = "inserter", count = 20 })
-            inv.insert({ name = "assembling-machine-1", count = 5 })
-            inv.insert({ name = "electric-furnace", count = 3 })
-            inv.insert({ name = "solar-panel", count = 5 })
-            inv.insert({ name = "space-platform-foundation", count = 200})
-        end
+    if hub then
+        local inv = hub.get_inventory(defines.inventory.chest)
+        inv.clear()
+        inv.insert({ name = "crusher", count = 1 })
+        inv.insert({ name = "asteroid-collector", count = 1 })
+        inv.insert({ name = "inserter", count = 20 })
+        inv.insert({ name = "assembling-machine-1", count = 5 })
+        inv.insert({ name = "electric-furnace", count = 2 })
+        inv.insert({ name = "solar-panel", count = 5 })
+        inv.insert({ name = "space-platform-foundation", count = 200})
     end
-
-
-
-
     return platform
 end
 
