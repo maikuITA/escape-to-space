@@ -58,7 +58,8 @@ local default_techs = {
     "construction-robotics",
     "logistic-robotics",
     "circuit-network",
-    "space-platform-thruster"
+    "space-platform-thruster",
+    "electronics"
 }
 
 script.on_init(function()

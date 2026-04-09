@@ -23,7 +23,8 @@ data:extend({
         },
         results = {
             {type = "item", name = "iron-ore", amount = 10},
-            {type = "item", name = "irony-asteroid-chunk", amount = 1, probability = 0.20, ignored_by_productivity = 1}
+            {type = "item", name = "irony-asteroid-chunk", amount = 1, probability = 0.20, ignored_by_productivity = 1},
+            {type = "item", name = "sand", amount = 1, probability = 0.05}
         },
         energy_required = 5,
         allow_productivity = true,
@@ -40,7 +41,8 @@ data:extend({
         },
         results = {
             {type = "item", name = "copper-ore", amount = 8},
-            {type = "item", name = "coppery-asteroid-chunk", amount = 1, probability = 0.20, ignored_by_productivity = 1}
+            {type = "item", name = "coppery-asteroid-chunk", amount = 1, probability = 0.20, ignored_by_productivity = 1},
+            {type = "item", name = "sand", amount = 1, probability = 0.05}
         },
         energy_required = 5,
         allow_productivity = true,
@@ -57,7 +59,24 @@ data:extend({
         },
         results = {
             {type = "item", name = "stone", amount = 10},
-            {type = "item", name = "rocky-asteroid-chunk", amount = 1, probability = 0.20, ignored_by_productivity = 1}
+            {type = "item", name = "rocky-asteroid-chunk", amount = 1, probability = 0.20, ignored_by_productivity = 1},
+            {type = "item", name = "sand", amount = 1, probability = 0.05}
+        },
+        energy_required = 5,
+        allow_productivity = true,
+        enabled = true
+    },
+    {
+        type = "recipe",
+        name = "crush-stone",
+        category = "crushing",
+        subgroup="space-crushing",
+        icon = "__escape-to-space__/graphics/icons/crush-stone.png",
+        ingredients = {
+            {type = "item", name = "stone", amount = 10}
+        },
+        results = {
+            {type = "item", name = "sand", amount = 2},
         },
         energy_required = 5,
         allow_productivity = true,

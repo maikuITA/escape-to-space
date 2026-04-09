@@ -114,7 +114,66 @@ end
 -- Hiding specific recipes from the player
 
 local to_hide = {
-    "crush-metallic-asteroid-chunk"
+    "carbonic-asteroid-chunk-reprocessing",
+    "oxide-asteroid-chunk-reprocessing",
+    "metallic-asteroid-chunk-reprocessing",
+    "metallic-asteroid-crushing",
+    "small-electric-pole",
+    "medium-electric-pole",
+    "big-electric-pole",
+    "substation",
+    "roboport",
+    "logistic-robot",
+    "construction-robot",
+    "defender-capsule",
+    "distractor-capsule",
+    "destroyer-capsule",
+    "discharge-defense-equipment",
+    "energy-shield-equipment",
+    "personal-laser-defense-equipment",
+    "personal-roboport-equipment",
+    "personal-roboport-mk2-equipment",
+    "exoskeleton-equipment",
+    "battery-equipment",
+    "solar-panel-equipment",
+    "fusion-reactor-equipment",
+    "car",
+    "tank",
+    "spidertron",
+    "artillery-wagon",
+    "logistic-train-stop",
+    "rail-signal",
+    "rail-chain-signal",
+    "train-stop",
+    "locomotive",
+    "cargo-wagon",
+    "fluid-wagon",
+    "artillery-turret",
+    "active-provider-chest",
+    "passive-provider-chest",
+    "storage-chest",
+    "buffer-chest",
+    "requester-chest",
+    "burner-mining-drill",
+    "electric-mining-drill",
+    "big-mining-drill",
+    "burner-mining-drill-recycling",
+    "electric-mining-drill-recycling",
+    "big-mining-drill-recycling",
+    "offshore-pump",
+    "pumpjack",
+    "light-armor",
+    "heavy-armor",
+    "modular-armor",
+    "power-armor",
+    "power-armor-mk2",
+    "mech-armor",
+    "rocket-silo",
+    "space-platform-starter-pack",
+    "cargo-landing-pad",
+    "wooden-chest",
+    "iron-chest",
+    "steel-chest"
 }
 
 for _, name in pairs(to_hide) do
@@ -125,11 +184,35 @@ for _, name in pairs(to_hide) do
     end
 end
 
--- Remove gravity limitation from chests to allow use in space platforms.
-local chest_types = {"steel-chest", "iron-chest", "wooden-chest", "void-chest"}
-for _, chest_name in pairs(chest_types) do
-    local chest = data.raw["container"][chest_name]
-    if chest then
-        chest.gravity_pull = 0
-    end
+-- Modifying specific recipies
+
+local space_platf = data.raw.recipe["space-platform-foundation"]
+if space_platf then
+    space_platf.ingredients = {
+        {type = "item", name = "sand", amount = 50},
+        {type = "item", name = "iron-stick", amount = 50}
+    }
+end
+
+local ast_collector = data.raw.recipe["asteroid-collector"]
+if ast_collector then
+    ast_collector.ingredients = {
+        {type = "item", name = "iron-gear-wheel", amount = 10},
+        {type = "item", name = "electronic-circuit", amount = 10},
+        {type = "item", name = "engine-unit", amount = 10}
+    }
+end
+
+local crusher = data.raw.recipe["crusher"]
+if crusher then
+    crusher.ingredients = {
+        {type = "item", name = "iron-gear-wheel", amount = 10},
+        {type = "item", name = "electronic-circuit", amount = 10},
+        {type = "item", name = "engine-unit", amount = 10}
+    }
+end
+
+local melting = data.raw.recipe["ice-melting"]
+if melting then
+    table.insert(melting.results, {type = "item", name = "sand", amount = 1, probability = 0.05})
 end
