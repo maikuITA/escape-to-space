@@ -55,5 +55,27 @@ data:extend({
     stack_size = 50,
     weight = data.raw.item["stone"].weight/2,
     random_tint_color = item_tints.iron_rust
+  },
+  {
+    type = "item",
+    name = "glass-bottle",
+    icon = "__escape-to-space__/graphics/icons/glass-bottle.png",
+    subgroup = "intermediate-product",
+    order = "z[glass-bottle]",
+    inventory_move_sound = space_age_item_sounds.space_age_item_sounds,
+    stack_size = 200,
+    weight = 1*kg,
+    random_tint_color = item_tints.iron_rust
+  },
+  {
+    type = "item",
+    name = "earth-science-pack",
+    icon = "__escape-to-space__/graphics/icons/earth-science-pack.png",
+    subgroup = "science-pack",
+    order = "z[earth-science-pack]",
+    inventory_move_sound = space_age_item_sounds.space_age_item_sounds,
+    stack_size = 200,
+    weight = 1*kg,
+    random_tint_color = item_tints.iron_rust
   }
 })

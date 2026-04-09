@@ -3,13 +3,37 @@ data:extend({
     {
 		type = "recipe",
 		name = "platform-trash-depot",
+        category = "crafting",
 		ingredients = {
           {type = "item", name = "iron-plate", amount = 1}
         },
         results = {{type = "item", name = "void-chest", amount = 1}},
         energy_required = 0.5,
         enabled = true
-      },
+    },
+    {
+		type = "recipe",
+		name = "glass-bottle",
+        category = "smelting",
+		ingredients = {
+          {type = "item", name = "sand", amount = 10}
+        },
+        results = {{type = "item", name = "glass-bottle", amount = 1}},
+        energy_required = 1,
+        enabled = true
+    },
+    {
+		type = "recipe",
+		name = "earth-science-pack",
+        category = "crafting",
+		ingredients = {
+          {type = "item", name = "iron-gear-wheel", amount = 1},
+          {type = "item", name = "copper-plate", amount = 2}
+        },
+        results = {{type = "item", name = "earth-science-pack", amount = 1}},
+        energy_required = 1,
+        enabled = true
+    },
 
     -- Asteroid crushing recipes
     {

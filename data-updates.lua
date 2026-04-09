@@ -173,7 +173,15 @@ local to_hide = {
     "cargo-landing-pad",
     "wooden-chest",
     --"iron-chest",
-    "steel-chest"
+    "steel-chest",
+    "automation-science-pack",
+    "logistic-science-pack",
+    "chemical-science-pack",
+    "space-science-pack",
+    "production-science-pack",
+    "high-tech-science-pack",
+    "military-science-pack",
+    "utility-science-pack",
 }
 
 for _, name in pairs(to_hide) do
