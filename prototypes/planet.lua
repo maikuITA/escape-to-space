@@ -53,7 +53,7 @@ data:extend(
     subgroup = "planet-connections",
     from = "keria",
     to = "nauvis",
-    order = "0-a",
+    order = "0-b",
     length = 15000,
   },
   {

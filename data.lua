@@ -39,7 +39,8 @@ if thrust and thrust.unit and thrust.effects then
         {"automation-science-pack", 1},
         {"space-science-pack", 1}
     }
-    --table.insert(thrust.effects, { type = "unlock-space-location", space_location = "ignis" })
+    table.insert(thrust.effects, { type = "unlock-space-location", space_location = "axos" })
+    table.insert(thrust.effects, { type = "unlock-space-location", space_location = "keria" })
 end
 
 -- CREDITS: yunrus-space-block
