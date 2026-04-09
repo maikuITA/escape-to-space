@@ -1,6 +1,7 @@
 -- data.lua
 
 require("prototypes.entity.asteroids")
+require("prototypes.item")
 require("prototypes.planet")
 
 -- Remove recipe surface restrictions globally.
