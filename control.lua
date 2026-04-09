@@ -1,13 +1,18 @@
 -- control.lua
 
+-- Periodically resolves platforms stuck waiting for a starter pack.
+-- Why: in this scenario, platforms may share the same orbit; an already active
+-- platform can donate one starter pack item to unblock another waiting platform.
+-- Edge cases: no donor in same orbit, donor hub missing the exact pack variant,
+-- or multiple waiting platforms in the same tick.
 local function on_tick(event)
+    -- Re-assert early quality progression even across lifecycle edge cases.
     game.forces.player.unlock_quality("uncommon")
     for _, force in pairs(game.forces) do
         for _, p in pairs(force.platforms) do
             if p.state == defines.space_platform_state.waiting_for_starter_pack then
                 local n = p.space_location.name
                 local pack = p.starter_pack
-                -- log("platform:" .. p.name .. " needs starter pack")
                 for _, other_platform in pairs(force.platforms) do
                     if p.index ~= other_platform.index and other_platform.space_location ~= nil and other_platform.space_location.name == n and other_platform.state ~= defines.space_platform_state.waiting_for_starter_pack then
                         local hub = other_platform.hub
@@ -15,6 +20,7 @@ local function on_tick(event)
                             local r = hub.remove_item({name=pack["name"], quality=pack["quality"], count=1})
                             if r == 1 then
                                 p.apply_starter_pack()
+                                -- Stop donor scanning after first successful transfer.
                                 goto applied_pack
                             end
                         end
@@ -26,44 +32,46 @@ local function on_tick(event)
     end
 end
 
+-- Centralizes event registration so init/load/config-change stay consistent.
 local function init_events()
-
-        -- script.on_event(defines.events.on_tick, on_tick)
-        script.on_nth_tick(30, on_tick)
+    script.on_nth_tick(30, on_tick)
 
 end
 
-local techs_enabled = {
-        "rocket-silo",
-        "automation",
-        "solar-energy",
-        "asteroid-reprocessing",
-        "steel-processing",
-        "engine",
-        "electric-mining-drill",
-        "electric-energy-distribution-1",
-        "electric-energy-distribution-2",
-        "heavy-armor",
-        "modular-armor",
-        "power-armor",
-        "power-armor-mk2",
-        "mech-armor",
-        "automobilism",
-        "construction-robotics",
-        "logistic-robotics"
-
+local default_techs = {
+    "rocket-silo",
+    "automation",
+    "solar-energy",
+    "asteroid-reprocessing",
+    "steel-processing",
+    "engine",
+    "electric-mining-drill",
+    "electric-energy-distribution-1",
+    "electric-energy-distribution-2",
+    "heavy-armor",
+    "modular-armor",
+    "power-armor",
+    "power-armor-mk2",
+    "mech-armor",
+    "automobilism",
+    "construction-robotics",
+    "logistic-robotics",
+    "circuit-network"
 }
 
 script.on_init(function()
+    -- Pending teleports are deferred until the character entity exists.
     storage.pending_teleport = {}
 
-    for _, tech_name in ipairs(techs_enabled) do
+    -- Grant baseline technologies to avoid planet-first progression deadlocks.
+    for _, tech_name in ipairs(default_techs) do
         local tech = game.forces.player.technologies[tech_name]
         if tech then
             tech.researched = true
         end
     end
 
+    -- Enforce the core rule: players can orbit planets but cannot land on them.
     game.permissions
         .get_group("Default")
         .set_allows_action(defines.input_action.land_at_planet, false)
@@ -75,7 +83,8 @@ script.on_init(function()
         .set_allows_action(defines.input_action.send_stacks_to_trash, false)
 
     local freeplay = remote.interfaces["freeplay"]
-    if freeplay then -- Disable freeplay popup-message
+    -- Disable Freeplay intro/crashsite flow because this scenario starts in space.
+    if freeplay then
         if freeplay["set_skip_intro"] then remote.call("freeplay", "set_skip_intro", true) end
         if freeplay["set_disable_crashsite"] then remote.call("freeplay", "set_disable_crashsite", true) end
     end
@@ -85,17 +94,23 @@ script.on_init(function()
 end)
 
 script.on_load(function()
+    -- Reinitialize transient tables and rebind handlers after save load.
     storage.pending_teleport = storage.pending_teleport or {}
     init_events()
 end)
 
 script.on_configuration_changed(function()
+    -- Reapply permissions after migrations because external changes can reset groups.
     game.permissions
         .get_group("Default")
         .set_allows_action(defines.input_action.land_at_planet, false)
     init_events()
 end)
 
+-- Creates and provisions a personal starter platform for one player.
+-- Why: this scenario's core loop begins in orbit and must be deterministic.
+-- Edge cases: force may not have platforms unlocked yet; hub might be unavailable
+-- briefly, so inventory setup is guarded by a hub check.
 local function setup_platform_for_player(player)
     local force = player.force
 
@@ -113,6 +128,7 @@ local function setup_platform_for_player(player)
 
     local hub = platform.hub
     local setting_name = "yunrus-space-block-quick-start"
+    -- Optional accelerated bootstrap for testing or faster scenario starts.
     if settings.global[setting_name] and settings.global[setting_name].value then
         if hub then
             local inv = hub.get_inventory(defines.inventory.chest)
@@ -144,18 +160,19 @@ local function setup_platform_for_player(player)
 
 
     return platform
-    -- player.enter_space_platform(platform)
-    -- player.teleport(hub.position, platform.surface)
 end
 
--- FIRST SPAWN / JOIN create platform and mark player for teleport
+-- First spawn: create platform and queue deferred teleport.
+-- Why: immediate teleport in the same event can fail before character creation finishes.
 script.on_event(defines.events.on_player_created, function(event)
     local player = game.get_player(event.player_index)
     local platform = setup_platform_for_player(player)
     storage.pending_teleport[player.index] = platform
 end)
 
--- Wait until character exists, then enter + teleport
+-- Deferred transfer worker.
+-- Edge cases: waits for a valid character, keeps pending entry until success,
+-- and only then clears it to avoid losing state during spawn timing races.
 script.on_event(defines.events.on_tick, function(event)
     for player_index, platform in pairs(storage.pending_teleport) do
         local player = game.get_player(player_index)
@@ -166,13 +183,14 @@ script.on_event(defines.events.on_tick, function(event)
             if hub then
                 player.teleport(hub.position, platform.surface)
             end
+            -- Keep the player in remote controller mode for platform-centric gameplay.
             player.set_controller{ type = defines.controllers.remote }
             storage.pending_teleport[player_index] = nil
         end
     end
 end)
 
--- RESPAWN AFTER DEATH
+-- Respawn path mirrors first spawn to keep scenario constraints consistent.
 script.on_event(defines.events.on_player_respawned, function(event)
     local player = game.get_player(event.player_index)
     local platform = setup_platform_for_player(player)
