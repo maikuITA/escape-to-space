@@ -1,8 +1,4 @@
-
-local asteroid_util = require("__space-age__.prototypes.planet.asteroid-spawn-definitions")
-
-data:extend(
-{
+data:extend({
 
 -------------------------------------------------------------------------- LOCATIONS
   {
@@ -15,11 +11,11 @@ data:extend(
     subgroup = "planets",
     solar_power_in_space = 400,
     gravity_pull = -20,
-    distance = 5,
+    distance = 2,
     orientation = 0.24,
     magnitude = 1.0,
     label_orientation = 0.15,
-    asteroid_spawn_influence = 0,
+    asteroid_spawn_influence = 1
   },
   {
     type = "space-location",
@@ -31,11 +27,11 @@ data:extend(
     subgroup = "planets",
     solar_power_in_space = 100,
     gravity_pull = -20,
-    distance = 5,
-    orientation = 0.24,
+    distance = 10,
+    orientation = 0.34,
     magnitude = 1.0,
     label_orientation = 0.15,
-    asteroid_spawn_influence = 0,
+    asteroid_spawn_influence = 1
   },
 -------------------------------------------------------------------------- PLANET CONNECTIONS
   {
@@ -45,7 +41,7 @@ data:extend(
     from = "axos",
     to = "nauvis",
     order = "0-a",
-    length = 15000,
+    length = 25000,
   },
   {
     type = "space-connection",
@@ -54,7 +50,7 @@ data:extend(
     from = "keria",
     to = "nauvis",
     order = "0-b",
-    length = 15000,
+    length = 10000,
   },
   {
     type = "space-connection",

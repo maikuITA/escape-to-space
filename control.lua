@@ -122,7 +122,7 @@ local function setup_platform_for_player(player)
 
     local platform = force.create_space_platform{
         planet = "nauvis",
-        name = player.name .. "'s Elia",
+        name = "Noah's Ark",
         starter_pack = { name = "space-platform-starter-pack", count = 1}
     }
     platform:apply_starter_pack()
