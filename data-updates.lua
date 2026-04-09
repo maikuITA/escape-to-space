@@ -29,7 +29,7 @@ local function find_spawn_def(defs, asteroid_name)
     return nil
 end
 
-local function insert_chunk_like(plan, source_chunk, new_chunk)
+local function insert_chunk_like(plan, source_chunk, new_chunk, probability)
     plan.asteroid_spawn_definitions = plan.asteroid_spawn_definitions or {}
     local src = find_spawn_def(plan.asteroid_spawn_definitions, source_chunk)
     if not src then
@@ -38,6 +38,7 @@ local function insert_chunk_like(plan, source_chunk, new_chunk)
 
     local copy = table.deepcopy(src)
     copy.asteroid = new_chunk
+    copy.probability = probability
     table.insert(plan.asteroid_spawn_definitions, copy)
     return true
 end
@@ -45,9 +46,9 @@ end
 local earth = data.raw["planet"]["nauvis"]
 if earth then
     -- 1) Copy metallic spawn profile to custom chunks (no hardcoded probability).
-    insert_chunk_like(earth, "metallic-asteroid-chunk", "irony-asteroid-chunk")
-    insert_chunk_like(earth, "metallic-asteroid-chunk", "coppery-asteroid-chunk")
-    insert_chunk_like(earth, "metallic-asteroid-chunk", "rocky-asteroid-chunk")
+    insert_chunk_like(earth, "metallic-asteroid-chunk", "irony-asteroid-chunk", asteroid_util.nauvis_prob)
+    insert_chunk_like(earth, "metallic-asteroid-chunk", "coppery-asteroid-chunk", asteroid_util.nauvis_prob)
+    insert_chunk_like(earth, "metallic-asteroid-chunk", "rocky-asteroid-chunk", asteroid_util.nauvis_prob)
 
     -- 2) Remove vanilla Nauvis chunk spawns.
     remove_default_nauvis_chunks(earth)
@@ -56,16 +57,16 @@ end
 local axos = data.raw["space-location"]["axos"]
 if axos then
   axos.asteroid_spawn_definitions = {
-    { type = "asteroid-chunk", asteroid = "carbonic-asteroid-chunk", probability = 0.1, speed = 0.01, angle_when_stopped = 1.0 },
-    { type = "asteroid-chunk", asteroid = "rocky-asteroid-chunk", probability = 0.1, speed = 0.01, angle_when_stopped = 1.0 }
+    { type = "asteroid-chunk", asteroid = "carbonic-asteroid-chunk", probability = asteroid_util.axos_prob, speed = 0.01, angle_when_stopped = 1.0 },
+    { type = "asteroid-chunk", asteroid = "rocky-asteroid-chunk", probability = asteroid_util.axos_prob, speed = 0.01, angle_when_stopped = 1.0 }
   }
 end
 
 local keria = data.raw["space-location"]["keria"]
 if keria then
   keria.asteroid_spawn_definitions = {
-    { type = "asteroid-chunk", asteroid = "oxide-asteroid-chunk", probability = 0.1, speed = 0.01, angle_when_stopped = 1.0 },
-    { type = "asteroid-chunk", asteroid = "rocky-asteroid-chunk", probability = 0.1, speed = 0.01, angle_when_stopped = 1.0 }
+    { type = "asteroid-chunk", asteroid = "oxide-asteroid-chunk", probability = asteroid_util.keria_prob, speed = 0.01, angle_when_stopped = 1.0 },
+    { type = "asteroid-chunk", asteroid = "rocky-asteroid-chunk", probability = asteroid_util.keria_prob, speed = 0.01, angle_when_stopped = 1.0 }
   }
 end
 
@@ -121,5 +122,14 @@ for _, name in pairs(to_hide) do
     if recipe then
         recipe.enabled = false
         recipe.hidden = true
+    end
+end
+
+-- Remove gravity limitation from chests to allow use in space platforms.
+local chest_types = {"steel-chest", "iron-chest", "wooden-chest", "void-chest"}
+for _, chest_name in pairs(chest_types) do
+    local chest = data.raw["container"][chest_name]
+    if chest then
+        chest.gravity_pull = 0
     end
 end

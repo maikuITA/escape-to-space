@@ -1,0 +1,12 @@
+{
+    "factorio.versions": [
+        {
+            "name": "locale",
+            "factorioPath": "/home/giulio/Documents/factorio-space-age_linux_2.0.76/factorio/bin/x64/factorio"
+        }
+    ],
+    "Lua.workspace.userThirdParty": [
+        "/home/giulio/.config/Code/User/workspaceStorage/71c7f1931630b63beb4c98b8d8b1b943/justarandomgeek.factoriomod-debug/sumneko-3rd"
+    ],
+    "Lua.workspace.checkThirdParty": "ApplyInMemory"
+}
