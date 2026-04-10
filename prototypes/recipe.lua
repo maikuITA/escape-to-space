@@ -46,6 +46,17 @@ data:extend({
     },
     {
 		type = "recipe",
+		name = "carbon-wire",
+        category = "crafting",
+		ingredients = {
+          {type = "item", name = "carbon", amount = 2}
+        },
+        results = {{type = "item", name = "carbon-wire", amount = 1}},
+        energy_required = 0.5,
+        enabled = false
+    },
+    {
+		type = "recipe",
 		name = "carbon-electronic-circuit",
         category = "crafting",
 		ingredients = {

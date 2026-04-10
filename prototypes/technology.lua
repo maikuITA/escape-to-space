@@ -146,6 +146,10 @@ if auto_sp then
         },
         {
             type = "unlock-recipe",
+            recipe = "carbon-wire"
+        },
+        {
+            type = "unlock-recipe",
             recipe = "basic-electric-furnace"
         },
         {
@@ -266,7 +270,7 @@ if axkeria_sp then
     }
     axkeria_sp.hidden = false
     axkeria_sp.enabled = true
-    axkeria_sp.prerequisites = {"automation-science-pack", "landfill"}
+    axkeria_sp.prerequisites = {"automation-science-pack", "landfill", "steel-processing"}
 end
 
 -- Steel processing
@@ -483,7 +487,7 @@ if toolbelt then
     }
     toolbelt.hidden = false
     toolbelt.enabled = true
-    toolbelt.prerequisites = {"automation-science-pack", "logistic-science-pack", "steel-processing"}
+    toolbelt.prerequisites = {"automation-science-pack", "logistic-science-pack"}
 end
 
 -- Advanced material processing 2 (electric furnaces)
@@ -504,6 +508,8 @@ end
 
 local electric_energy_distribution_1 = data.raw["technology"]["electric-energy-distribution-1"]
 if electric_energy_distribution_1 then
+    electric_energy_distribution_1.researched = false
+
     electric_energy_distribution_1.icons = nil
     electric_energy_distribution_1.icon = "__escape-to-space__/graphics/technology/oxidic-processing.png"
     electric_energy_distribution_1.icon_size = 256
