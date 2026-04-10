@@ -294,7 +294,142 @@ data:extend({
     },
     fluid_boxes_off_when_no_fluid_recipe = true,
   },
-  
+
+  -- Electromagnetic lab
+  {
+    type = "lab",
+    name = "oxide-lab",
+    icon = "__escape-to-space__/graphics/entity/oxide-lab/oxide-lab-icon.png",
+    icon_size = 64,
+    flags = {"placeable-neutral", "placeable-player", "player-creation"},
+    minable = {mining_time = 0.1, result = "oxide-lab"},
+
+    max_health = 350,
+    corpse = data.raw["assembling-machine"]["electromagnetic-plant"].corpse,
+    dying_explosion = data.raw["assembling-machine"]["electromagnetic-plant"].dying_explosion,
+    collision_box = {{-1.9, -1.9}, {1.9, 1.9}},
+    selection_box = {{-2.0, -2.0}, {2.0, 2.0}},
+    resistances = data.raw["assembling-machine"]["electromagnetic-plant"].resistances,
+    damaged_trigger_effect = data.raw["assembling-machine"]["electromagnetic-plant"].damaged_trigger_effect,
+
+    circuit_wire_max_distance = assembling_machine_circuit_wire_max_distance,
+    circuit_connector = circuit_connector_definitions["electromagnetic-plant"],
+
+    energy_source = {
+      type = "electric",
+      usage_priority = "secondary-input"
+    },
+    energy_usage = "500kW",
+    heating_energy = "100kW",
+
+    researching_speed = 1,
+    inputs = {"t-one-science-pack", "t-two-science-pack"},
+    module_slots = 0,
+    allowed_effects = {"consumption", "speed", "productivity", "pollution", "quality"},
+
+    on_animation = {
+      layers = {
+        {
+          filename = "__escape-to-space__/graphics/entity/oxide-lab/oxide-lab-hr-animation-1.png",
+          priority = "high",
+          width = 280,
+          height = 320,
+          frame_count = 1,
+          line_length = 1,
+          shift = util.by_pixel(0, 0),
+          scale = 0.5
+        },
+        {
+          filename = "__escape-to-space__/graphics/entity/oxide-lab/oxide-lab-hr-color1-1.png",
+          priority = "high",
+          width = 280,
+          height = 320,
+          frame_count = 1,
+          line_length = 1,
+          shift = util.by_pixel(0, 0),
+          scale = 0.5
+        },
+        {
+          filename = "__escape-to-space__/graphics/entity/oxide-lab/oxide-lab-hr-color2-1.png",
+          priority = "high",
+          width = 280,
+          height = 320,
+          frame_count = 1,
+          line_length = 1,
+          shift = util.by_pixel(0, 0),
+          scale = 0.5
+        },
+        {
+          filename = "__escape-to-space__/graphics/entity/oxide-lab/oxide-lab-hr-emission-1.png",
+          priority = "high",
+          width = 280,
+          height = 320,
+          frame_count = 1,
+          line_length = 1,
+          draw_as_glow = true,
+          blend_mode = "additive",
+          shift = util.by_pixel(0, 0),
+          scale = 0.5
+        },
+        {
+          filename = "__escape-to-space__/graphics/entity/oxide-lab/oxide-lab-hr-shadow.png",
+          priority = "high",
+          width = 700,
+          height = 500,
+          frame_count = 1,
+          line_length = 1,
+          draw_as_shadow = true,
+          shift = util.by_pixel(0, 0),
+          scale = 0.5
+        }
+      }
+    },
+    off_animation = {
+      layers = {
+        {
+          filename = "__escape-to-space__/graphics/entity/oxide-lab/oxide-lab-hr-animation-1.png",
+          priority = "high",
+          width = 280,
+          height = 320,
+          frame_count = 1,
+          line_length = 1,
+          shift = util.by_pixel(0, 0),
+          scale = 0.5
+        },
+        {
+          filename = "__escape-to-space__/graphics/entity/oxide-lab/oxide-lab-hr-color1-1.png",
+          priority = "high",
+          width = 280,
+          height = 320,
+          frame_count = 1,
+          line_length = 1,
+          shift = util.by_pixel(0, 0),
+          scale = 0.5
+        },
+        {
+          filename = "__escape-to-space__/graphics/entity/oxide-lab/oxide-lab-hr-color2-1.png",
+          priority = "high",
+          width = 280,
+          height = 320,
+          frame_count = 1,
+          line_length = 1,
+          shift = util.by_pixel(0, 0),
+          scale = 0.5
+        },
+        {
+          filename = "__escape-to-space__/graphics/entity/oxide-lab/oxide-lab-hr-shadow.png",
+          priority = "high",
+          width = 700,
+          height = 500,
+          frame_count = 1,
+          line_length = 1,
+          draw_as_shadow = true,
+          shift = util.by_pixel(0, 0),
+          scale = 0.5
+        }
+      }
+    },
+  },
   --Cybernetic lab
 	{
 		name = "cybernetic-lab",

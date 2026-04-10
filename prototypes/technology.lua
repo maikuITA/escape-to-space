@@ -285,6 +285,21 @@ if steel_processing then
     steel_processing.prerequisites = {"automation-science-pack"}
 end
 
+-- Stone wall
+local stone_wall = data.raw["technology"]["stone-wall"]
+if stone_wall then
+    stone_wall.unit = {
+        count = 50,
+        ingredients = {
+            {"earth-science-pack", 1}
+        },
+        time = 10,
+    }
+    stone_wall.hidden = false
+    stone_wall.enabled = true
+    stone_wall.prerequisites = {"automation-science-pack"}
+end
+
 -- Tier 1 science pack
 local t_one_sp = data.raw["technology"]["military-science-pack"]
 if t_one_sp then
@@ -317,7 +332,7 @@ if t_one_sp then
         },
         {
             type = "unlock-recipe",
-            recipe = "electromagnetic-lab"
+            recipe = "oxide-lab"
         },
     }   
     t_one_sp.hidden = false

@@ -100,7 +100,7 @@ data:extend({
     },
     {
 		type = "recipe",
-		name = "electromagnetic-lab",
+		name = "oxide-lab",
         category = "crafting",
 		ingredients = {
           {type = "item", name = "carbon-plate", amount = 10},
@@ -109,7 +109,7 @@ data:extend({
           {type = "item", name = "carbon-wire", amount = 10},
           {type = "item", name = "carbon-electronic-circuit", amount = 10}
         },
-        results = {{type = "item", name = "electromagnetic-lab", amount = 1}},
+        results = {{type = "item", name = "oxide-lab", amount = 1}},
         energy_required = 0.5,
         enabled = false
     },
