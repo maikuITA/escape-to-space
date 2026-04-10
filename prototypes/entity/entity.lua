@@ -323,7 +323,7 @@ data:extend({
     heating_energy = "100kW",
 
     researching_speed = 1,
-    inputs = {"t-one-science-pack", "t-two-science-pack"},
+    inputs = {"earth-science-pack", "axkeria-science-pack", "t-one-science-pack", "t-two-science-pack"},
     module_slots = 0,
     allowed_effects = {"consumption", "speed", "productivity", "pollution", "quality"},
 

@@ -90,32 +90,6 @@ local function get_or_create_home_platform(player)
     return platform
 end
 
--- Default techs that need to be granted to avoid progression deadlocks in a space-first start.
-local default_techs = {
-    "rocket-silo",
-    "automation",
-    "solar-energy",
-    "asteroid-reprocessing",
-    "steel-processing",
-    "engine",
-    "electric-mining-drill",
-    "electric-energy-distribution-1",
-    "electric-energy-distribution-2",
-    "heavy-armor",
-    "modular-armor",
-    "power-armor",
-    "power-armor-mk2",
-    "mech-armor",
-    "automobilism",
-    "construction-robotics",
-    "logistic-robotics",
-    "circuit-network",
-    "space-platform-thruster",
-    "electronics",
-    "oil-gathering",
-    "oil-processing"
-}
-
 script.on_init(function()
     -- Pending teleports are deferred until the character entity exists.
     storage.pending_teleport = {}

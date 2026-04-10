@@ -1,6 +1,4 @@
 data:extend({
-    -- Modded items recipes
-
     -- Crafting
     {
 		type = "recipe",
@@ -55,6 +53,64 @@ data:extend({
           {type = "item", name = "copper-cable", amount = 3}
         },
         results = {{type = "item", name = "carbon-electronic-circuit", amount = 1}},
+        energy_required = 0.5,
+        enabled = false
+    },
+    {
+		type = "recipe",
+		name = "carbon-engine-unit",
+        category = "advanced-crafting",
+		ingredients = {
+          {type = "item", name = "carbon-wheel", amount = 1},
+          {type = "item", name = "carbon-pipe", amount = 2},
+          {type = "item", name = "steel-plate", amount = 1}
+        },
+        results = {{type = "item", name = "carbon-engine-unit", amount = 1}},
+        energy_required = 0.5,
+        enabled = false
+    },
+    {
+		type = "recipe",
+		name = "carbon-pipe",
+        category = "crafting",
+		ingredients = {
+          {type = "item", name = "carbon-plate", amount = 1},
+        },
+        results = {{type = "item", name = "carbon-pipe", amount = 1}},
+        energy_required = 0.5,
+        enabled = false
+    },
+    {
+		type = "recipe",
+		name = "oxidic-stick",
+        category = "crafting",
+		ingredients = {
+          {type = "item", name = "oxidic-plate", amount = 1},
+        },
+        results = {{type = "item", name = "oxidic-stick", amount = 1}},
+        energy_required = 0.5,
+        enabled = false
+    },
+    {
+		type = "recipe",
+		name = "oxidic-gear-wheel",
+        category = "crafting",
+		ingredients = {
+          {type = "item", name = "oxidic-plate", amount = 2},
+        },
+        results = {{type = "item", name = "oxidic-gear-wheel", amount = 1}},
+        energy_required = 0.5,
+        enabled = false
+    },
+    {
+		type = "recipe",
+		name = "oxidic-rounds-magazine",
+        category = "crafting",
+		ingredients = {
+          {type = "item", name = "oxidic-plate", amount = 2},
+          {type = "item", name = "piercing-rounds-magazine", amount = 2}
+        },
+        results = {{type = "item", name = "oxidic-rounds-magazine", amount = 2}},
         energy_required = 0.5,
         enabled = false
     },
@@ -126,6 +182,17 @@ data:extend({
         energy_required = 1,
         enabled = false
     },
+    {
+		type = "recipe",
+		name = "oxidic-plate",
+        category = "smelting",
+		ingredients = {
+          {type = "item", name = "oxidic-ore", amount = 2}
+        },
+        results = {{type = "item", name = "oxidic-plate", amount = 1}},
+        energy_required = 1,
+        enabled = false
+    },
 
     -- Science packs
     {
@@ -159,10 +226,10 @@ data:extend({
 		name = "t-one-fluid",
         category = "mixing",
 		ingredients = {
-          {type = "item", name = "transport-belt", amount = 2},
-          {type = "item", name = "inserter", amount = 1}
+          {type = "item", name = "fast-transport-belt", amount = 4},
+          {type = "item", name = "fast-inserter", amount = 2}
         },
-        results = {{type = "fluid", name = "t-one-fluid", amount = 200}},
+        results = {{type = "fluid", name = "t-one-fluid", amount = 1000}},
         energy_required = 10,
         enabled = false
     },
@@ -270,6 +337,23 @@ data:extend({
         },
         results = {
             {type = "item", name = "sand", amount = 10},
+        },
+        energy_required = 5,
+        allow_productivity = true,
+        enabled = true
+    },
+    {
+        type = "recipe",
+        name = "crush-oxide-chunk",
+        category = "crushing",
+        subgroup="space-crushing",
+        icon = data.raw["recipe"]["oxide-asteroid-crushing"].icon,
+        ingredients = {
+            {type = "item", name = "oxide-asteroid-chunk", amount = 1}
+        },
+        results = {
+            {type = "item", name = "oxidic-ore", amount = 2},
+            {type = "item", name = "oxide-asteroid-chunk", amount = 1, probability = 0.20, ignored_by_productivity = 1}
         },
         energy_required = 5,
         allow_productivity = true,

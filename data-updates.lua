@@ -70,6 +70,15 @@ if keria then
   }
 end
 
+-- Adding custom science packs as a lab input to allow researching trigger techs that require it.
+
+local lab = data.raw.lab["lab"]
+if lab then
+    lab.inputs = lab.inputs or {}
+    table.insert(lab.inputs, "earth-science-pack")
+    table.insert(lab.inputs, "axkeria-science-pack")
+end
+
 -- CREDITS: yunrus-space-block
 -- Hide and disable the void chest recipe to prevent bypassing intended progression,
 -- while keeping the prototype available for internal/indirect usage.
@@ -195,13 +204,31 @@ for _, name in pairs(to_hide) do
     end
 end
 
+-- Changing piercing-rounds-magazine icon
+local piercing_rounds_magazine = data.raw.ammo["piercing-rounds-magazine"]
+if piercing_rounds_magazine then
+  piercing_rounds_magazine.icons = nil
+  piercing_rounds_magazine.icon = "__escape-to-space__/graphics/icons/piercing-rounds-magazine.png"
+  piercing_rounds_magazine.icon_size = 64
+  piercing_rounds_magazine.icon_mipmaps = nil
+end
+
+-- Changing piercing-rounds-magazine recipe icon
+local r = data.raw.recipe["piercing-rounds-magazine"]
+if r then
+  r.icons = nil
+  r.icon = "__escape-to-space__/graphics/icons/piercing-rounds-magazine.png"
+  r.icon_size = 64
+  r.icon_mipmaps = nil
+end
+
 -- Modifying specific recipies
 
 local space_platf = data.raw.recipe["space-platform-foundation"]
 if space_platf then
     space_platf.ingredients = {
         {type = "item", name = "sand", amount = 50},
-        {type = "item", name = "iron-stick", amount = 50}
+        {type = "item", name = "carbon-wire", amount = 50}
     }
 end
 
@@ -289,11 +316,56 @@ if fast_inserter then
     }
 end
 
--- Adding custom science packs as a lab input to allow researching trigger techs that require it.
+local pi_ro_ma = data.raw.recipe["piercing-rounds-magazine"]
+if pi_ro_ma then
+    pi_ro_ma.ingredients = {
+        {type = "item", name = "steel-plate", amount = 1},
+        {type = "item", name = "carbon-plate", amount = 4},
+        {type = "item", name = "firearm-magazine", amount = 2}
+    }
 
-local lab = data.raw.lab["lab"]
-if lab then
-    lab.inputs = lab.inputs or {}
-    table.insert(lab.inputs, "earth-science-pack")
-    table.insert(lab.inputs, "axkeria-science-pack")
+end
+
+local asm2 = data.raw.recipe["assembling-machine-2"]
+if asm2 then
+    asm2.ingredients = {
+        {type = "item", name = "carbon-wheel", amount = 10}, 
+        {type = "item", name = "steel-plate", amount = 4},
+        {type = "item", name = "electronic-circuit", amount = 6},
+        {type = "item", name = "assembling-machine-1", amount = 1}
+    }
+end
+
+local elec_furnace = data.raw.recipe["electric-furnace"]
+if elec_furnace then
+    elec_furnace.ingredients = {
+        {type = "item", name = "carbon-engine-unit", amount = 10},
+        {type = "item", name = "electronic-circuit", amount = 10},
+        {type = "item", name = "stone-brick", amount = 10}
+    }
+end
+
+local fast_transport_belt = data.raw.recipe["fast-transport-belt"]
+if fast_transport_belt then
+    fast_transport_belt.ingredients = {
+        {type = "item", name = "oxidic-gear-wheel", amount = 5},
+        {type = "item", name = "transport-belt", amount = 1}
+    }
+end
+
+local fast_underground_belt = data.raw.recipe["fast-underground-belt"]
+if fast_underground_belt then
+    fast_underground_belt.ingredients = { 
+        {type = "item", name = "oxidic-gear-wheel", amount = 40},
+        {type = "item", name = "underground-belt", amount = 2}
+    }   
+end
+
+local fast_splitter = data.raw.recipe["fast-splitter"]
+if fast_splitter then
+    fast_splitter.ingredients = {
+        {type = "item", name = "oxidic-gear-wheel", amount = 10},
+        {type = "item", name = "electronic-circuit", amount = 10},
+        {type = "item", name = "splitter", amount = 1}
+    }
 end
