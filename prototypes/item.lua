@@ -190,6 +190,41 @@ data:extend({
     random_tint_color = item_tints.iron_rust
   },
   {
+    type = "item",
+    name = "carbon-steel-ore",
+    icon = "__escape-to-space__/graphics/icons/carbon-steel-ore.png",
+    subgroup = "intermediate-product",
+    order = "z[carbon-steel-ore]",
+    inventory_move_sound = space_age_item_sounds.space_age_item_sounds,
+    stack_size = data.raw.item["pipe"].stack_size,
+    weight = data.raw.item["pipe"].weight,
+    random_tint_color = item_tints.iron_rust
+  },
+  {
+    type = "item",
+    name = "carbon-steel-plate",
+    icon = "__escape-to-space__/graphics/icons/carbon-steel-plate.png",
+    subgroup = "intermediate-product",
+    order = "z[carbon-steel-plate]",
+    inventory_move_sound = space_age_item_sounds.space_age_item_sounds,
+    stack_size = data.raw.item["pipe"].stack_size,
+    weight = data.raw.item["pipe"].weight,
+    random_tint_color = item_tints.iron_rust
+  },
+  {
+    type = "item",
+    name = "silicon-bar",
+    icon = "__escape-to-space__/graphics/icons/silicon-bar.png",
+    subgroup = "intermediate-product",
+    order = "z[silicon-bar]",
+    inventory_move_sound = space_age_item_sounds.space_age_item_sounds,
+    stack_size = data.raw.item["pipe"].stack_size,
+    weight = data.raw.item["pipe"].weight,
+    random_tint_color = item_tints.iron_rust
+  },
+
+  -- Ammo
+  {
     type = "ammo",
     name = "oxidic-rounds-magazine",
     icon = "__escape-to-space__/graphics/icons/oxidic-rounds-magazine.png",
@@ -263,6 +298,32 @@ data:extend({
     pick_sound = item_sounds.electric_large_inventory_pickup,
     drop_sound = item_sounds.electric_large_inventory_move,
     place_result = "cybernetics-facility",
+    stack_size = 1,
+    weight = 100*kg
+  },
+  {
+    type = "item",
+    name = "mixing-station",
+    icon = "__escape-to-space__/graphics/icons/mixing-station-icon.png",
+    subgroup = "smelting-machine",
+    order = "c[mixing-station]",
+    inventory_move_sound = item_sounds.electric_large_inventory_move,
+    pick_sound = item_sounds.electric_large_inventory_pickup,
+    drop_sound = item_sounds.electric_large_inventory_move,
+    place_result = "mixing-station",
+    stack_size = 1,
+    weight = 100*kg
+  },
+  {
+    type = "item",
+    name = "chemical-stager",
+    icon = "__escape-to-space__/graphics/icons/chemical-stager-icon.png",
+    subgroup = "smelting-machine",
+    order = "c[chemical-stager]",
+    inventory_move_sound = item_sounds.electric_large_inventory_move,
+    pick_sound = item_sounds.electric_large_inventory_pickup,
+    drop_sound = item_sounds.electric_large_inventory_move,
+    place_result = "chemical-stager",
     stack_size = 1,
     weight = 100*kg
   },

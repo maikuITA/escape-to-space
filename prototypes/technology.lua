@@ -242,37 +242,6 @@ if repair_pack then
     repair_pack.prerequisites = {"automation-science-pack"}
 end
 
--- Axkeria science pack
-local axkeria_sp = data.raw["technology"]["logistic-science-pack"]
-if axkeria_sp then
-    axkeria_sp.icon = "__escape-to-space__/graphics/technology/axkeria-science-pack.png"
-    axkeria_sp.icon_size = 256
-    axkeria_sp.unit = {
-        count = 250,
-        ingredients = {
-            {"earth-science-pack", 1}
-        },
-        time = 10,
-    }
-    axkeria_sp.effects = {
-        {
-            type = "unlock-recipe",
-            recipe = "axkeria-science-pack"
-        },
-        {
-            type = "unlock-recipe",
-            recipe = "carbon-plate"
-        },
-        {
-            type = "unlock-recipe",
-            recipe = "carbon-electronic-circuit"
-        },
-    }
-    axkeria_sp.hidden = false
-    axkeria_sp.enabled = true
-    axkeria_sp.prerequisites = {"automation-science-pack", "landfill", "steel-processing"}
-end
-
 -- Steel processing
 local steel_processing = data.raw["technology"]["steel-processing"]
 if steel_processing then
@@ -286,6 +255,21 @@ if steel_processing then
     steel_processing.hidden = false
     steel_processing.enabled = true
     steel_processing.prerequisites = {"automation-science-pack"}
+end
+
+-- Fluid handling
+local fluid_handling = data.raw["technology"]["fluid-handling"]
+if fluid_handling then
+    fluid_handling.unit = {
+        count = 50,
+        ingredients = {
+            {"earth-science-pack", 1}
+        },
+        time = 10,
+    }
+    fluid_handling.hidden = false
+    fluid_handling.enabled = true
+    fluid_handling.prerequisites = {"automation-science-pack", "steel-processing"}
 end
 
 -- Stone wall
@@ -322,6 +306,14 @@ if landfill then
         },
         {
             type = "unlock-recipe",
+            recipe = "ice-melting"
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "oxide-asteroid-crushing"
+        },
+        {
+            type = "unlock-recipe",
             recipe = "space-platform-foundation"
         },
         {
@@ -344,6 +336,37 @@ if landfill then
     landfill.hidden = false
     landfill.enabled = true
     landfill.prerequisites = {"automation-science-pack"}
+end
+
+-- Axkeria science pack
+local axkeria_sp = data.raw["technology"]["logistic-science-pack"]
+if axkeria_sp then
+    axkeria_sp.icon = "__escape-to-space__/graphics/technology/axkeria-science-pack.png"
+    axkeria_sp.icon_size = 256
+    axkeria_sp.unit = {
+        count = 250,
+        ingredients = {
+            {"earth-science-pack", 1}
+        },
+        time = 10,
+    }
+    axkeria_sp.effects = {
+        {
+            type = "unlock-recipe",
+            recipe = "axkeria-science-pack"
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "carbon-plate"
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "carbon-electronic-circuit"
+        },
+    }
+    axkeria_sp.hidden = false
+    axkeria_sp.enabled = true
+    axkeria_sp.prerequisites = {"automation-science-pack", "landfill", "steel-processing"}
 end
 
 -- Red ammo
@@ -445,7 +468,7 @@ if asm_2 then
     }
     asm_2.hidden = false
     asm_2.enabled = true
-    asm_2.prerequisites = {"automation-science-pack", "logistic-science-pack", "steel-processing", "electric-energy-distribution-1"}
+    asm_2.prerequisites = {"automation-science-pack", "logistic-science-pack", "steel-processing", "heavy-armor"}
 end
 
 -- Logistics 2
@@ -461,7 +484,7 @@ if logistics_2 then
     }
     logistics_2.hidden = false
     logistics_2.enabled = true
-    logistics_2.prerequisites = {"automation-science-pack", "logistic-science-pack", "logistics", "electric-energy-distribution-1"}
+    logistics_2.prerequisites = {"automation-science-pack", "logistic-science-pack", "logistics", "heavy-armor"}
 end
 
 -- Toolbelt equipment (carbon pipe and engine unit)
@@ -506,16 +529,16 @@ if adv_mat_proc_2 then
     adv_mat_proc_2.prerequisites = {"automation-science-pack", "logistic-science-pack", "toolbelt"}
 end
 
-local electric_energy_distribution_1 = data.raw["technology"]["electric-energy-distribution-1"]
-if electric_energy_distribution_1 then
-    electric_energy_distribution_1.researched = false
+local heavy_armor = data.raw["technology"]["heavy-armor"]
+if heavy_armor then
+    heavy_armor.researched = false
 
-    electric_energy_distribution_1.icons = nil
-    electric_energy_distribution_1.icon = "__escape-to-space__/graphics/technology/oxidic-processing.png"
-    electric_energy_distribution_1.icon_size = 256
-    electric_energy_distribution_1.icon_mipmaps = nil
+    heavy_armor.icons = nil
+    heavy_armor.icon = "__escape-to-space__/graphics/technology/oxidic-processing.png"
+    heavy_armor.icon_size = 256
+    heavy_armor.icon_mipmaps = nil
     
-    electric_energy_distribution_1.unit = {
+    heavy_armor.unit = {
         count = 100,
         ingredients = {
             {"earth-science-pack", 1},
@@ -523,7 +546,7 @@ if electric_energy_distribution_1 then
         },
         time = 10,
     }
-    electric_energy_distribution_1.effects = {
+    heavy_armor.effects = {
         {
             type = "unlock-recipe",
             recipe = "crush-oxide-chunk"
@@ -541,9 +564,9 @@ if electric_energy_distribution_1 then
             recipe = "oxidic-gear-wheel"
         },
     }
-    electric_energy_distribution_1.hidden = false
-    electric_energy_distribution_1.enabled = true
-    electric_energy_distribution_1.prerequisites = {"automation-science-pack", "logistic-science-pack", "toolbelt", "fast-inserter"}
+    heavy_armor.hidden = false
+    heavy_armor.enabled = true
+    heavy_armor.prerequisites = {"automation-science-pack", "logistic-science-pack", "toolbelt", "fast-inserter"}
 end
 
 -- Tier 1 science pack
@@ -590,7 +613,7 @@ if t_one_sp then
         "logistics-2",
         "advanced-material-processing-2",
         "fast-inserter",
-        "electric-energy-distribution-1",
+        "heavy-armor",
     }
 end
 
@@ -683,4 +706,155 @@ if shoot_speed_4 then
     shoot_speed_4.hidden = false
     shoot_speed_4.enabled = true
     shoot_speed_4.prerequisites = {"automation-science-pack", "logistic-science-pack", "weapon-shooting-speed-1", "weapon-shooting-speed-2", "weapon-shooting-speed-3", "military", "military-2", "military-science-pack"}
+end
+
+-- Automation 3
+local asm_3 = data.raw["technology"]["automation-3"]
+if asm_3 then
+    asm_3.unit = {
+        count = 150,
+        ingredients = {
+            {"earth-science-pack", 1},
+            {"axkeria-science-pack", 1},
+            {"t-one-science-pack", 1}
+        },
+        time = 10,
+    }
+    asm_3.hidden = false
+    asm_3.enabled = true
+    asm_3.prerequisites = {"automation-science-pack", "logistic-science-pack", "military-science-pack", "automation-2"}
+end
+
+--Dissoluting
+local dissoluting = table.deepcopy(data.raw["technology"]["gun-turret"])
+if dissoluting then
+    dissoluting.name = "dissoluting"
+    dissoluting.icon = "__escape-to-space__/graphics/technology/chemical-stager-icon.png"
+    dissoluting.icon_size = 256
+    dissoluting.unit = {
+        count = 100,
+        ingredients = {
+            {"earth-science-pack", 1},
+            {"axkeria-science-pack", 1},
+            {"t-one-science-pack", 1}
+        },
+        time = 10,
+    }
+    dissoluting.effects = {
+        {
+            type = "unlock-recipe",
+            recipe = "chemical-stager"
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "oil-dissolution"
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "crude-oil-dissolution"
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "heavy-oil-dissolution"
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "light-oil-dissolution"
+        },
+    }
+    dissoluting.hidden = false
+    dissoluting.enabled = true
+    dissoluting.prerequisites = {"automation-science-pack", "logistic-science-pack", "military-science-pack", "fluid-handling"}
+end
+
+data:extend({dissoluting})
+
+--Blending
+local blending = table.deepcopy(data.raw["technology"]["gun-turret"])
+if blending then
+    blending.name = "blending"
+    blending.icon = "__escape-to-space__/graphics/technology/mixing-station-icon.png"
+    blending.icon_size = 256
+    blending.unit = {
+        count = 100,
+        ingredients = {
+            {"earth-science-pack", 1},
+            {"axkeria-science-pack", 1},
+            {"t-one-science-pack", 1}
+        },
+        time = 10,
+    }
+    blending.effects = {
+        {
+            type = "unlock-recipe",
+            recipe = "mixing-station"
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "carbon-steel-ore"
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "sulfur-blending"
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "coal-blending"
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "silicon-blending"
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "plastic-blending"
+        },
+    }
+    blending.hidden = false
+    blending.enabled = true
+    blending.prerequisites = {"automation-science-pack", "logistic-science-pack", "military-science-pack", "heavy-armor", "dissoluting"}
+end
+
+data:extend({blending})
+
+-- Lubricant
+local lubricant = table.deepcopy(data.raw["technology"]["lubricant"])
+if lubricant then
+    lubricant.unit = {
+        count = 100,
+        ingredients = {
+            {"earth-science-pack", 1},
+            {"axkeria-science-pack", 1},
+            {"t-one-science-pack", 1}
+        },
+        time = 10,
+    }
+    lubricant.effects = {
+        {
+            type = "unlock-recipe",
+            recipe = "lubricant"
+        },
+    }
+    lubricant.hidden = false
+    lubricant.enabled = true
+    lubricant.prerequisites = {"automation-science-pack", "logistic-science-pack", "military-science-pack", "dissoluting"}
+end
+
+data:extend({lubricant})
+
+-- Logistics 3
+local logistics_3 = data.raw["technology"]["logistics-3"]
+if logistics_3 then
+    logistics_3.unit = {
+        count = 150,
+        ingredients = {
+            {"earth-science-pack", 1},
+            {"axkeria-science-pack", 1},
+            {"t-one-science-pack", 1}
+        },
+        time = 10,
+    }
+    logistics_3.hidden = false
+    logistics_3.enabled = true
+    logistics_3.prerequisites = {"automation-science-pack", "logistic-science-pack", "military-science-pack", "logistics-2", "lubricant"}
 end

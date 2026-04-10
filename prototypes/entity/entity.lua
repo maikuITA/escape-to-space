@@ -597,4 +597,207 @@ data:extend({
 			max_sounds_per_prototype = 2,
 		},
 	},
+
+  --Mixing station
+  {
+    type = "assembling-machine",
+    name = "mixing-station",
+    icon = "__escape-to-space__/graphics/icons/mixing-station-icon.png",
+    icon_size = 64,
+    flags = {"placeable-neutral", "placeable-player", "player-creation"},
+    minable = {mining_time = 0.2, result = "mixing-station"},
+    circuit_wire_max_distance = furnace_circuit_wire_max_distance,
+    circuit_connector = circuit_connector_definitions["basic-electric-furnace"],
+    max_health = 350,
+    corpse = "basic-electric-furnace-remnants",
+    dying_explosion = data.raw["furnace"]["electric-furnace"].dying_explosion,
+    resistances =
+    {
+      {
+        type = "fire",
+        percent = 80
+      }
+    },
+    collision_box = {{-1.9, -1.9}, {1.9, 1.9}},
+    selection_box = {{-2.0, -2.0}, {2.0, 2.0}},
+    damaged_trigger_effect = data.raw["furnace"]["electric-furnace"].damaged_trigger_effect,
+    module_slots = 0,
+    icon_draw_specification = {shift = {0, -0.1}},
+    icons_positioning =
+    {
+      {inventory_index = defines.inventory.furnace_modules, shift = {0, 0.8}}
+    },
+    allowed_effects = {"consumption", "speed", "productivity", "pollution", "quality"},
+    crafting_categories = {"blending"},
+    result_inventory_size = 1,
+    crafting_speed = 1,
+    energy_usage = "500kW",
+    source_inventory_size = 1,
+    energy_source =
+    {
+      type = "electric",
+      usage_priority = "secondary-input"
+    },
+    graphics_set = {
+        animation = {
+            layers = {
+                {
+                    filename = "__escape-to-space__/graphics/entity/mixing-station/base/mixing-station-hr-animation-1.png",
+                    priority = "high",
+                    width = 270,  -- tot/8
+                    height = 310, -- tot/8
+                    frame_count = 64,
+                    line_length = 8,
+                    animation_speed = 0.5,
+                    shift = util.by_pixel(0, 0),
+                    scale = 0.5
+                },
+                {
+                    filename = "__escape-to-space__/graphics/entity/mixing-station/base/mixing-station-hr-shadow.png",
+                    priority = "high",
+                    width = 500,
+                    height = 350,
+                    frame_count = 1,
+                    line_length = 1,
+                    repeat_count = 64,
+                    draw_as_shadow = true,
+                    animation_speed = 0.5,
+                    shift = util.by_pixel(0, 0),
+                    scale = 0.5
+                }
+            }
+        }
+    },
+    fluid_boxes = {
+      {
+        production_type = "input",
+        pipe_picture = util.empty_sprite(),
+        pipe_covers = pipecoverspictures(),
+        always_draw_covers = false,
+        volume = 1000,
+        pipe_connections = {
+          { flow_direction = "input", direction = defines.direction.south, position = {-1.5, 1.5} }
+        }
+      },
+      {
+        production_type = "input",
+        pipe_picture = util.empty_sprite(),
+        pipe_covers = pipecoverspictures(),
+        always_draw_covers = false,
+        volume = 1000,
+        pipe_connections = {
+          { flow_direction = "input", direction = defines.direction.south, position = {1.5, 1.5} }
+        }
+      },
+    },
+    fluid_boxes_off_when_no_fluid_recipe = true,
+  },
+
+  --Chemical station
+  {
+    type = "assembling-machine",
+    name = "chemical-stager",
+    icon = "__escape-to-space__/graphics/icons/chemical-stager-icon.png",
+    icon_size = 64,
+    flags = {"placeable-neutral", "placeable-player", "player-creation"},
+    minable = {mining_time = 0.2, result = "chemical-stager"},
+    circuit_wire_max_distance = furnace_circuit_wire_max_distance,
+    circuit_connector = circuit_connector_definitions["basic-electric-furnace"],
+    max_health = 350,
+    corpse = "basic-electric-furnace-remnants",
+    dying_explosion = data.raw["furnace"]["electric-furnace"].dying_explosion,
+    resistances =
+    {
+      {
+        type = "fire",
+        percent = 80
+      }
+    },
+    collision_box = {{-2.2, -2.2}, {2.2, 2.2}},
+    selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
+    damaged_trigger_effect = data.raw["furnace"]["electric-furnace"].damaged_trigger_effect,
+    module_slots = 0,
+    icon_draw_specification = {shift = {0, -0.1}},
+    icons_positioning =
+    {
+      {inventory_index = defines.inventory.furnace_modules, shift = {0, 0.8}}
+    },
+    allowed_effects = {"consumption", "speed", "productivity", "pollution", "quality"},
+    crafting_categories = {"blending"},
+    result_inventory_size = 1,
+    crafting_speed = 1,
+    energy_usage = "500kW",
+    source_inventory_size = 1,
+    energy_source =
+    {
+      type = "electric",
+      usage_priority = "secondary-input"
+    },
+    graphics_set = {
+        animation = {
+            layers = {
+                {
+                    filename = "__escape-to-space__/graphics/entity/chemical-stager/chemical-stager-hr-animation-1.png",
+                    priority = "high",
+                    width = 400,  -- tot/8
+                    height = 400, -- tot/8
+                    frame_count = 60,
+                    line_length = 8,
+                    animation_speed = 0.5,
+                    shift = util.by_pixel(0, 0),
+                    scale = 0.5
+                },
+                {
+                    filename = "__escape-to-space__/graphics/entity/chemical-stager/chemical-stager-hr-shadow.png",
+                    priority = "high",
+                    width = 800,
+                    height = 600,
+                    frame_count = 1,
+                    line_length = 1,
+                    repeat_count = 60,
+                    draw_as_shadow = true,
+                    animation_speed = 0.5,
+                    shift = util.by_pixel(0, 0),
+                    scale = 0.5
+                },
+            }
+        }
+    },
+    fluid_boxes =
+    {
+      {
+        production_type = "input",
+        pipe_picture = util.empty_sprite(),
+        pipe_covers = pipecoverspictures(),
+        always_draw_covers = false,
+        volume = 1000,
+        pipe_connections = {{ flow_direction="input", direction = defines.direction.south, position = {-1, 2} }}
+      },
+      {
+        production_type = "input",
+        pipe_picture = util.empty_sprite(),
+        pipe_covers = pipecoverspictures(),
+        always_draw_covers = false,
+        volume = 1000,
+        pipe_connections = {{ flow_direction="input", direction = defines.direction.south, position = {1, 2} }}
+      },
+      {
+        production_type = "output",
+        pipe_picture = util.empty_sprite(),
+        pipe_covers = pipecoverspictures(),
+        always_draw_covers = false,
+        volume = 100,
+        pipe_connections = {{ flow_direction="output", direction = defines.direction.north, position = {-1, -2} }}
+      },
+      {
+        production_type = "output",
+        pipe_picture = util.empty_sprite(),
+        pipe_covers = pipecoverspictures(),
+        always_draw_covers = false,
+        volume = 100,
+        pipe_connections = {{ flow_direction="output", direction = defines.direction.north, position = {1, -2} }}
+      }
+    },
+    fluid_boxes_off_when_no_fluid_recipe = true,
+  },
 })

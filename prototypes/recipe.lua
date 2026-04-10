@@ -180,6 +180,36 @@ data:extend({
         energy_required = 0.5,
         enabled = false
     },
+    {
+		type = "recipe",
+		name = "mixing-station",
+        category = "crafting",
+		ingredients = {
+          {type = "item", name = "oxidic-plate", amount = 10},
+          {type = "item", name = "oxidic-gear-wheel", amount = 5},
+          {type = "item", name = "oxidic-stick", amount = 10},
+          {type = "item", name = "carbon-wire", amount = 10},
+          {type = "item", name = "carbon-electronic-circuit", amount = 10}
+        },
+        results = {{type = "item", name = "mixing-station", amount = 1}},
+        energy_required = 0.5,
+        enabled = false
+    },
+    {
+		type = "recipe",
+		name = "chemical-stager",
+        category = "crafting",
+		ingredients = {
+          {type = "item", name = "oxidic-plate", amount = 10},
+          {type = "item", name = "oxidic-gear-wheel", amount = 5},
+          {type = "item", name = "oxidic-stick", amount = 10},
+          {type = "item", name = "carbon-wire", amount = 10},
+          {type = "item", name = "carbon-electronic-circuit", amount = 10}
+        },
+        results = {{type = "item", name = "chemical-stager", amount = 1}},
+        energy_required = 0.5,
+        enabled = false
+    },
 
     -- Smelting
     {
@@ -201,6 +231,17 @@ data:extend({
           {type = "item", name = "oxidic-ore", amount = 2}
         },
         results = {{type = "item", name = "oxidic-plate", amount = 1}},
+        energy_required = 1,
+        enabled = false
+    },
+    {
+		type = "recipe",
+		name = "carbon-steel-plate",
+        category = "smelting",
+		ingredients = {
+          {type = "item", name = "carbon-steel-ore", amount = 2}
+        },
+        results = {{type = "item", name = "carbon-steel-plate", amount = 1}},
         energy_required = 1,
         enabled = false
     },
@@ -254,6 +295,134 @@ data:extend({
         results = {{type = "fluid", name = "t-two-fluid", amount = 500}},
         energy_required = 10,
         enabled = false
+    },
+
+    -- Mixing recipies
+    {
+		type = "recipe",
+		name = "carbon-steel-ore",
+        category = "blending",
+		ingredients = {
+          {type = "item", name = "carbon", amount = 2},
+          {type = "item", name = "iron-ore", amount = 2},
+          {type = "fluid", name = "water", amount = 10}
+        },
+        results = {{type = "item", name = "carbon-steel-ore", amount = 1}},
+        energy_required = 5,
+        enabled = false
+    },
+    {
+		type = "recipe",
+		name = "sulfur-blending",
+        category = "blending",
+		ingredients = {
+          {type = "item", name = "carbon", amount = 2},
+          {type = "item", name = "sand", amount = 2},
+          {type = "fluid", name = "petroleum-gas", amount = 20}
+        },
+        results = {{type = "item", name = "sulfur", amount = 1}},
+        energy_required = 2,
+        enabled = false
+    },
+    {
+		type = "recipe",
+		name = "coal-blending",
+        category = "blending",
+		ingredients = {
+          {type = "item", name = "carbon", amount = 2},
+          {type = "item", name = "sand", amount = 2},
+          {type = "fluid", name = "heavy-oil", amount = 20}
+        },
+        results = {{type = "item", name = "coal", amount = 1}},
+        energy_required = 2,
+        enabled = false
+    },
+    {
+		type = "recipe",
+		name = "silicon-blending",
+        category = "blending",
+		ingredients = {
+          {type = "item", name = "carbon", amount = 2},
+          {type = "fluid", name = "light-oil", amount = 20}
+        },
+        results = {{type = "item", name = "silicon-bar", amount = 1}},
+        energy_required = 2,
+        enabled = false
+    },
+    {
+		type = "recipe",
+		name = "plastic-blending",
+        category = "blending",
+		ingredients = {
+          {type = "item", name = "carbon", amount = 2},
+          {type = "fluid", name = "petroleum-gas", amount = 20}
+        },
+        results = {{type = "item", name = "plastic-bar", amount = 1}},
+        energy_required = 2,
+        enabled = false
+    },
+
+    -- dissolution recipes
+    {
+		type = "recipe",
+		name = "oil-dissolution",
+        category = "dissolution",
+		ingredients = {
+          {type = "item", name = "carbonic-asteroid-chunk", amount = 2},
+          {type = "item", name = "oxide-asteroid-chunk", amount = 2},
+        },
+        results = {{type = "fluid", name = "crude-oil", amount = 200}},
+        energy_required = 5,
+        enabled = false,
+        allow_productivity = true,
+    },
+    {
+		type = "recipe",
+		name = "crude-oil-dissolution",
+        category = "dissolution",
+		ingredients = {
+          {type = "fluid", name = "crude-oil", amount = 100},
+          {type = "fluid", name = "water", amount = 10},
+        },
+        results = {
+            {type = "fluid", name = "heavy-oil", amount = 70},
+            {type = "fluid", name = "light-oil", amount = 30}
+        },
+        energy_required = 2,
+        enabled = false,
+        icon = "__base__/graphics/icons/fluid/advanced-oil-processing.png",
+        subgroup = "fluid-recipes",
+        order = "a[oil-processing]-b[advanced-oil-processing]"
+    },
+    {
+		type = "recipe",
+		name = "heavy-oil-dissolution",
+        category = "dissolution",
+		ingredients = {
+          {type = "fluid", name = "heavy-oil", amount = 10},
+          {type = "fluid", name = "water", amount = 10},
+        },
+        results = {{type = "fluid", name = "light-oil", amount = 10}},
+        energy_required = 2,
+        enabled = false,
+        icon = "__base__/graphics/icons/fluid/heavy-oil-cracking.png",
+        subgroup = "fluid-recipes",
+        order = "b[fluid-chemistry]-a[heavy-oil-cracking]",
+    },
+    {
+		type = "recipe",
+		name = "light-oil-dissolution",
+        category = "dissolution",
+		ingredients = {
+          {type = "fluid", name = "light-oil", amount = 10},
+          {type = "fluid", name = "water", amount = 10},
+        },
+        results = {{type = "fluid", name = "petroleum-gas", amount = 10}},
+        energy_required = 2,
+        enabled = false,
+        icon = "__base__/graphics/icons/fluid/light-oil-cracking.png",
+        subgroup = "fluid-recipes",
+        order = "b[fluid-chemistry]-b[light-oil-cracking]",
     },
 
     -- Bottling recipes for science packs
