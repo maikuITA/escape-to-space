@@ -116,8 +116,23 @@ data:extend({
     drop_sound = item_sounds.electric_large_inventory_move,
     place_result = "cybernetics-facility",
     stack_size = 1,
-    weight = 1000*kg
+    weight = 100*kg
   },
+
+  -- Lab
+  {
+		type = "item",
+		name = "cybernetic-lab",
+		order = "z[zz-cybernetic-lab]",
+		subgroup = "production-machine",
+		pick_sound = item_sounds.reactor_inventory_pickup,
+		drop_sound = item_sounds.reactor_inventory_move,
+		icon = "__escape-to-space__/graphics/entity/cybernetic-lab/cybernetic-lab.png",
+		icon_size = 64,
+		stack_size = 1,
+		weight = 1000*kg,
+		place_result = "cybernetic-lab",
+	},
 
   -- Science packs
   {

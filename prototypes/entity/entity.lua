@@ -1,5 +1,9 @@
 -- entity.lua
 
+require ("util")
+require("__base__.prototypes.entity.pipecovers")
+local sounds = require("__base__.prototypes.entity.sounds")
+
 data:extend({
 
     -- Basic electric furnace
@@ -177,42 +181,285 @@ data:extend({
 
   --Cybernetics facility
     {
-        type = "furnace",
-        name = "cybernetics-facility",
-        icon = "__escape-to-space__/graphics/icons/cybernetics-facility-icon.png",
-        flags = {"placeable-neutral", "placeable-player", "player-creation"},
-        minable = {mining_time = 0.2, result = "cybernetics-facility"},
-        fast_replaceable_group = "furnace",
-        circuit_wire_max_distance = furnace_circuit_wire_max_distance,
-        circuit_connector = circuit_connector_definitions["basic-electric-furnace"],
-        max_health = 350,
-        corpse = "basic-electric-furnace-remnants",
-        dying_explosion = data.raw["furnace"]["electric-furnace"].dying_explosion,
-        resistances = {
-            {
-                type = "fire",
-                percent = 80
-            }
-        },
-        collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
-        selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
-        damaged_trigger_effect = data.raw["furnace"]["electric-furnace"].damaged_trigger_effect,
-        module_slots = 0,
-        icon_draw_specification = {shift = {0, -0.1}},
-        icons_positioning = {
-            {
-                inventory_index = defines.inventory.furnace_modules, shift = {0, 0.8}
-            }
-        },
-        allowed_effects = {"consumption", "speed", "productivity", "quality"},
-        crafting_categories = {"bottling"},
-        result_inventory_size = 1,
-        crafting_speed = 1,
-        energy_usage = "1000kW",
-        source_inventory_size = 1,
-        energy_source = {
-            type = "electric",
-            usage_priority = "secondary-input",
+    type = "assembling-machine",
+    name = "cybernetics-facility",
+    icon = "__escape-to-space__/graphics/icons/cybernetics-facility-icon.png",
+    flags = {"placeable-neutral", "placeable-player", "player-creation"},
+    minable = {mining_time = 0.2, result = "cybernetics-facility"},
+    --fast_replaceable_group = "furnace",
+    circuit_wire_max_distance = furnace_circuit_wire_max_distance,
+    circuit_connector = circuit_connector_definitions["basic-electric-furnace"],
+    max_health = 350,
+    corpse = "basic-electric-furnace-remnants",
+    dying_explosion = data.raw["furnace"]["electric-furnace"].dying_explosion,
+    resistances = {
+        {
+            type = "fire",
+            percent = 80
         }
     },
+    collision_box = {{-1.9, -1.9}, {1.9, 1.9}},
+    selection_box = {{-2.0, -2.0}, {2.0, 2.0}},
+    damaged_trigger_effect = data.raw["furnace"]["electric-furnace"].damaged_trigger_effect,
+    module_slots = 0,
+    icon_draw_specification = {shift = {0, -0.1}},
+    icons_positioning = {
+        {
+            inventory_index = defines.inventory.furnace_modules,
+            shift = {0, 0.8}
+        }
+    },
+    allowed_effects = {"consumption", "speed", "productivity", "quality"},
+    crafting_categories = {"bottling", "mixing"},
+    result_inventory_size = 1,
+    crafting_speed = 1,
+    energy_usage = "1000kW",
+    perceived_performance = {minimum = 0.25, maximum = 20},
+    source_inventory_size = 1,
+    energy_source = {
+        type = "electric",
+        usage_priority = "secondary-input",
+    },
+    graphics_set = {
+        animation = {
+            layers = {
+                {
+                    filename = "__escape-to-space__/graphics/entity/cybernetics-facility/base/cybernetics-facility-hr-animation-1.png",
+                    priority = "high",
+                    width = 270,  -- tot/8
+                    height = 310, -- tot/8
+                    frame_count = 64,
+                    line_length = 8,
+                    animation_speed = 0.5,
+                    shift = util.by_pixel(0, 0),
+                    scale = 0.5
+                },
+                {
+                    filename = "__escape-to-space__/graphics/entity/cybernetics-facility/base/cybernetics-facility-hr-shadow.png",
+                    priority = "high",
+                    width = 500,
+                    height = 350,
+                    frame_count = 1,
+                    line_length = 1,
+                    repeat_count = 64,
+                    draw_as_shadow = true,
+                    animation_speed = 0.5,
+                    shift = util.by_pixel(0, 0),
+                    scale = 0.5
+                }
+            }
+        }
+    },
+    fluid_boxes = {
+      {
+        production_type = "input",
+        pipe_picture = util.empty_sprite(),
+        pipe_covers = pipecoverspictures(),
+        always_draw_covers = false,
+        volume = 1000,
+        pipe_connections = {
+          { flow_direction = "input", direction = defines.direction.south, position = {-1.5, 1.5} }
+        }
+      },
+      {
+        production_type = "input",
+        pipe_picture = util.empty_sprite(),
+        pipe_covers = pipecoverspictures(),
+        always_draw_covers = false,
+        volume = 1000,
+        pipe_connections = {
+          { flow_direction = "input", direction = defines.direction.south, position = {1.5, 1.5} }
+        }
+      },
+      {
+        production_type = "output",
+        pipe_picture = util.empty_sprite(),
+        pipe_covers = pipecoverspictures(),
+        always_draw_covers = false,
+        volume = 1000,
+        pipe_connections = {
+          { flow_direction = "output", direction = defines.direction.north, position = {-1.5, -1.5} }
+        }
+      },
+      {
+        production_type = "output",
+        pipe_picture = util.empty_sprite(),
+        pipe_covers = pipecoverspictures(),
+        always_draw_covers = false,
+        volume = 1000,
+        pipe_connections = {
+          { flow_direction = "output", direction = defines.direction.north, position = {1.5, -1.5} }
+        }
+      }
+    },
+    fluid_boxes_off_when_no_fluid_recipe = true,
+  },
+  
+  --Cybernetic lab
+	{
+		name = "cybernetic-lab",
+		type = "lab",
+		icon = "__escape-to-space__/graphics/entity/cybernetic-lab/cybernetic-lab.png",
+		icon_size = 64,
+		flags = { "placeable-neutral", "placeable-player", "player-creation" },
+		minable = {
+			mining_time = 0.5,
+			results = { { type = "item", name = "cybernetic-lab", amount = 1 } },
+		},
+		max_health = 500,
+		corpse = "medium-remnants",
+		dying_explosion = "medium-explosion",
+		circuit_wire_max_distance = assembling_machine_circuit_wire_max_distance,
+		circuit_connector = circuit_connector_definitions["cybernetic-lab"],
+		collision_box = { { -4.7, -4.7 }, { 4.7, 4.7 } },
+		selection_box = { { -5.1, -5.1 }, { 5.1, 5.1 } },
+		energy_source = {
+        type = "electric",
+        usage_priority = "secondary-input",
+    },
+		impact_category = "metal",
+		open_sound = sounds.metal_large_open,
+		close_sound = sounds.metal_large_close,
+		energy_usage = "1500kW",
+		heating_energy = "100kW",
+		module_slots = 8,
+		researching_speed = 3,
+		inputs = {
+			"automation-science-pack",
+		},
+		source_inventory_size = 1,
+		on_animation = {
+			layers = {
+				{
+					priority = "high",
+					width = 330,
+					height = 390,
+					frame_count = 80,
+					lines_per_file = 8,
+					animation_speed = 0.35,
+					scale = 1.08,
+					shift = util.by_pixel(2, -40),
+					stripes = {
+						{
+							filename = "__escape-to-space__/graphics/entity/cybernetic-lab/cybernetic-lab-hr-animation-1.png",
+							width_in_frames = 8,
+							height_in_frames = 8,
+						},
+						{
+							filename = "__escape-to-space__/graphics/entity/cybernetic-lab/cybernetic-lab-hr-animation-2.png",
+							width_in_frames = 8,
+							height_in_frames = 2,
+						},
+					},
+				},
+				{
+					priority = "high",
+					draw_as_glow = true,
+					blend_mode = "additive",
+					width = 330,
+					height = 390,
+					frame_count = 80,
+					lines_per_file = 8,
+					animation_speed = 0.35,
+					scale = 1.08,
+					shift = util.by_pixel(2, -40),
+					stripes = {
+						{
+							filename = "__escape-to-space__/graphics/entity/cybernetic-lab/cybernetic-lab-hr-emission-1.png",
+							width_in_frames = 8,
+							height_in_frames = 8,
+						},
+						{
+							filename = "__escape-to-space__/graphics/entity/cybernetic-lab/cybernetic-lab-hr-emission-2.png",
+							width_in_frames = 8,
+							height_in_frames = 2,
+						},
+					},
+				},
+				{
+					filename = "__escape-to-space__/graphics/entity/cybernetic-lab/cybernetic-lab-hr-shadow.png",
+					priority = "high",
+					width = 1200,
+					height = 700,
+					frame_count = 1,
+					line_length = 1,
+					repeat_count = 80,
+					animation_speed = 0.35,
+					draw_as_shadow = true,
+					scale = 1.08,
+					shift = util.by_pixel(2, -40),
+				},
+			},
+		},
+		off_animation = {
+			layers = {
+				{
+					filename = "__escape-to-space__/graphics/entity/cybernetic-lab/cybernetic-lab-hr-shadow.png",
+					priority = "high",
+					width = 1200,
+					height = 700,
+					frame_count = 1,
+					line_length = 1,
+					repeat_count = 80,
+					animation_speed = 0.35,
+					draw_as_shadow = true,
+					scale = 1.08,
+					shift = util.by_pixel(2, -40),
+				},
+				{
+					priority = "high",
+					width = 330,
+					height = 390,
+					frame_count = 80,
+					lines_per_file = 8,
+					animation_speed = 0.35,
+					scale = 1.08,
+					shift = util.by_pixel(2, -40),
+					stripes = {
+						{
+							filename = "__escape-to-space__/graphics/entity/cybernetic-lab/cybernetic-lab-hr-animation-1.png",
+							width_in_frames = 8,
+							height_in_frames = 8,
+						},
+						{
+							filename = "__escape-to-space__/graphics/entity/cybernetic-lab/cybernetic-lab-hr-animation-2.png",
+							width_in_frames = 8,
+							height_in_frames = 2,
+						},
+					},
+				},
+			},
+		},
+
+		alert_icon_shift = util.by_pixel(0, -12),
+		icon_draw_specification = { shift = { 0, -0.3 } },
+
+		icons_positioning = {
+			{ inventory_index = defines.inventory.lab_modules, shift = { 0, -0.6 } },
+			{
+				inventory_index = defines.inventory.lab_input,
+				shift = { 0, 0.4 },
+				max_icons_per_row = 10,
+				separation_multiplier = 1 / 1.1,
+			},
+		},
+
+		working_sound = {
+			sound = {
+				filename = "__space-age__/sound/entity/fusion/fusion-generator.ogg",
+				volume = 0.4,
+				advanced_volume_control = { attenuation = "exponential" },
+			},
+			sound_accents = {
+				{
+					sound = {
+						variations = sound_variations("__space-age__/sound/entity/biolab/biolab-beaker", 7, 0.8),
+						audible_distance_modifier = 0.4,
+					},
+					frame = 1,
+				},
+			},
+			max_sounds_per_prototype = 2,
+		},
+	},
 })

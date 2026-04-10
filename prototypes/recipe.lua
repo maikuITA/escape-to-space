@@ -37,7 +37,6 @@ data:extend({
     },
 
     --Machines
-
     {
 		type = "recipe",
 		name = "basic-electric-furnace",
@@ -51,9 +50,21 @@ data:extend({
         energy_required = 0.5,
         enabled = true
     },
+    {
+		type = "recipe",
+		name = "cybernetic-lab",
+        category = "crafting",
+		ingredients = {
+          {type = "item", name = "carbon-wheel", amount = 10},
+          {type = "item", name = "iron-gear-wheel", amount = 10},
+          {type = "item", name = "electronic-circuit", amount = 10}
+        },
+        results = {{type = "item", name = "cybernetic-lab", amount = 1}},
+        energy_required = 0.5,
+        enabled = true
+    },
 
     -- Smelting
-
     {
 		type = "recipe",
 		name = "glass-bottle",
@@ -67,7 +78,6 @@ data:extend({
     },
 
     -- Science packs
-
     {
 		type = "recipe",
 		name = "earth-science-pack",
@@ -92,29 +102,55 @@ data:extend({
         energy_required = 1,
         enabled = true
     },
+
+    -- Fluid recipes (for science)
+    {
+		type = "recipe",
+		name = "t-one-fluid",
+        category = "mixing",
+		ingredients = {
+          {type = "item", name = "sand", amount = 10}
+        },
+        results = {{type = "fluid", name = "t-one-fluid", amount = 500}},
+        energy_required = 10,
+        enabled = true
+    },
+    {
+		type = "recipe",
+		name = "t-two-fluid",
+        category = "mixing",
+		ingredients = {
+          {type = "item", name = "sand", amount = 10}
+        },
+        results = {{type = "fluid", name = "t-two-fluid", amount = 500}},
+        energy_required = 10,
+        enabled = true
+    },
+
+    -- Bottling recipes for science packs
     {
 		type = "recipe",
 		name = "t-one-science-pack",
-        category = "crafting",
+        category = "bottling",
 		ingredients = {
-          {type = "item", name = "iron-gear-wheel", amount = 1},
-          {type = "item", name = "copper-plate", amount = 2}
+          {type = "item", name = "glass-bottle", amount = 1},
+          {type = "fluid", name = "t-one-fluid", amount = 100}
         },
         results = {{type = "item", name = "t-one-science-pack", amount = 1}},
-        energy_required = 1,
-        enabled = false
+        energy_required = 10,
+        enabled = true
     },
     {
 		type = "recipe",
 		name = "t-two-science-pack",
-        category = "crafting",
+        category = "bottling",
 		ingredients = {
-          {type = "item", name = "iron-gear-wheel", amount = 1},
-          {type = "item", name = "copper-plate", amount = 2}
+          {type = "item", name = "glass-bottle", amount = 1},
+          {type = "fluid", name = "t-two-fluid", amount = 100}
         },
         results = {{type = "item", name = "t-two-science-pack", amount = 1}},
-        energy_required = 1,
-        enabled = false
+        energy_required = 10,
+        enabled = true
     },
 
     -- Asteroid crushing recipes

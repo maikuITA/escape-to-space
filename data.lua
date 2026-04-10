@@ -1,11 +1,12 @@
 -- data.lua
 
 require("prototypes.entity.asteroids")
+require("prototypes.categories.recipe-category")
 require("prototypes.item")
+require("prototypes.fluid")
 require("prototypes.planet")
 require("prototypes.entity.entity")
 require("prototypes.entity.remnants")
-require("prototypes.categories.recipe-category")
 require("prototypes.recipe")
 require("prototypes.technology")
 
