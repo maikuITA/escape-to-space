@@ -36,6 +36,22 @@ data:extend({
         enabled = true
     },
 
+    --Machines
+
+    {
+		type = "recipe",
+		name = "basic-electric-furnace",
+        category = "crafting",
+		ingredients = {
+          {type = "item", name = "iron-plate", amount = 9},
+          {type = "item", name = "iron-gear-wheel", amount = 9},
+          {type = "item", name = "electronic-circuit", amount = 10}
+        },
+        results = {{type = "item", name = "basic-electric-furnace", amount = 1}},
+        energy_required = 0.5,
+        enabled = true
+    },
+
     -- Smelting
 
     {

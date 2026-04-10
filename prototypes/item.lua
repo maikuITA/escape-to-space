@@ -3,7 +3,7 @@ local space_age_item_sounds = require("__space-age__.prototypes.item_sounds")
 local item_tints = require("__base__.prototypes.item-tints")
 
 data:extend({
--- New Asteroids
+  -- Asteroids
   {
     type = "item",
     name = "irony-asteroid-chunk",
@@ -43,6 +43,7 @@ data:extend({
     weight = 100 * kg,
     random_tint_color = item_tints.iron_rust
   },
+  -- Items
   {
     type = "item",
     name = "sand",
@@ -74,7 +75,7 @@ data:extend({
     subgroup = "intermediate-product",
     order = "z[carbon-wheel]",
     inventory_move_sound = space_age_item_sounds.space_age_item_sounds,
-    stack_size = 200,
+    stack_size = 100,
     weight = 1*kg,
     random_tint_color = item_tints.iron_rust
   },
@@ -85,10 +86,40 @@ data:extend({
     subgroup = "intermediate-product",
     order = "z[carbon-stick]",
     inventory_move_sound = space_age_item_sounds.space_age_item_sounds,
-    stack_size = 200,
+    stack_size = 100,
     weight = 1*kg,
     random_tint_color = item_tints.iron_rust
   },
+
+  -- Machines
+  {
+    type = "item",
+    name = "basic-electric-furnace",
+    icon = "__escape-to-space__/graphics/icons/basic-electric-furnace.png",
+    subgroup = "smelting-machine",
+    order = "c[basic-electric-furnace]",
+    inventory_move_sound = item_sounds.electric_large_inventory_move,
+    pick_sound = item_sounds.electric_large_inventory_pickup,
+    drop_sound = item_sounds.electric_large_inventory_move,
+    place_result = "basic-electric-furnace",
+    stack_size = 50,
+    weight = 20*kg
+  },
+  {
+    type = "item",
+    name = "cybernetics-facility",
+    icon = "__escape-to-space__/graphics/icons/cybernetics-facility-icon.png",
+    subgroup = "smelting-machine",
+    order = "c[cybernetics-facility]",
+    inventory_move_sound = item_sounds.electric_large_inventory_move,
+    pick_sound = item_sounds.electric_large_inventory_pickup,
+    drop_sound = item_sounds.electric_large_inventory_move,
+    place_result = "cybernetics-facility",
+    stack_size = 1,
+    weight = 1000*kg
+  },
+
+  -- Science packs
   {
     type = "tool",
     name = "earth-science-pack",
