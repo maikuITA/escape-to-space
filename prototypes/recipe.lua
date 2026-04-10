@@ -11,7 +11,7 @@ data:extend({
         },
         results = {{type = "item", name = "void-chest", amount = 1}},
         energy_required = 0.5,
-        enabled = true
+        enabled = false
     },
     {
 		type = "recipe",
@@ -22,7 +22,7 @@ data:extend({
         },
         results = {{type = "item", name = "carbon-wheel", amount = 1}},
         energy_required = 0.5,
-        enabled = true
+        enabled = false
     },
     {
 		type = "recipe",
@@ -33,7 +33,30 @@ data:extend({
         },
         results = {{type = "item", name = "carbon-stick", amount = 1}},
         energy_required = 0.5,
-        enabled = true
+        enabled = false
+    },
+    {
+		type = "recipe",
+		name = "carbon-plate",
+        category = "smelting",
+		ingredients = {
+          {type = "item", name = "carbon", amount = 2}
+        },
+        results = {{type = "item", name = "carbon-plate", amount = 1}},
+        energy_required = 0.5,
+        enabled = false
+    },
+    {
+		type = "recipe",
+		name = "carbon-electronic-circuit",
+        category = "crafting",
+		ingredients = {
+          {type = "item", name = "carbon-plate", amount = 1},
+          {type = "item", name = "copper-cable", amount = 3}
+        },
+        results = {{type = "item", name = "carbon-electronic-circuit", amount = 1}},
+        energy_required = 0.5,
+        enabled = false
     },
 
     --Machines
@@ -48,20 +71,47 @@ data:extend({
         },
         results = {{type = "item", name = "basic-electric-furnace", amount = 1}},
         energy_required = 0.5,
-        enabled = true
+        enabled = false
+    },
+    {
+		type = "recipe",
+		name = "cybernetics-facility",
+        category = "crafting",
+		ingredients = {
+          {type = "item", name = "iron-plate", amount = 10},
+          {type = "item", name = "carbon-plate", amount = 10},
+          {type = "item", name = "electronic-circuit", amount = 10},
+          {type = "item", name = "carbon-electronic-circuit", amount = 10}
+        },
+        results = {{type = "item", name = "cybernetics-facility", amount = 1}},
+        energy_required = 5,
+        enabled = false
     },
     {
 		type = "recipe",
 		name = "cybernetic-lab",
         category = "crafting",
 		ingredients = {
-          {type = "item", name = "carbon-wheel", amount = 10},
-          {type = "item", name = "iron-gear-wheel", amount = 10},
-          {type = "item", name = "electronic-circuit", amount = 10}
+          {type = "item", name = "carbon-wheel", amount = 1},
         },
         results = {{type = "item", name = "cybernetic-lab", amount = 1}},
         energy_required = 0.5,
-        enabled = true
+        enabled = false
+    },
+    {
+		type = "recipe",
+		name = "electromagnetic-lab",
+        category = "crafting",
+		ingredients = {
+          {type = "item", name = "carbon-plate", amount = 10},
+          {type = "item", name = "carbon-wheel", amount = 5},
+          {type = "item", name = "carbon-stick", amount = 10},
+          {type = "item", name = "carbon-wire", amount = 10},
+          {type = "item", name = "carbon-electronic-circuit", amount = 10}
+        },
+        results = {{type = "item", name = "electromagnetic-lab", amount = 1}},
+        energy_required = 0.5,
+        enabled = false
     },
 
     -- Smelting
@@ -74,7 +124,7 @@ data:extend({
         },
         results = {{type = "item", name = "glass-bottle", amount = 1}},
         energy_required = 1,
-        enabled = true
+        enabled = false
     },
 
     -- Science packs
@@ -88,7 +138,7 @@ data:extend({
         },
         results = {{type = "item", name = "earth-science-pack", amount = 1}},
         energy_required = 1,
-        enabled = true
+        enabled = false
     },
     {
 		type = "recipe",
@@ -100,7 +150,7 @@ data:extend({
         },
         results = {{type = "item", name = "axkeria-science-pack", amount = 1}},
         energy_required = 1,
-        enabled = true
+        enabled = false
     },
 
     -- Fluid recipes (for science)
@@ -109,11 +159,12 @@ data:extend({
 		name = "t-one-fluid",
         category = "mixing",
 		ingredients = {
-          {type = "item", name = "sand", amount = 10}
+          {type = "item", name = "transport-belt", amount = 2},
+          {type = "item", name = "inserter", amount = 1}
         },
-        results = {{type = "fluid", name = "t-one-fluid", amount = 500}},
+        results = {{type = "fluid", name = "t-one-fluid", amount = 200}},
         energy_required = 10,
-        enabled = true
+        enabled = false
     },
     {
 		type = "recipe",
@@ -124,7 +175,7 @@ data:extend({
         },
         results = {{type = "fluid", name = "t-two-fluid", amount = 500}},
         energy_required = 10,
-        enabled = true
+        enabled = false
     },
 
     -- Bottling recipes for science packs
@@ -138,7 +189,7 @@ data:extend({
         },
         results = {{type = "item", name = "t-one-science-pack", amount = 1}},
         energy_required = 10,
-        enabled = true
+        enabled = false
     },
     {
 		type = "recipe",
@@ -150,7 +201,7 @@ data:extend({
         },
         results = {{type = "item", name = "t-two-science-pack", amount = 1}},
         energy_required = 10,
-        enabled = true
+        enabled = false
     },
 
     -- Asteroid crushing recipes

@@ -213,7 +213,7 @@ data:extend({
     crafting_categories = {"bottling", "mixing"},
     result_inventory_size = 1,
     crafting_speed = 1,
-    energy_usage = "1000kW",
+    energy_usage = "500kW",
     perceived_performance = {minimum = 0.25, maximum = 20},
     source_inventory_size = 1,
     energy_source = {

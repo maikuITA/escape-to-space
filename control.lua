@@ -122,12 +122,12 @@ script.on_init(function()
     storage.home_platform_by_force = {}
 
     -- Grant baseline technologies to avoid planet-first progression deadlocks.
-    for _, tech_name in ipairs(default_techs) do
-        local tech = game.forces.player.technologies[tech_name]
-        if tech then
-            tech.researched = true
-        end
-    end
+    --for _, tech_name in ipairs(default_techs) do
+        --local tech = game.forces.player.technologies[tech_name]
+        --if tech then
+            --tech.researched = true
+        --end
+    --end
 
     -- Auto researching trigger tech(s)
     --for name, tech in pairs(game.forces.player.technologies) do
@@ -198,7 +198,7 @@ setup_platform_for_player = function(player)
         inv.insert({ name = "asteroid-collector", count = 1 })
         inv.insert({ name = "inserter", count = 20 })
         inv.insert({ name = "assembling-machine-1", count = 5 })
-        inv.insert({ name = "electric-furnace", count = 3 })
+        inv.insert({ name = "basic-electric-furnace", count = 3 })
         inv.insert({ name = "solar-panel", count = 10 })
         inv.insert({ name = "space-platform-foundation", count = 300})
     end

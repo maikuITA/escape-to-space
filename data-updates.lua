@@ -114,9 +114,9 @@ end
 -- Hiding specific recipes from the player
 
 local to_hide = {
-    "carbonic-asteroid-chunk-reprocessing",
-    "oxide-asteroid-chunk-reprocessing",
-    "metallic-asteroid-chunk-reprocessing",
+    "carbonic-asteroid-reprocessing",
+    "oxide-asteroid-reprocessing",
+    "metallic-asteroid-reprocessing",
     "metallic-asteroid-crushing",
     "small-electric-pole",
     "medium-electric-pole",
@@ -182,6 +182,9 @@ local to_hide = {
     "high-tech-science-pack",
     "military-science-pack",
     "utility-science-pack",
+    "stone-furnace",
+    "steel-furnace",
+    "burner-inserter",  
 }
 
 for _, name in pairs(to_hide) do
@@ -275,6 +278,15 @@ if thrust_oxy then
         {type = "fluid", name = "thruster-oxidizer", amount = 240},
     }
     thrust_oxy.main_product = "thruster-oxidizer"
+end
+
+local fast_inserter = data.raw.recipe["fast-inserter"]
+if fast_inserter then
+    fast_inserter.ingredients = {
+        {type = "item", name = "carbon-stick", amount = 2},
+        {type = "item", name = "electronic-circuit", amount = 2},
+        {type = "item", name = "inserter", amount = 1}
+    }
 end
 
 -- Adding custom science packs as a lab input to allow researching trigger techs that require it.

@@ -90,6 +90,39 @@ data:extend({
     weight = 1*kg,
     random_tint_color = item_tints.iron_rust
   },
+  {
+    type = "item",
+    name = "carbon-wire",
+    icon = "__escape-to-space__/graphics/icons/carbon-wire.png",
+    subgroup = "intermediate-product",
+    order = "z[carbon-wire]",
+    inventory_move_sound = space_age_item_sounds.space_age_item_sounds,
+    stack_size = 200,
+    weight = 0.5*kg,
+    random_tint_color = item_tints.iron_rust
+  },
+  {
+    type = "item",
+    name = "carbon-plate",
+    icon = "__escape-to-space__/graphics/icons/carbon-plate.png",
+    subgroup = "intermediate-product",
+    order = "z[carbon-plate]",
+    inventory_move_sound = space_age_item_sounds.space_age_item_sounds,
+    stack_size = 200,
+    weight = 0.5*kg,
+    random_tint_color = item_tints.iron_rust
+  },
+  {
+    type = "item",
+    name = "carbon-electronic-circuit",
+    icon = "__escape-to-space__/graphics/icons/carbon-electronic-circuit.png",
+    subgroup = "intermediate-product",
+    order = "z[carbon-electronic-circuit]",
+    inventory_move_sound = space_age_item_sounds.space_age_item_sounds,
+    stack_size = 200,
+    weight = 0.5*kg,
+    random_tint_color = item_tints.iron_rust
+  },
 
   -- Machines
   {
@@ -133,6 +166,19 @@ data:extend({
 		weight = 1000*kg,
 		place_result = "cybernetic-lab",
 	},
+  {
+    type = "item",
+    name = "electromagnetic-lab",
+    icon = data.raw["item"]["electromagnetic-plant"].icon,
+    subgroup = "smelting-machine",
+    order = "c[electromagnetic-lab]",
+    inventory_move_sound = data.raw["item"]["electromagnetic-plant"].inventory_move_sound,
+    pick_sound = data.raw["item"]["electromagnetic-plant"].pick_sound,
+    drop_sound = data.raw["item"]["electromagnetic-plant"].drop_sound,
+    place_result = "electromagnetic-lab",
+    stack_size = data.raw["item"]["electromagnetic-plant"].stack_size,
+    weight = data.raw["item"]["electromagnetic-plant"].weight
+  },
 
   -- Science packs
   {
