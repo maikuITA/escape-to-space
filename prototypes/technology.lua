@@ -266,7 +266,7 @@ if axkeria_sp then
     }
     axkeria_sp.hidden = false
     axkeria_sp.enabled = true
-    axkeria_sp.prerequisites = {"automation-science-pack"}
+    axkeria_sp.prerequisites = {"automation-science-pack", "landfill"}
 end
 
 -- Steel processing
@@ -299,6 +299,49 @@ if stone_wall then
     stone_wall.prerequisites = {"automation-science-pack"}
 end
 
+-- Landfill
+local landfill = data.raw["technology"]["landfill"]
+if landfill then
+    landfill.icon = "__escape-to-space__/graphics/technology/space-platform-thruster.png"
+    landfill.icon_size = 256
+    landfill.unit = {
+        count = 50,
+        ingredients = {
+            {"earth-science-pack", 1}
+        },
+        time = 10,
+    }
+    landfill.effects = {
+        {
+            type = "unlock-recipe",
+            recipe = "chemical-plant"
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "space-platform-foundation"
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "asteroid-collector"
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "crusher"
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "cargo-bay"
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "thruster"
+        },
+    }
+    landfill.hidden = false
+    landfill.enabled = true
+    landfill.prerequisites = {"automation-science-pack"}
+end
+
 -- Red ammo
 local red_ammo = data.raw["technology"]["military"]
 if red_ammo then
@@ -318,7 +361,7 @@ if red_ammo then
     }
     red_ammo.hidden = false
     red_ammo.enabled = true
-    red_ammo.prerequisites = {"automation-science-pack", "logistic-science-pack", "gun-turret", "stone-wall"}
+    red_ammo.prerequisites = {"automation-science-pack", "logistic-science-pack", "gun-turret", "stone-wall", "steel-processing"}
 end
 
 -- Phisical projectile damage 1
@@ -398,7 +441,7 @@ if asm_2 then
     }
     asm_2.hidden = false
     asm_2.enabled = true
-    asm_2.prerequisites = {"automation-science-pack", "logistic-science-pack"}
+    asm_2.prerequisites = {"automation-science-pack", "logistic-science-pack", "steel-processing", "electric-energy-distribution-1"}
 end
 
 -- Logistics 2
@@ -414,7 +457,7 @@ if logistics_2 then
     }
     logistics_2.hidden = false
     logistics_2.enabled = true
-    logistics_2.prerequisites = {"automation-science-pack", "logistic-science-pack", "logistics"}
+    logistics_2.prerequisites = {"automation-science-pack", "logistic-science-pack", "logistics", "electric-energy-distribution-1"}
 end
 
 -- Toolbelt equipment (carbon pipe and engine unit)
@@ -440,7 +483,7 @@ if toolbelt then
     }
     toolbelt.hidden = false
     toolbelt.enabled = true
-    toolbelt.prerequisites = {"automation-science-pack", "logistic-science-pack"}
+    toolbelt.prerequisites = {"automation-science-pack", "logistic-science-pack", "steel-processing"}
 end
 
 -- Advanced material processing 2 (electric furnaces)
@@ -531,7 +574,7 @@ if t_one_sp then
             type = "unlock-recipe",
             recipe = "oxide-lab"
         },
-    }   
+    }  
     t_one_sp.hidden = false
     t_one_sp.enabled = true
     t_one_sp.prerequisites = {
@@ -541,7 +584,7 @@ if t_one_sp then
         "logistics-2",
         "advanced-material-processing-2",
         "fast-inserter",
-        --"electric_energy_distribution_1",
+        "electric-energy-distribution-1",
     }
 end
 
@@ -575,7 +618,8 @@ if phys_proj_dmg_3 then
         count = 175,
         ingredients = {
             {"earth-science-pack", 1},
-            {"axkeria-science-pack", 1}
+            {"axkeria-science-pack", 1},
+            {"t-one-science-pack", 1}
         },
         time = 10,
     }
@@ -591,7 +635,8 @@ if phys_proj_dmg_4 then
         count = 200,
         ingredients = {
             {"earth-science-pack", 1},
-            {"axkeria-science-pack", 1}
+            {"axkeria-science-pack", 1},
+            {"t-one-science-pack", 1}
         },
         time = 10,
     }
@@ -607,7 +652,8 @@ if shoot_speed_3 then
         count = 175,
         ingredients = {
             {"earth-science-pack", 1},
-            {"axkeria-science-pack", 1}
+            {"axkeria-science-pack", 1},
+            {"t-one-science-pack", 1}
         },
         time = 10,
     }
@@ -623,7 +669,8 @@ if shoot_speed_4 then
         count = 200,
         ingredients = {
             {"earth-science-pack", 1},
-            {"axkeria-science-pack", 1}
+            {"axkeria-science-pack", 1},
+            {"t-one-science-pack", 1}
         },
         time = 10,
     }

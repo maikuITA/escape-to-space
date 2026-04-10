@@ -159,9 +159,9 @@ data:extend({
 		name = "oxide-lab",
         category = "crafting",
 		ingredients = {
-          {type = "item", name = "carbon-plate", amount = 10},
-          {type = "item", name = "carbon-wheel", amount = 5},
-          {type = "item", name = "carbon-stick", amount = 10},
+          {type = "item", name = "oxidic-plate", amount = 10},
+          {type = "item", name = "oxidic-gear-wheel", amount = 5},
+          {type = "item", name = "oxidic-stick", amount = 10},
           {type = "item", name = "carbon-wire", amount = 10},
           {type = "item", name = "carbon-electronic-circuit", amount = 10}
         },

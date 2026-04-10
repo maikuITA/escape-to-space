@@ -324,7 +324,7 @@ data:extend({
 
     researching_speed = 1,
     inputs = {"earth-science-pack", "axkeria-science-pack", "t-one-science-pack", "t-two-science-pack"},
-    module_slots = 0,
+    module_slots = 2,
     allowed_effects = {"consumption", "speed", "productivity", "pollution", "quality"},
 
     on_animation = {

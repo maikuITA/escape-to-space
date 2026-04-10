@@ -174,7 +174,7 @@ setup_platform_for_player = function(player)
         inv.insert({ name = "assembling-machine-1", count = 5 })
         inv.insert({ name = "basic-electric-furnace", count = 3 })
         inv.insert({ name = "solar-panel", count = 10 })
-        inv.insert({ name = "space-platform-foundation", count = 300})
+        inv.insert({ name = "space-platform-foundation", count = 500})
     end
     return platform
 end
