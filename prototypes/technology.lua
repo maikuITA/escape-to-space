@@ -1528,7 +1528,7 @@ end
 
 data:extend({energy_data_disk})
 
--- Energy data pack
+-- Bio data pack
 local bio_data_disk = table.deepcopy(data.raw["technology"]["gun-turret"])
 if bio_data_disk then
     bio_data_disk.name = "bio-data-disk"
@@ -1556,7 +1556,7 @@ end
 
 data:extend({bio_data_disk})
 
--- Energy data pack
+-- Promethium data pack
 local promethium_data_disk = table.deepcopy(data.raw["technology"]["gun-turret"])
 if promethium_data_disk then
     promethium_data_disk.name = "promethium-data-disk"
@@ -1592,14 +1592,14 @@ end
 
 data:extend({promethium_data_disk})
 
--- Dissoluting productivity 1
-local dissoluting_prod_1 = table.deepcopy(data.raw["technology"]["gun-turret"])
-if dissoluting_prod_1 then
-    dissoluting_prod_1.name = "dissoluting-productivity-1"
-    dissoluting_prod_1.icon = data.raw["technology"]["productivity-module"].icon
-    dissoluting_prod_1.icon_size = data.raw["technology"]["productivity-module"].icon_size
-    dissoluting_prod_1.unit = {
-        count = 5000,
+-- Mechanical data pack
+local mechanical_data_disk = table.deepcopy(data.raw["technology"]["gun-turret"])
+if mechanical_data_disk then
+    mechanical_data_disk.name = "mechanical-data-disk"
+    mechanical_data_disk.icon = "__escape-to-space__/graphics/technology/mechanical-data-disk.png"
+    mechanical_data_disk.icon_size = 256
+    mechanical_data_disk.unit = {
+        count = 500,
         ingredients = {
             {"t-one-science-pack", 1},
             {"t-two-science-pack", 1},
@@ -1607,7 +1607,37 @@ if dissoluting_prod_1 then
         },
         time = 10,
     }
-    dissoluting_prod_1.effects = {
+    mechanical_data_disk.effects = {
+        {
+            type = "unlock-recipe",
+            recipe = "mechanical-data-disk"
+        },
+    }
+    mechanical_data_disk.hidden = false
+    mechanical_data_disk.enabled = true
+    mechanical_data_disk.prerequisites = {"t-three-science-pack", "data-disks"}
+end
+
+data:extend({mechanical_data_disk})
+
+-- Dissoluting productivity max10
+local dissoluting_prod = table.deepcopy(data.raw["technology"]["gun-turret"])
+if dissoluting_prod then
+    dissoluting_prod.name = "dissoluting-productivity"
+    dissoluting_prod.icon = data.raw["technology"]["productivity-module"].icon
+    dissoluting_prod.icon_size = data.raw["technology"]["productivity-module"].icon_size
+    dissoluting_prod.unit =
+    {
+      count_formula = "1.5^L*100",
+      ingredients =
+      {
+        {"mechanical-data-disk", 1},
+      },
+      time = 60
+    }
+    dissoluting_prod.max_level = 10
+    dissoluting_prod.upgrade = true
+    dissoluting_prod.effects = {
         {
             type = "change-recipe-productivity",
             recipe = "oil-dissolution",
@@ -1629,9 +1659,100 @@ if dissoluting_prod_1 then
             change = 0.1
         },
     }
-    dissoluting_prod_1.hidden = false
-    dissoluting_prod_1.enabled = true
-    dissoluting_prod_1.prerequisites = {"t-three-science-pack", "dissoluting", "productivity-module"}
+    dissoluting_prod.hidden = false
+    dissoluting_prod.enabled = true
+    dissoluting_prod.prerequisites = {"t-three-science-pack", "dissoluting", "mechanical-data-disk", "productivity-module"}
 end
 
-data:extend({dissoluting_prod_1})
+data:extend({dissoluting_prod})
+
+-- Blending productivity max10
+local blending_prod = table.deepcopy(data.raw["technology"]["gun-turret"])
+if blending_prod then
+    blending_prod.name = "blending-productivity"
+    blending_prod.icon = data.raw["technology"]["productivity-module"].icon
+    blending_prod.icon_size = data.raw["technology"]["productivity-module"].icon_size
+    blending_prod.unit =
+    {
+      count_formula = "1.5^L*100",
+      ingredients =
+      {
+        {"mechanical-data-disk", 1},
+      },
+      time = 60
+    }
+    blending_prod.max_level = 10
+    blending_prod.upgrade = true
+    blending_prod.effects = {
+        {
+            type = "change-recipe-productivity",
+            recipe = "carbon-steel-ore",
+            change = 0.1
+        },
+        {
+            type = "change-recipe-productivity",
+            recipe = "carbon-steel-plate",
+            change = 0.1
+        },
+        {
+            type = "change-recipe-productivity",
+            recipe = "sulfur-blending",
+            change = 0.1
+        },
+        {
+            type = "change-recipe-productivity",
+            recipe = "coal-blending",
+            change = 0.1
+        },
+        {
+            type = "change-recipe-productivity",
+            recipe = "silicon-blending",
+            change = 0.1
+        },
+        {
+            type = "change-recipe-productivity",
+            recipe = "plastic-blending",
+            change = 0.1
+        },
+    }
+    blending_prod.hidden = false
+    blending_prod.enabled = true
+    blending_prod.prerequisites = {"t-three-science-pack", "blending", "mechanical-data-disk", "productivity-module"}
+end
+
+data:extend({blending_prod})
+
+---------------------------------------------------------------------------------------------
+--- Final tech
+
+local research_prod = table.deepcopy(data.raw["technology"]["gun-turret"])
+if research_prod then
+    research_prod.name = "research-productivity"
+    research_prod.icon = data.raw["technology"]["research-productivity"].icon
+    research_prod.icon_size = data.raw["technology"]["research-productivity"].icon_size
+    research_prod.unit =
+    {
+      count_formula = "1.5^L*100",
+      ingredients =
+      {
+        {"energy-data-disk", 1},
+        {"bio-data-disk", 1},
+        {"promethium-data-disk", 1},
+        {"mechanical-data-disk", 1},
+      },
+      time = 60
+    }
+    research_prod.max_level = "infinite"
+    research_prod.upgrade = true
+    research_prod.effects = {
+        {
+            type = "laboratory-productivity",
+            modifier = 0.10
+        },
+    }
+    research_prod.hidden = false
+    research_prod.enabled = true
+    research_prod.prerequisites = {"energy-data-disk", "bio-data-disk", "promethium-data-disk", "mechanical-data-disk"}
+end
+
+data:extend({research_prod})

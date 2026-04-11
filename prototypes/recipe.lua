@@ -333,6 +333,18 @@ data:extend({
         energy_required = 30,
         enabled = false
     },
+    {
+		type = "recipe",
+		name = "mechanical-data-disk",
+        category = "stabilizing",
+		ingredients = {
+          {type = "item", name = "blank-data-disk", amount = 1},
+          {type = "item", name = "electromagnetic-plant", amount = 1},
+        },
+        results = {{type = "item", name = "mechanical-data-disk", amount = 1}},
+        energy_required = 30,
+        enabled = false
+    },
 
     -- Science packs
     {

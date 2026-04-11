@@ -460,7 +460,10 @@ data:extend({
 		module_slots = 8,
 		researching_speed = 3,
 		inputs = {
-			"automation-science-pack",
+			"energy-data-disk",
+      "bio-data-disk",
+      "promethium-data-disk",
+      "mechanical-data-disk",
 		},
 		source_inventory_size = 1,
 		on_animation = {
