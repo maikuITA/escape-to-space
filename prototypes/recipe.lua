@@ -345,6 +345,19 @@ data:extend({
         energy_required = 30,
         enabled = false
     },
+    {
+		type = "recipe",
+		name = "military-data-disk",
+        category = "stabilizing",
+		ingredients = {
+          {type = "item", name = "blank-data-disk", amount = 1},
+          {type = "item", name = "rocket-turret", amount = 1},
+          {type = "item", name = "railgun", amount = 1},
+        },
+        results = {{type = "item", name = "military-data-disk", amount = 1}},
+        energy_required = 30,
+        enabled = false
+    },
 
     -- Science packs
     {

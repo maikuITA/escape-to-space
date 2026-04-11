@@ -534,4 +534,19 @@ data:extend({
     durability = 1,
     random_tint_color = item_tints.iron_rust
   },
+  {
+    type = "tool",
+    name = "military-data-disk",
+    icon = "__escape-to-space__/graphics/icons/military-data-disk.png",
+    icon_size = 64,
+    subgroup = "science-pack",
+    order = "z[military-data-disk-t1]",
+    inventory_move_sound = item_sounds.science_inventory_move,
+    pick_sound = item_sounds.science_inventory_pickup,
+    drop_sound = item_sounds.science_inventory_move,
+    stack_size = 200,
+    weight = 1*kg,
+    durability = 1,
+    random_tint_color = item_tints.iron_rust
+  },
 })

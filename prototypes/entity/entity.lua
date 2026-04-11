@@ -464,6 +464,7 @@ data:extend({
       "bio-data-disk",
       "promethium-data-disk",
       "mechanical-data-disk",
+      "military-data-disk",
 		},
 		source_inventory_size = 1,
 		on_animation = {
