@@ -390,6 +390,7 @@ local em_plant_recipe = data.raw.recipe["electromagnetic-plant"]
 if em_plant_recipe then
     em_plant_recipe.ingredients = {
         {type = "item", name = "steel-plate", amount = 50},
+        {type = "item", name = "carbon-electronic-circuit", amount = 50},
         {type = "item", name = "electronic-circuit", amount = 50},
         {type = "item", name = "carbon-steel-plate", amount = 50},
         {type = "item", name = "refined-concrete", amount = 50}
@@ -434,5 +435,16 @@ if laser_turret then
         {type = "item", name = "electronic-circuit", amount = 20},
         {type = "item", name = "carbon-steel-plate", amount = 20},
         {type = "item", name = "refined-concrete", amount = 4}
+    }
+end
+
+local foundry = data.raw.recipe["foundry"]
+if foundry then
+    foundry.ingredients = {
+        {type = "item", name = "carbon-steel-plate", amount = 50},
+        {type = "item", name = "oxidic-electronic-circuit", amount = 30},
+        {type = "item", name = "tungsten-carbide", amount = 50},
+        {type = "item", name = "refined-concrete", amount = 20},
+        {type = "fluid", name = "lubricant", amount = 20}
     }
 end

@@ -918,6 +918,10 @@ if dissoluting then
             type = "unlock-recipe",
             recipe = "light-oil-dissolution"
         },
+        {
+            type = "unlock-recipe",
+            recipe = "sulfuric-dissolution"
+        },
     }
     dissoluting.hidden = false
     dissoluting.enabled = true
@@ -1198,6 +1202,29 @@ if vulcanus then
             {"t-two-science-pack", 1}
         },
         time = 10,
+    }
+    vulcanus.effects = {
+        {
+            type = "unlock-space-location",
+            space_location = "vulcanus",
+            use_icon_overlay_constant = true
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "foundry"
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "crush-tungsten-chunk"
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "tungsten-plate"
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "carbide-blending"
+        },
     }
     vulcanus.hidden = false
     vulcanus.enabled = true
@@ -1588,7 +1615,7 @@ if processing_unit then
     }
     processing_unit.hidden = false
     processing_unit.enabled = true
-    processing_unit.prerequisites = {"t-two-science-pack", "advanced-circuit", "planet-discovery-fulgora"}
+    processing_unit.prerequisites = {"t-two-science-pack", "advanced-circuit", "planet-discovery-fulgora", "dissoluting"}
 end
 
 -- Low density structure

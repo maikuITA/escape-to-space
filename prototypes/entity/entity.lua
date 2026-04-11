@@ -727,7 +727,7 @@ data:extend({
       {inventory_index = defines.inventory.furnace_modules, shift = {0, 0.8}}
     },
     allowed_effects = {"consumption", "speed", "productivity", "pollution", "quality"},
-    crafting_categories = {"blending"},
+    crafting_categories = {"dissolution"},
     result_inventory_size = 1,
     crafting_speed = 1,
     energy_usage = "500kW",
