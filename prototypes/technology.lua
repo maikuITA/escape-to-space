@@ -207,9 +207,33 @@ if gun_turret then
         },
         time = 10,
     }
+    gun_turret.effects = {
+        {
+            type = "unlock-recipe",
+            recipe = "gun-turret"
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "firearm-magazine"
+        },
+    }
     gun_turret.hidden = false
     gun_turret.enabled = true
     gun_turret.prerequisites = {"automation-science-pack"}
+end
+
+local concrete = data.raw["technology"]["concrete"]
+if concrete then
+    concrete.unit = {
+        count = 50,
+        ingredients = {
+            {"earth-science-pack", 1}
+        },
+        time = 10,
+    }
+    concrete.hidden = false
+    concrete.enabled = true
+    concrete.prerequisites = {"automation-science-pack"}
 end
 
 -- Lamp
@@ -484,7 +508,7 @@ if logistics_2 then
     }
     logistics_2.hidden = false
     logistics_2.enabled = true
-    logistics_2.prerequisites = {"automation-science-pack", "logistic-science-pack", "logistics", "heavy-armor"}
+    logistics_2.prerequisites = {"automation-science-pack", "logistic-science-pack", "logistics"}
 end
 
 -- Toolbelt equipment (carbon pipe and engine unit)
@@ -563,6 +587,10 @@ if heavy_armor then
             type = "unlock-recipe",
             recipe = "oxidic-gear-wheel"
         },
+        {
+            type = "unlock-recipe",
+            recipe = "oxidic-cable"
+        },
     }
     heavy_armor.hidden = false
     heavy_armor.enabled = true
@@ -618,9 +646,9 @@ if t_one_sp then
 end
 
 -- Military 2 (oxidic-rounds-magazine)
-local oxidic_ammo = data.raw["technology"]["military-2"]
-if oxidic_ammo then
-    oxidic_ammo.unit = {
+local military_2 = data.raw["technology"]["military-2"]
+if military_2 then
+    military_2.unit = {
         count = 150,
         ingredients = {
             {"earth-science-pack", 1},
@@ -629,15 +657,19 @@ if oxidic_ammo then
         },
         time = 10,
     }
-    oxidic_ammo.effects = {
+    military_2.effects = {
         {
             type = "unlock-recipe",
             recipe = "oxidic-rounds-magazine"
         },
+        {
+            type = "unlock-recipe",
+            recipe = "laser-turret"
+        },
     }
-    oxidic_ammo.hidden = false
-    oxidic_ammo.enabled = true
-    oxidic_ammo.prerequisites = {"automation-science-pack", "logistic-science-pack", "military", "military-science-pack"}
+    military_2.hidden = false
+    military_2.enabled = true
+    military_2.prerequisites = {"automation-science-pack", "logistic-science-pack", "military", "military-science-pack"}
 end
 
 -- Phisical projectile damage 3
@@ -706,6 +738,131 @@ if shoot_speed_4 then
     shoot_speed_4.hidden = false
     shoot_speed_4.enabled = true
     shoot_speed_4.prerequisites = {"automation-science-pack", "logistic-science-pack", "weapon-shooting-speed-1", "weapon-shooting-speed-2", "weapon-shooting-speed-3", "military", "military-2", "military-science-pack"}
+end
+
+-- Laser
+local laser = data.raw["technology"]["laser"]
+if laser then
+    laser.unit = {
+        count = 100,
+        ingredients = {
+            {"earth-science-pack", 1},
+            {"axkeria-science-pack", 1},
+            {"t-one-science-pack", 1}
+        },
+        time = 10,
+    }
+    laser.effects = {
+        {
+            type = "unlock-recipe",
+            recipe = "laser-turret"
+        },
+    }
+    laser.hidden = false
+    laser.enabled = true
+    laser.prerequisites = {"automation-science-pack", "logistic-science-pack", "military-science-pack", "blending"}
+end
+
+-- Laser shooting speed 1
+local laser_shoot_speed_1 = data.raw["technology"]["laser-shooting-speed-1"]
+if laser_shoot_speed_1 then
+    laser_shoot_speed_1.unit = {
+        count = 150,
+        ingredients = {
+            {"earth-science-pack", 1},
+            {"axkeria-science-pack", 1},
+            {"t-one-science-pack", 1}
+        },
+        time = 10,
+    }
+    laser_shoot_speed_1.hidden = false
+    laser_shoot_speed_1.enabled = true
+    laser_shoot_speed_1.prerequisites = {"automation-science-pack", "logistic-science-pack", "military", "laser", "military-science-pack"}
+end
+
+-- Laser shooting speed 2
+local laser_shoot_speed_2 = data.raw["technology"]["laser-shooting-speed-2"]
+if laser_shoot_speed_2 then
+    laser_shoot_speed_2.unit = {
+        count = 150,
+        ingredients = {
+            {"earth-science-pack", 1},
+            {"axkeria-science-pack", 1},
+            {"t-one-science-pack", 1}
+        },
+        time = 10,
+    }
+    laser_shoot_speed_2.hidden = false
+    laser_shoot_speed_2.enabled = true
+    laser_shoot_speed_2.prerequisites = {"automation-science-pack", "logistic-science-pack", "military", "laser", "military-science-pack", "laser-shooting-speed-1"}
+end
+
+-- Laser shooting speed 3
+local laser_shoot_speed_3 = data.raw["technology"]["laser-shooting-speed-3"]
+if laser_shoot_speed_3 then
+    laser_shoot_speed_3.unit = {
+        count = 150,
+        ingredients = {
+            {"earth-science-pack", 1},
+            {"axkeria-science-pack", 1},
+            {"t-one-science-pack", 1}
+        },
+        time = 10,
+    }
+    laser_shoot_speed_3.hidden = false
+    laser_shoot_speed_3.enabled = true
+    laser_shoot_speed_3.prerequisites = {"automation-science-pack", "logistic-science-pack", "military", "laser", "military-science-pack", "laser-shooting-speed-2"}
+end
+
+-- Laser weapon damage 1
+local laser_dmg_1 = data.raw["technology"]["laser-weapons-damage-1"]
+if laser_dmg_1 then
+    laser_dmg_1.unit = {
+        count = 150,
+        ingredients = {
+            {"earth-science-pack", 1},
+            {"axkeria-science-pack", 1},
+            {"t-one-science-pack", 1}
+        },
+        time = 10,
+    }
+    laser_dmg_1.hidden = false
+    laser_dmg_1.enabled = true
+    laser_dmg_1.prerequisites = {"automation-science-pack", "logistic-science-pack", "military", "laser", "military-science-pack"}
+end
+
+-- Laser weapon damage 2
+local laser_dmg_2 = data.raw["technology"]["laser-weapons-damage-2"]
+if laser_dmg_2 then
+    laser_dmg_2.unit = {
+        count = 150,
+        ingredients = {
+            {"earth-science-pack", 1},
+            {"axkeria-science-pack", 1},
+            {"t-one-science-pack", 1}
+        },
+        time = 10,
+    }
+    laser_dmg_2.hidden = false
+    laser_dmg_2.enabled = true
+    laser_dmg_2.prerequisites = {"automation-science-pack", "logistic-science-pack", "military", "laser", "military-science-pack", "laser-weapons-damage-1"}
+end
+
+-- Laser weapon damage 3
+local laser_dmg_3 = data.raw["technology"]["laser-weapons-damage-3"]
+if laser_dmg_3 then
+    laser_dmg_3.unit = {
+        count = 150,
+        ingredients = {
+            {"earth-science-pack", 1},
+            {"axkeria-science-pack", 1},
+            {"t-one-science-pack", 1}
+        },
+        time = 10,
+    }
+    laser_dmg_3.hidden = false
+    laser_dmg_3.enabled = true
+    laser_dmg_3.prerequisites = {"automation-science-pack", "logistic-science-pack", "military", "laser", "military-science-pack", "laser-weapons-damage-1", "laser-weapons-damage-2"}
 end
 
 -- Automation 3
@@ -795,6 +952,10 @@ if blending then
         },
         {
             type = "unlock-recipe",
+            recipe = "carbon-steel-plate"
+        },
+        {
+            type = "unlock-recipe",
             recipe = "sulfur-blending"
         },
         {
@@ -856,5 +1017,513 @@ if logistics_3 then
     }
     logistics_3.hidden = false
     logistics_3.enabled = true
-    logistics_3.prerequisites = {"automation-science-pack", "logistic-science-pack", "military-science-pack", "logistics-2", "lubricant"}
+    logistics_3.prerequisites = {"automation-science-pack", "logistic-science-pack", "military-science-pack", "logistics-2", "lubricant", "heavy-armor"}
 end
+
+local advanced_circuit = data.raw["technology"]["advanced-circuit"]
+if advanced_circuit then
+    advanced_circuit.unit = {
+        count = 150,
+        ingredients = {
+            {"earth-science-pack", 1},
+            {"axkeria-science-pack", 1},
+            {"t-one-science-pack", 1}
+        },
+        time = 10,
+    }
+    advanced_circuit.effects = {
+        {
+            type = "unlock-recipe",
+            recipe = "electromagnetic-plant"
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "advanced-circuit"
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "oxidic-electronic-circuit"
+        },
+    }
+    advanced_circuit.hidden = false
+    advanced_circuit.enabled = true
+    advanced_circuit.prerequisites = {"automation-science-pack", "logistic-science-pack", "military-science-pack", "advanced-material-processing-2", "blending", "automation-3", "concrete"}
+end
+
+local modules = data.raw["technology"]["modules"]
+if modules then
+    modules.unit = {
+        count = 150,
+        ingredients = {
+            {"earth-science-pack", 1},
+            {"axkeria-science-pack", 1},
+            {"t-one-science-pack", 1}
+        },
+        time = 10,
+    }
+    modules.hidden = false
+    modules.enabled = true
+    modules.prerequisites = {"automation-science-pack", "logistic-science-pack", "military-science-pack", "advanced-circuit", "lamp"}
+end
+
+local efficiency_module = data.raw["technology"]["efficiency-module"]
+if efficiency_module then
+    efficiency_module.unit = {
+        count = 150,
+        ingredients = {
+            {"earth-science-pack", 1},
+            {"axkeria-science-pack", 1},
+            {"t-one-science-pack", 1}
+        },
+        time = 10,
+    }
+    efficiency_module.hidden = false
+    efficiency_module.enabled = true
+    efficiency_module.prerequisites = {"automation-science-pack", "logistic-science-pack", "military-science-pack", "modules"}
+end
+
+local speed_module = data.raw["technology"]["speed-module"]
+if speed_module then
+    speed_module.unit = {
+        count = 150,
+        ingredients = {
+            {"earth-science-pack", 1},
+            {"axkeria-science-pack", 1},
+            {"t-one-science-pack", 1}
+        },
+        time = 10,
+    }
+    speed_module.hidden = false
+    speed_module.enabled = true
+    speed_module.prerequisites = {"automation-science-pack", "logistic-science-pack", "military-science-pack", "modules"}
+end
+
+local productivity_module = data.raw["technology"]["productivity-module"]
+if productivity_module then
+    productivity_module.unit = {
+        count = 150,
+        ingredients = {
+            {"earth-science-pack", 1},
+            {"axkeria-science-pack", 1},
+            {"t-one-science-pack", 1}
+        },
+        time = 10,
+    }
+    productivity_module.hidden = false
+    productivity_module.enabled = true
+    productivity_module.prerequisites = {"automation-science-pack", "logistic-science-pack", "military-science-pack", "modules"}
+end
+
+local quality_module = data.raw["technology"]["quality-module"]
+if quality_module then
+    quality_module.unit = {
+        count = 150,
+        ingredients = {
+            {"earth-science-pack", 1},
+            {"axkeria-science-pack", 1},
+            {"t-one-science-pack", 1}
+        },
+        time = 10,
+    }
+    quality_module.hidden = false
+    quality_module.enabled = true
+    quality_module.prerequisites = {"automation-science-pack", "logistic-science-pack", "military-science-pack", "modules"}
+end
+
+local beacon = data.raw["technology"]["effect-transmission"]
+if beacon then
+    beacon.unit = {
+        count = 150,
+        ingredients = {
+            {"earth-science-pack", 1},
+            {"axkeria-science-pack", 1},
+            {"t-one-science-pack", 1}
+        },
+        time = 10,
+    }
+    beacon.hidden = false
+    beacon.enabled = true
+    beacon.prerequisites = {"automation-science-pack", "logistic-science-pack", "military-science-pack", "modules"}
+end
+
+local t_two_sp = table.deepcopy(data.raw["technology"]["military-science-pack"])
+if t_two_sp then
+    t_two_sp.name = "t-two-science-pack"
+    t_two_sp.icon = "__escape-to-space__/graphics/technology/t-two-science-pack.png"
+    t_two_sp.icon_size = 256
+    t_two_sp.unit = {
+        count = 250,
+        ingredients = {
+            {"earth-science-pack", 1},
+            {"axkeria-science-pack", 1},
+            {"t-one-science-pack", 1}
+        },
+        time = 10,
+    }
+    t_two_sp.effects = {
+        {
+            type = "unlock-recipe",
+            recipe = "t-two-fluid"
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "t-two-science-pack"
+        },
+    }
+    t_two_sp.hidden = false
+    t_two_sp.enabled = true
+    t_two_sp.prerequisites = {
+        "automation-science-pack",
+        "logistic-science-pack",
+        "military-science-pack",
+        "advanced-circuit",
+        "logistics-3",
+        "modules",
+        "effect-transmission",
+        "blending",
+    }
+end
+
+data:extend({t_two_sp})
+
+-- Planet Vulcanus
+local vulcanus = data.raw["technology"]["planet-discovery-vulcanus"]
+if vulcanus then
+    vulcanus.unit = {
+        count = 500,
+        ingredients = {
+            {"earth-science-pack", 1},
+            {"axkeria-science-pack", 1},
+            {"t-one-science-pack", 1},
+            {"t-two-science-pack", 1}
+        },
+        time = 10,
+    }
+    vulcanus.hidden = false
+    vulcanus.enabled = true
+    vulcanus.prerequisites = {
+        "automation-science-pack",
+        "logistic-science-pack",
+        "military-science-pack",
+        "t-two-science-pack",
+    }
+end
+
+-- Planet Fulgora
+local fulgora = data.raw["technology"]["planet-discovery-fulgora"]
+if fulgora then
+    fulgora.unit = {
+        count = 500,
+        ingredients = {
+            {"earth-science-pack", 1},
+            {"axkeria-science-pack", 1},
+            {"t-one-science-pack", 1},
+            {"t-two-science-pack", 1}
+        },
+        time = 10,
+    }
+    fulgora.hidden = false
+    fulgora.enabled = true
+    fulgora.prerequisites = {
+        "automation-science-pack",
+        "logistic-science-pack",
+        "military-science-pack",
+        "t-two-science-pack",
+    }
+end
+
+-- Planet Gleba
+local gleba = data.raw["technology"]["planet-discovery-gleba"]
+if gleba then
+    gleba.unit = {
+        count = 500,
+        ingredients = {
+            {"earth-science-pack", 1},
+            {"axkeria-science-pack", 1},
+            {"t-one-science-pack", 1},
+            {"t-two-science-pack", 1}
+        },
+        time = 10,
+    }
+    gleba.hidden = false
+    gleba.enabled = true
+    gleba.prerequisites = {
+        "automation-science-pack",
+        "logistic-science-pack",
+        "military-science-pack",
+        "t-two-science-pack",
+    }
+end
+
+-- Planet Aquilo
+local aquilo = data.raw["technology"]["planet-discovery-aquilo"]
+if aquilo then
+    aquilo.unit = {
+        count = 500,
+        ingredients = {
+            {"earth-science-pack", 1},
+            {"axkeria-science-pack", 1},
+            {"t-one-science-pack", 1},
+            {"t-two-science-pack", 1}
+        },
+        time = 10,
+    }
+    aquilo.hidden = false
+    aquilo.enabled = true
+    aquilo.prerequisites = {
+        "automation-science-pack",
+        "logistic-science-pack",
+        "military-science-pack",
+        "t-two-science-pack",
+    }
+end
+
+-- Military 3
+local military_3 = data.raw["technology"]["military-3"]
+if military_3 then
+    military_3.unit = {
+        count = 250,
+        ingredients = {
+            {"earth-science-pack", 1},
+            {"axkeria-science-pack", 1},
+            {"t-one-science-pack", 1},
+            {"t-two-science-pack", 1},
+
+        },
+        time = 10,
+    }
+    military_3.hidden = false
+    military_3.enabled = true
+    military_3.prerequisites = {
+        "automation-science-pack",
+        "logistic-science-pack",
+        "military-science-pack",
+        "t-two-science-pack",
+        "military-2",
+    }
+end
+
+-- Phisical projectile damage 5
+local phys_proj_dmg_5 = data.raw["technology"]["physical-projectile-damage-5"]
+if phys_proj_dmg_5 then
+    phys_proj_dmg_5.unit = {
+        count = 200,
+        ingredients = {
+            {"earth-science-pack", 1},
+            {"axkeria-science-pack", 1},
+            {"t-one-science-pack", 1}
+        },
+        time = 10,
+    }
+    phys_proj_dmg_5.hidden = false
+    phys_proj_dmg_5.enabled = true
+    phys_proj_dmg_5.prerequisites = {"automation-science-pack", "logistic-science-pack", "physical-projectile-damage-1", "physical-projectile-damage-2", "physical-projectile-damage-3", "physical-projectile-damage-4", "military-science-pack", "military", "military-2", "military-3"}
+end
+
+-- Phisical projectile damage 6
+local phys_proj_dmg_6 = data.raw["technology"]["physical-projectile-damage-6"]
+if phys_proj_dmg_6 then
+    phys_proj_dmg_6.unit = {
+        count = 200,
+        ingredients = {
+            {"earth-science-pack", 1},
+            {"axkeria-science-pack", 1},
+            {"t-one-science-pack", 1}
+        },
+        time = 10,
+    }
+    phys_proj_dmg_6.hidden = false
+    phys_proj_dmg_6.enabled = true
+    phys_proj_dmg_6.prerequisites = {"automation-science-pack", "logistic-science-pack", "physical-projectile-damage-1", "physical-projectile-damage-2", "physical-projectile-damage-3", "physical-projectile-damage-4", "physical-projectile-damage-5", "military-science-pack", "military", "military-2", "military-3"}
+end
+
+-- Weapon shooting speed 5
+local shoot_speed_5 = data.raw["technology"]["weapon-shooting-speed-5"]
+if shoot_speed_5 then
+    shoot_speed_5.unit = {
+        count = 200,
+        ingredients = {
+            {"earth-science-pack", 1},
+            {"axkeria-science-pack", 1},
+            {"t-one-science-pack", 1}
+        },
+        time = 10,
+    }
+    shoot_speed_5.hidden = false
+    shoot_speed_5.enabled = true
+    shoot_speed_5.prerequisites = {"automation-science-pack", "logistic-science-pack", "weapon-shooting-speed-1", "weapon-shooting-speed-2", "weapon-shooting-speed-3", "weapon-shooting-speed-4", "military", "military-2", "military-3", "military-science-pack"}
+end
+
+-- Weapon shooting speed 6
+local shoot_speed_6 = data.raw["technology"]["weapon-shooting-speed-6"]
+if shoot_speed_6 then
+    shoot_speed_6.unit = {
+        count = 200,
+        ingredients = {
+            {"earth-science-pack", 1},
+            {"axkeria-science-pack", 1},
+            {"t-one-science-pack", 1}
+        },
+        time = 10,
+    }
+    shoot_speed_6.hidden = false
+    shoot_speed_6.enabled = true
+    shoot_speed_6.prerequisites = {"automation-science-pack", "logistic-science-pack", "weapon-shooting-speed-1", "weapon-shooting-speed-2", "weapon-shooting-speed-3", "weapon-shooting-speed-4", "weapon-shooting-speed-5", "military", "military-2", "military-3", "military-science-pack"}
+end
+
+-- Laser shooting speed 4
+local laser_shoot_speed_4 = data.raw["technology"]["laser-shooting-speed-4"]
+if laser_shoot_speed_4 then
+    laser_shoot_speed_4.unit = {
+        count = 150,
+        ingredients = {
+            {"earth-science-pack", 1},
+            {"axkeria-science-pack", 1},
+            {"t-one-science-pack", 1}
+        },
+        time = 10,
+    }
+    laser_shoot_speed_4.hidden = false
+    laser_shoot_speed_4.enabled = true
+    laser_shoot_speed_4.prerequisites = {"automation-science-pack", "logistic-science-pack", "military", "laser", "military-science-pack", "military-3", "laser-shooting-speed-3"}
+end
+
+-- Laser shooting speed 5
+local laser_shoot_speed_5 = data.raw["technology"]["laser-shooting-speed-5"]
+if laser_shoot_speed_5 then
+    laser_shoot_speed_5.unit = {
+        count = 150,
+        ingredients = {
+            {"earth-science-pack", 1},
+            {"axkeria-science-pack", 1},
+            {"t-one-science-pack", 1}
+        },
+        time = 10,
+    }
+    laser_shoot_speed_5.hidden = false
+    laser_shoot_speed_5.enabled = true
+    laser_shoot_speed_5.prerequisites = {"automation-science-pack", "logistic-science-pack", "military", "laser", "military-science-pack", "military-3", "laser-shooting-speed-4"}
+end
+
+-- Laser shooting speed 6
+local laser_shoot_speed_6 = data.raw["technology"]["laser-shooting-speed-6"]
+if laser_shoot_speed_6 then
+    laser_shoot_speed_6.unit = {
+        count = 150,
+        ingredients = {
+            {"earth-science-pack", 1},
+            {"axkeria-science-pack", 1},
+            {"t-one-science-pack", 1}
+        },
+        time = 10,
+    }
+    laser_shoot_speed_6.hidden = false
+    laser_shoot_speed_6.enabled = true
+    laser_shoot_speed_6.prerequisites = {"automation-science-pack", "logistic-science-pack", "military", "laser", "military-science-pack", "military-3", "laser-shooting-speed-5"}
+end
+
+-- Tier 3 science pack
+local t_three_sp = table.deepcopy(data.raw["technology"]["military-science-pack"])
+if t_three_sp then
+    t_three_sp.name = "t-three-science-pack"
+    t_three_sp.icon = "__escape-to-space__/graphics/technology/t-three-science-pack.png"
+    t_three_sp.icon_size = 256
+    t_three_sp.unit = {
+        count = 500,
+        ingredients = {
+            {"earth-science-pack", 1},
+            {"axkeria-science-pack", 1},
+            {"t-one-science-pack", 1},
+            {"t-two-science-pack", 1}
+        },
+        time = 10,
+    }
+    t_three_sp.effects = {
+        {
+            type = "unlock-recipe",
+            recipe = "t-three-fluid"
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "t-three-science-pack"
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "quantum-stabilizer"
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "cybernetic-lab"
+        },
+    }
+    t_three_sp.hidden = false
+    t_three_sp.enabled = true
+    t_three_sp.prerequisites = {
+        "automation-science-pack",
+        "logistic-science-pack",
+        "military-science-pack",
+        "t-two-science-pack",
+        "planet-discovery-vulcanus",
+        "planet-discovery-fulgora",
+        "planet-discovery-gleba",
+        "planet-discovery-aquilo",
+    }
+end
+
+data:extend({t_three_sp})
+
+-- Canister
+local canister = table.deepcopy(data.raw["technology"]["gun-turret"])
+if canister then
+    canister.name = "canister"
+    canister.icon = "__escape-to-space__/graphics/technology/canister.png"
+    canister.icon_size = 128
+    canister.unit = {
+        count = 500,
+        ingredients = {
+            {"t-one-science-pack", 1},
+            {"t-two-science-pack", 1},
+            {"t-three-science-pack", 1}
+        },
+        time = 10,
+    }
+    canister.effects = {
+        {
+            type = "unlock-recipe",
+            recipe = "canister"
+        },
+    }
+    canister.hidden = false
+    canister.enabled = true
+    canister.prerequisites = {"t-three-science-pack"}
+end
+
+data:extend({canister})
+
+-- Energy data pack
+local energy_data_pack = table.deepcopy(data.raw["technology"]["gun-turret"])
+if energy_data_pack then
+    energy_data_pack.name = "energy-data-pack"
+    energy_data_pack.icon = "__escape-to-space__/graphics/technology/energy-data-pack.png"
+    energy_data_pack.icon_size = 256
+    energy_data_pack.unit = {
+        count = 500,
+        ingredients = {
+            {"t-one-science-pack", 1},
+            {"t-two-science-pack", 1},
+            {"t-three-science-pack", 1}
+        },
+        time = 10,
+    }
+    energy_data_pack.effects = {
+        {
+            type = "unlock-recipe",
+            recipe = "energy-data-pack"
+        },
+    }
+    energy_data_pack.hidden = false
+    energy_data_pack.enabled = true
+    energy_data_pack.prerequisites = {"t-three-science-pack", "canister"}
+end
+
+data:extend({energy_data_pack})

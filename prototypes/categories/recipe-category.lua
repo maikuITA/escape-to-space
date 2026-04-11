@@ -16,4 +16,12 @@ data:extend(
     type = "recipe-category",
     name = "dissolution"
   },
+  {
+    type = "recipe-category",
+    name = "custom-em-plant"
+  },
+  {
+    type = "recipe-category",
+    name = "stabilizing"
+  }
 })

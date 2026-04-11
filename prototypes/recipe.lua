@@ -115,6 +115,17 @@ data:extend({
     },
     {
 		type = "recipe",
+		name = "oxidic-cable",
+        category = "crafting",
+		ingredients = {
+          {type = "item", name = "oxidic-plate", amount = 2},
+        },
+        results = {{type = "item", name = "oxidic-cable", amount = 1}},
+        energy_required = 0.5,
+        enabled = false
+    },
+    {
+		type = "recipe",
 		name = "oxidic-rounds-magazine",
         category = "crafting",
 		ingredients = {
@@ -162,7 +173,18 @@ data:extend({
           {type = "item", name = "carbon-wheel", amount = 1},
         },
         results = {{type = "item", name = "cybernetic-lab", amount = 1}},
-        energy_required = 0.5,
+        energy_required = 10,
+        enabled = false
+    },
+    {
+		type = "recipe",
+		name = "quantum-stabilizer",
+        category = "crafting",
+		ingredients = {
+          {type = "item", name = "carbon-wheel", amount = 1},
+        },
+        results = {{type = "item", name = "quantum-stabilizer", amount = 1}},
+        energy_required = 10,
         enabled = false
     },
     {
@@ -246,6 +268,46 @@ data:extend({
         enabled = false
     },
 
+    -- Custom-em-plant
+    {
+		type = "recipe",
+		name = "oxidic-electronic-circuit",
+        category = "custom-em-plant",
+		ingredients = {
+          {type = "item", name = "oxidic-cable", amount = 2},
+          {type = "item", name = "electronic-circuit", amount = 2},
+          {type = "item", name = "silicon-bar", amount = 2}
+        },
+        results = {{type = "item", name = "oxidic-electronic-circuit", amount = 1}},
+        energy_required = 1,
+        enabled = false
+    },
+    {
+		type = "recipe",
+		name = "canister",
+        category = "custom-em-plant",
+		ingredients = {
+          {type = "item", name = "glass-bottle", amount = 2},
+          {type = "item", name = "carbon-steel-plate", amount = 2},
+        },
+        results = {{type = "item", name = "canister", amount = 1}},
+        energy_required = 1,
+        enabled = false
+    },
+
+    -- Stabilizing
+    {
+		type = "recipe",
+		name = "energy-data-pack",
+        category = "stabilizing",
+		ingredients = {
+          {type = "item", name = "canister", amount = 1},
+          {type = "item", name = "fusion-reactor", amount = 1},
+        },
+        results = {{type = "item", name = "energy-data-pack", amount = 1}},
+        energy_required = 1,
+        enabled = false
+    },
     -- Science packs
     {
 		type = "recipe",
@@ -290,9 +352,23 @@ data:extend({
 		name = "t-two-fluid",
         category = "mixing",
 		ingredients = {
-          {type = "item", name = "sand", amount = 10}
+          {type = "item", name = "express-transport-belt", amount = 10},
+          {type = "item", name = "beacon", amount = 1}
         },
-        results = {{type = "fluid", name = "t-two-fluid", amount = 500}},
+        results = {{type = "fluid", name = "t-two-fluid", amount = 1000}},
+        energy_required = 10,
+        enabled = false
+    },
+    {
+		type = "recipe",
+		name = "t-three-fluid",
+        category = "mixing",
+		ingredients = {
+          {type = "item", name = "express-transport-belt", amount = 10},
+          {type = "item", name = "beacon", amount = 1},
+          {type = "item", name = "oxidic-electronic-circuit", amount = 10}
+        },
+        results = {{type = "fluid", name = "t-three-fluid", amount = 1000}},
         energy_required = 10,
         enabled = false
     },
@@ -362,7 +438,7 @@ data:extend({
         enabled = false
     },
 
-    -- dissolution recipes
+    -- Dissolution recipes
     {
 		type = "recipe",
 		name = "oil-dissolution",
@@ -447,6 +523,18 @@ data:extend({
           {type = "fluid", name = "t-two-fluid", amount = 100}
         },
         results = {{type = "item", name = "t-two-science-pack", amount = 1}},
+        energy_required = 10,
+        enabled = false
+    },
+    {
+		type = "recipe",
+		name = "t-three-science-pack",
+        category = "bottling",
+		ingredients = {
+          {type = "item", name = "glass-bottle", amount = 1},
+          {type = "fluid", name = "t-three-fluid", amount = 100}
+        },
+        results = {{type = "item", name = "t-three-science-pack", amount = 1}},
         energy_required = 10,
         enabled = false
     },
@@ -537,7 +625,7 @@ data:extend({
         },
         energy_required = 5,
         allow_productivity = true,
-        enabled = true
+        enabled = false
     },
 
     -- Metallurgy recipes

@@ -348,7 +348,7 @@ end
 local fast_transport_belt = data.raw.recipe["fast-transport-belt"]
 if fast_transport_belt then
     fast_transport_belt.ingredients = {
-        {type = "item", name = "oxidic-gear-wheel", amount = 5},
+        {type = "item", name = "carbon-wheel", amount = 5},
         {type = "item", name = "transport-belt", amount = 1}
     }
 end
@@ -356,7 +356,7 @@ end
 local fast_underground_belt = data.raw.recipe["fast-underground-belt"]
 if fast_underground_belt then
     fast_underground_belt.ingredients = { 
-        {type = "item", name = "oxidic-gear-wheel", amount = 40},
+        {type = "item", name = "carbon-wheel", amount = 40},
         {type = "item", name = "underground-belt", amount = 2}
     }   
 end
@@ -364,8 +364,95 @@ end
 local fast_splitter = data.raw.recipe["fast-splitter"]
 if fast_splitter then
     fast_splitter.ingredients = {
-        {type = "item", name = "oxidic-gear-wheel", amount = 10},
+        {type = "item", name = "carbon-wheel", amount = 10},
         {type = "item", name = "electronic-circuit", amount = 10},
         {type = "item", name = "splitter", amount = 1}
+    }
+end
+
+local express_belt = data.raw.recipe["express-transport-belt"]
+if express_belt then
+    express_belt.ingredients = {
+        {type = "item", name = "oxidic-gear-wheel", amount = 10},
+        {type = "item", name = "fast-transport-belt", amount = 1},
+        {type = "fluid", name = "lubricant", amount = 20}
+    }
+end
+
+local express_underground_belt = data.raw.recipe["express-underground-belt"]
+if express_underground_belt then
+    express_underground_belt.ingredients = {
+        {type = "item", name = "oxidic-gear-wheel", amount = 80},
+        {type = "item", name = "fast-underground-belt", amount = 2},
+        {type = "fluid", name = "lubricant", amount = 40}
+    }
+end
+
+local express_splitter = data.raw.recipe["express-splitter"]
+if express_splitter then
+    express_splitter.ingredients = {
+        {type = "item", name = "oxidic-gear-wheel", amount = 20},
+        {type = "item", name = "advanced-circuit", amount = 10},
+        {type = "item", name = "fast-splitter", amount = 1},
+        {type = "fluid", name = "lubricant", amount = 80}
+    }
+end
+
+local firearm_magazine = data.raw.recipe["firearm-magazine"]
+if firearm_magazine then
+    firearm_magazine.enabled = false
+end
+
+-- Customizing EM Plant recipes with a new category and recipe
+
+local em_plant = data.raw["assembling-machine"]["electromagnetic-plant"]
+em_plant.crafting_categories = {"custom-em-plant"}
+
+local em_plant_recipe = data.raw.recipe["electromagnetic-plant"]
+if em_plant_recipe then
+    em_plant_recipe.ingredients = {
+        {type = "item", name = "steel-plate", amount = 50},
+        {type = "item", name = "electronic-circuit", amount = 50},
+        {type = "item", name = "carbon-steel-plate", amount = 50},
+        {type = "item", name = "refined-concrete", amount = 50}
+    }
+end
+
+local electronic_circuit = table.deepcopy(data.raw.recipe["electronic-circuit"])
+if electronic_circuit then
+    electronic_circuit.category = "custom-em-plant"
+end
+
+data.extend({electronic_circuit})
+
+local advanced_circuit = data.raw.recipe["advanced-circuit"]
+if advanced_circuit then
+    advanced_circuit.category = "custom-em-plant"
+    advanced_circuit.ingredients = {
+        {type = "item", name = "copper-cable", amount = 2},
+        {type = "item", name = "electronic-circuit", amount = 2},
+        {type = "item", name = "silicon-bar", amount = 2}
+    }
+end
+
+local beacon = data.raw.recipe["beacon"]
+if beacon then
+    beacon.category = "custom-em-plant"
+    beacon.ingredients = {
+        {type = "item", name = "carbon-steel-plate", amount = 10},
+        {type = "item", name = "copper-plate", amount = 10},
+        {type = "item", name = "advanced-circuit", amount = 20},
+        {type = "item", name = "refined-concrete", amount = 9}
+    }
+end
+
+local laser_turret = data.raw.recipe["laser-turret"]
+if laser_turret then
+    laser_turret.category = "advanced-crafting"
+    laser_turret.ingredients = {
+        {type = "item", name = "battery", amount = 12},
+        {type = "item", name = "electronic-circuit", amount = 20},
+        {type = "item", name = "carbon-steel-plate", amount = 20},
+        {type = "item", name = "refined-concrete", amount = 4}
     }
 end

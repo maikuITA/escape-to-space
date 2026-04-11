@@ -191,6 +191,17 @@ data:extend({
   },
   {
     type = "item",
+    name = "oxidic-cable",
+    icon = "__escape-to-space__/graphics/icons/oxidic-cable.png",
+    subgroup = "intermediate-product",
+    order = "z[oxidic-cable]",
+    inventory_move_sound = space_age_item_sounds.space_age_item_sounds,
+    stack_size = data.raw.item["pipe"].stack_size,
+    weight = data.raw.item["pipe"].weight,
+    random_tint_color = item_tints.iron_rust
+  },
+  {
+    type = "item",
     name = "carbon-steel-ore",
     icon = "__escape-to-space__/graphics/icons/carbon-steel-ore.png",
     subgroup = "intermediate-product",
@@ -219,6 +230,28 @@ data:extend({
     order = "z[silicon-bar]",
     inventory_move_sound = space_age_item_sounds.space_age_item_sounds,
     stack_size = data.raw.item["pipe"].stack_size,
+    weight = data.raw.item["pipe"].weight,
+    random_tint_color = item_tints.iron_rust
+  },
+  {
+    type = "item",
+    name = "oxidic-electronic-circuit",
+    icon = "__escape-to-space__/graphics/icons/oxidic-electronic-circuit.png",
+    subgroup = "intermediate-product",
+    order = "z[oxidic-electronic-circuit]",
+    inventory_move_sound = space_age_item_sounds.space_age_item_sounds,
+    stack_size = data.raw.item["pipe"].stack_size,
+    weight = data.raw.item["pipe"].weight,
+    random_tint_color = item_tints.iron_rust
+  },
+  {
+    type = "item",
+    name = "canister",
+    icon = "__escape-to-space__/graphics/icons/canister.png",
+    subgroup = "intermediate-product",
+    order = "z[canister]",
+    inventory_move_sound = space_age_item_sounds.space_age_item_sounds,
+    stack_size = 200,
     weight = data.raw.item["pipe"].weight,
     random_tint_color = item_tints.iron_rust
   },
@@ -327,6 +360,19 @@ data:extend({
     stack_size = 1,
     weight = 100*kg
   },
+  {
+    type = "item",
+    name = "quantum-stabilizer",
+    icon = "__escape-to-space__/graphics/icons/quantum-stabilizer-icon.png",
+    subgroup = "smelting-machine",
+    order = "c[quantum-stabilizer]",
+    inventory_move_sound = item_sounds.electric_large_inventory_move,
+    pick_sound = item_sounds.electric_large_inventory_pickup,
+    drop_sound = item_sounds.electric_large_inventory_move,
+    place_result = "quantum-stabilizer",
+    stack_size = 1,
+    weight = 100*kg
+  },
 
   -- Lab
   {
@@ -413,5 +459,34 @@ data:extend({
     weight = 1*kg,
     durability = 1,
     random_tint_color = item_tints.iron_rust
-  }
+  },
+  {
+    type = "tool",
+    name = "t-three-science-pack",
+    icon = "__escape-to-space__/graphics/icons/t-three-science-pack.png",
+    subgroup = "science-pack",
+    order = "z[t-three-science-pack]",
+    inventory_move_sound = item_sounds.science_inventory_move,
+    pick_sound = item_sounds.science_inventory_pickup,
+    drop_sound = item_sounds.science_inventory_move,
+    stack_size = 200,
+    weight = 1*kg,
+    durability = 1,
+    random_tint_color = item_tints.iron_rust
+  },
+  {
+    type = "tool",
+    name = "energy-data-pack",
+    icon = "__escape-to-space__/graphics/icons/energy-data-pack.png",
+    icon_size = 128,
+    subgroup = "science-pack",
+    order = "z[energy-data-pack-t1]",
+    inventory_move_sound = item_sounds.science_inventory_move,
+    pick_sound = item_sounds.science_inventory_pickup,
+    drop_sound = item_sounds.science_inventory_move,
+    stack_size = 200,
+    weight = 1*kg,
+    durability = 1,
+    random_tint_color = item_tints.iron_rust
+  },
 })

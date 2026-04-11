@@ -322,9 +322,9 @@ data:extend({
     energy_usage = "500kW",
     heating_energy = "100kW",
 
-    researching_speed = 1,
-    inputs = {"earth-science-pack", "axkeria-science-pack", "t-one-science-pack", "t-two-science-pack"},
-    module_slots = 2,
+    researching_speed = 1.5,
+    inputs = {"earth-science-pack", "axkeria-science-pack", "t-one-science-pack", "t-two-science-pack", "t-three-science-pack"},
+    module_slots = 4,
     allowed_effects = {"consumption", "speed", "productivity", "pollution", "quality"},
 
     on_animation = {
@@ -799,5 +799,76 @@ data:extend({
       }
     },
     fluid_boxes_off_when_no_fluid_recipe = true,
+  },
+  -- Quantum stabilizer
+  {
+    type = "assembling-machine",
+    name = "quantum-stabilizer",
+    icon = "__escape-to-space__/graphics/icons/quantum-stabilizer-icon.png",
+    icon_size = 64,
+    flags = {"placeable-neutral", "placeable-player", "player-creation"},
+    minable = {mining_time = 0.2, result = "quantum-stabilizer"},
+    circuit_wire_max_distance = furnace_circuit_wire_max_distance,
+    circuit_connector = circuit_connector_definitions["basic-electric-furnace"],
+    max_health = 350,
+    corpse = "basic-electric-furnace-remnants",
+    dying_explosion = data.raw["furnace"]["electric-furnace"].dying_explosion,
+    resistances =
+    {
+      {
+        type = "fire",
+        percent = 80
+      }
+    },
+    collision_box = {{-2.2, -2.2}, {2.2, 2.2}},
+    selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
+    damaged_trigger_effect = data.raw["furnace"]["electric-furnace"].damaged_trigger_effect,
+    module_slots = 0,
+    icon_draw_specification = {shift = {0, -0.1}},
+    icons_positioning =
+    {
+      {inventory_index = defines.inventory.furnace_modules, shift = {0, 0.8}}
+    },
+    allowed_effects = {"consumption", "speed", "productivity", "pollution", "quality"},
+    crafting_categories = {"stabilizing"},
+    result_inventory_size = 1,
+    crafting_speed = 1,
+    energy_usage = "2000kW",
+    source_inventory_size = 1,
+    energy_source =
+    {
+      type = "electric",
+      usage_priority = "secondary-input"
+    },
+    graphics_set = {
+        animation = {
+            layers = {
+                {
+                    filename = "__escape-to-space__/graphics/entity/quantum-stabilizer/quantum-stabilizer-hr-animation-1.png",
+                    priority = "high",
+                    width = 410,  -- tot/8
+                    height = 410, -- tot/8
+                    frame_count = 64,
+                    line_length = 8,
+                    animation_speed = 0.5,
+                    shift = util.by_pixel(0, 0),
+                    scale = 0.5
+                },
+                {
+                    filename = "__escape-to-space__/graphics/entity/quantum-stabilizer/quantum-stabilizer-hr-shadow.png",
+                    priority = "high",
+                    width = 900,
+                    height = 420,
+                    frame_count = 1,
+                    line_length = 1,
+                    repeat_count = 64,
+                    draw_as_shadow = true,
+                    animation_speed = 0.5,
+                    shift = util.by_pixel(0, 0),
+                    scale = 0.5
+                },
+            }
+        }
+    },
   },
 })
