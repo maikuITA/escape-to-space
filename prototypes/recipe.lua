@@ -284,13 +284,14 @@ data:extend({
     },
     {
 		type = "recipe",
-		name = "canister",
+		name = "blank-data-disk",
         category = "custom-em-plant",
 		ingredients = {
           {type = "item", name = "glass-bottle", amount = 2},
           {type = "item", name = "carbon-steel-plate", amount = 2},
+          {type = "item", name = "silicon-bar", amount = 2}
         },
-        results = {{type = "item", name = "canister", amount = 1}},
+        results = {{type = "item", name = "blank-data-disk", amount = 1}},
         energy_required = 1,
         enabled = false
     },
@@ -298,16 +299,41 @@ data:extend({
     -- Stabilizing
     {
 		type = "recipe",
-		name = "energy-data-pack",
+		name = "energy-data-disk",
         category = "stabilizing",
 		ingredients = {
-          {type = "item", name = "canister", amount = 1},
+          {type = "item", name = "blank-data-disk", amount = 1},
           {type = "item", name = "fusion-reactor", amount = 1},
         },
-        results = {{type = "item", name = "energy-data-pack", amount = 1}},
-        energy_required = 1,
+        results = {{type = "item", name = "energy-data-disk", amount = 1}},
+        energy_required = 30,
         enabled = false
     },
+    {
+		type = "recipe",
+		name = "bio-data-disk",
+        category = "stabilizing",
+		ingredients = {
+          {type = "item", name = "blank-data-disk", amount = 1},
+          {type = "item", name = "wood", amount = 50},
+        },
+        results = {{type = "item", name = "bio-data-disk", amount = 1}},
+        energy_required = 30,
+        enabled = false
+    },
+    {
+		type = "recipe",
+		name = "promethium-data-disk",
+        category = "stabilizing",
+		ingredients = {
+          {type = "item", name = "blank-data-disk", amount = 1},
+          {type = "item", name = "promethium-asteroid-chunk", amount = 1},
+        },
+        results = {{type = "item", name = "promethium-data-disk", amount = 1}},
+        energy_required = 30,
+        enabled = false
+    },
+
     -- Science packs
     {
 		type = "recipe",

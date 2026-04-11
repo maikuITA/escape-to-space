@@ -1472,13 +1472,13 @@ end
 
 data:extend({t_three_sp})
 
--- Canister
-local canister = table.deepcopy(data.raw["technology"]["gun-turret"])
-if canister then
-    canister.name = "canister"
-    canister.icon = "__escape-to-space__/graphics/technology/canister.png"
-    canister.icon_size = 128
-    canister.unit = {
+-- data_disks
+local data_disks = table.deepcopy(data.raw["technology"]["gun-turret"])
+if data_disks then
+    data_disks.name = "data-disks"
+    data_disks.icon = "__escape-to-space__/graphics/technology/blank-data-disk.png"
+    data_disks.icon_size = 128
+    data_disks.unit = {
         count = 500,
         ingredients = {
             {"t-one-science-pack", 1},
@@ -1487,26 +1487,26 @@ if canister then
         },
         time = 10,
     }
-    canister.effects = {
+    data_disks.effects = {
         {
             type = "unlock-recipe",
-            recipe = "canister"
+            recipe = "blank-data-disk"
         },
     }
-    canister.hidden = false
-    canister.enabled = true
-    canister.prerequisites = {"t-three-science-pack"}
+    data_disks.hidden = false
+    data_disks.enabled = true
+    data_disks.prerequisites = {"t-three-science-pack"}
 end
 
-data:extend({canister})
+data:extend({data_disks})
 
 -- Energy data pack
-local energy_data_pack = table.deepcopy(data.raw["technology"]["gun-turret"])
-if energy_data_pack then
-    energy_data_pack.name = "energy-data-pack"
-    energy_data_pack.icon = "__escape-to-space__/graphics/technology/energy-data-pack.png"
-    energy_data_pack.icon_size = 256
-    energy_data_pack.unit = {
+local energy_data_disk = table.deepcopy(data.raw["technology"]["gun-turret"])
+if energy_data_disk then
+    energy_data_disk.name = "energy-data-disk"
+    energy_data_disk.icon = "__escape-to-space__/graphics/technology/energy-data-disk.png"
+    energy_data_disk.icon_size = 256
+    energy_data_disk.unit = {
         count = 500,
         ingredients = {
             {"t-one-science-pack", 1},
@@ -1515,15 +1515,123 @@ if energy_data_pack then
         },
         time = 10,
     }
-    energy_data_pack.effects = {
+    energy_data_disk.effects = {
         {
             type = "unlock-recipe",
-            recipe = "energy-data-pack"
+            recipe = "energy-data-disk"
         },
     }
-    energy_data_pack.hidden = false
-    energy_data_pack.enabled = true
-    energy_data_pack.prerequisites = {"t-three-science-pack", "canister"}
+    energy_data_disk.hidden = false
+    energy_data_disk.enabled = true
+    energy_data_disk.prerequisites = {"t-three-science-pack", "data-disks"}
 end
 
-data:extend({energy_data_pack})
+data:extend({energy_data_disk})
+
+-- Energy data pack
+local bio_data_disk = table.deepcopy(data.raw["technology"]["gun-turret"])
+if bio_data_disk then
+    bio_data_disk.name = "bio-data-disk"
+    bio_data_disk.icon = "__escape-to-space__/graphics/technology/bio-data-disk.png"
+    bio_data_disk.icon_size = 256
+    bio_data_disk.unit = {
+        count = 500,
+        ingredients = {
+            {"t-one-science-pack", 1},
+            {"t-two-science-pack", 1},
+            {"t-three-science-pack", 1}
+        },
+        time = 10,
+    }
+    bio_data_disk.effects = {
+        {
+            type = "unlock-recipe",
+            recipe = "bio-data-disk"
+        },
+    }
+    bio_data_disk.hidden = false
+    bio_data_disk.enabled = true
+    bio_data_disk.prerequisites = {"t-three-science-pack", "data-disks"}
+end
+
+data:extend({bio_data_disk})
+
+-- Energy data pack
+local promethium_data_disk = table.deepcopy(data.raw["technology"]["gun-turret"])
+if promethium_data_disk then
+    promethium_data_disk.name = "promethium-data-disk"
+    promethium_data_disk.icon = "__escape-to-space__/graphics/technology/promethium-data-disk.png"
+    promethium_data_disk.icon_size = 256
+    promethium_data_disk.unit = {
+        count = 500,
+        ingredients = {
+            {"t-one-science-pack", 1},
+            {"t-two-science-pack", 1},
+            {"t-three-science-pack", 1}
+        },
+        time = 10,
+    }
+    promethium_data_disk.effects = {
+        {
+            type = "unlock-recipe",
+            recipe = "promethium-data-disk"
+        },
+        {
+            type = "unlock-space-location",
+            space_location = "solar-system-edge"
+        },
+        {
+            type = "unlock-space-location",
+            space_location = "shattered-planet"
+        },
+    }
+    promethium_data_disk.hidden = false
+    promethium_data_disk.enabled = true
+    promethium_data_disk.prerequisites = {"t-three-science-pack", "data-disks"}
+end
+
+data:extend({promethium_data_disk})
+
+-- Dissoluting productivity 1
+local dissoluting_prod_1 = table.deepcopy(data.raw["technology"]["gun-turret"])
+if dissoluting_prod_1 then
+    dissoluting_prod_1.name = "dissoluting-productivity-1"
+    dissoluting_prod_1.icon = data.raw["technology"]["productivity-module"].icon
+    dissoluting_prod_1.icon_size = data.raw["technology"]["productivity-module"].icon_size
+    dissoluting_prod_1.unit = {
+        count = 5000,
+        ingredients = {
+            {"t-one-science-pack", 1},
+            {"t-two-science-pack", 1},
+            {"t-three-science-pack", 1}
+        },
+        time = 10,
+    }
+    dissoluting_prod_1.effects = {
+        {
+            type = "change-recipe-productivity",
+            recipe = "oil-dissolution",
+            change = 0.1
+        },
+        {
+            type = "change-recipe-productivity",
+            recipe = "crude-oil-dissolution",
+            change = 0.1
+        },
+        {
+            type = "change-recipe-productivity",
+            recipe = "heavy-oil-dissolution",
+            change = 0.1
+        },
+        {
+            type = "change-recipe-productivity",
+            recipe = "light-oil-dissolution",
+            change = 0.1
+        },
+    }
+    dissoluting_prod_1.hidden = false
+    dissoluting_prod_1.enabled = true
+    dissoluting_prod_1.prerequisites = {"t-three-science-pack", "dissoluting", "productivity-module"}
+end
+
+data:extend({dissoluting_prod_1})
