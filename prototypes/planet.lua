@@ -1,4 +1,4 @@
-local asteroid_util = require("__escape-to-space__/prototypes/asteroid-spawn-definitions")
+local asteroid_util = require("__escape-to-space__.prototypes.asteroid-spawn-definitions")
 
 data:extend({
 
@@ -17,8 +17,8 @@ data:extend({
     orientation = 0.24,
     magnitude = 1.0,
     label_orientation = 0.15,
-    probability = asteroid_util.axos_prob,
-    asteroid_spawn_influence = 1
+    asteroid_spawn_influence = 1,
+    asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_axos, 0.9)
   },
   {
     type = "space-location",
@@ -34,8 +34,8 @@ data:extend({
     orientation = 0.34,
     magnitude = 1.0,
     label_orientation = 0.15,
-    probability = asteroid_util.keria_prob,
-    asteroid_spawn_influence = 1
+    asteroid_spawn_influence = 1,
+    asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_keria, 0.9)
   },
 -------------------------------------------------------------------------- PLANET CONNECTIONS
   {

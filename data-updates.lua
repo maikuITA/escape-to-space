@@ -1,74 +1,52 @@
 -- data-updates.lua
 
-local asteroid_util = require("__escape-to-space__/prototypes/asteroid-spawn-definitions")
+local asteroid_util = require("__escape-to-space__.prototypes.asteroid-spawn-definitions")
 
-local function is_default_nauvis_chunk(name)
-    return name == "metallic-asteroid-chunk"
-        or name == "carbonic-asteroid-chunk"
-        or name == "oxide-asteroid-chunk"
+-- Updating asteroid spawn definitions for vanilla planets and space locations with local file
+
+-- Nauvis
+local planet_nauvis = data.raw["planet"]["nauvis"]
+if planet_nauvis then
+    planet_nauvis.asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.1)
 end
 
-local function remove_default_nauvis_chunks(plan)
-    local defs = plan.asteroid_spawn_definitions or {}
-    for i = #defs, 1, -1 do
-        local def = defs[i]
-        if def
-            and def.type == "asteroid-chunk"
-            and is_default_nauvis_chunk(def.asteroid) then
-            table.remove(defs, i)
-        end
-    end
+-- Vulcanus
+local planet_vulcanus = data.raw["planet"]["vulcanus"]
+if planet_vulcanus then
+    planet_vulcanus.asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9)
 end
 
-local function find_spawn_def(defs, asteroid_name)
-    for _, def in pairs(defs or {}) do
-        if def.type == "asteroid-chunk" and def.asteroid == asteroid_name then
-            return def
-        end
-    end
-    return nil
+-- Fulgora
+local planet_fulgora = data.raw["planet"]["fulgora"]
+if planet_fulgora then
+    planet_fulgora.asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_fulgora, 0.9)
 end
 
-local function insert_chunk_like(plan, source_chunk, new_chunk, probability)
-    plan.asteroid_spawn_definitions = plan.asteroid_spawn_definitions or {}
-    local src = find_spawn_def(plan.asteroid_spawn_definitions, source_chunk)
-    if not src then
-        return false
-    end
-
-    local copy = table.deepcopy(src)
-    copy.asteroid = new_chunk
-    copy.probability = probability
-    table.insert(plan.asteroid_spawn_definitions, copy)
-    return true
+-- Gleba
+local planet_gleba = data.raw["planet"]["gleba"]
+if planet_gleba then
+    planet_gleba.asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba, 0.9)
 end
 
-local earth = data.raw["planet"]["nauvis"]
-if earth then
-    -- 1) Copy metallic spawn profile to custom chunks (no hardcoded probability).
-    insert_chunk_like(earth, "metallic-asteroid-chunk", "irony-asteroid-chunk", asteroid_util.nauvis_prob)
-    insert_chunk_like(earth, "metallic-asteroid-chunk", "coppery-asteroid-chunk", asteroid_util.nauvis_prob)
-    insert_chunk_like(earth, "metallic-asteroid-chunk", "rocky-asteroid-chunk", asteroid_util.nauvis_prob)
-
-    -- 2) Remove vanilla Nauvis chunk spawns.
-    remove_default_nauvis_chunks(earth)
+-- Aquilo
+local planet_aquilo = data.raw["planet"]["aquilo"]
+if planet_aquilo then
+    planet_aquilo.asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.fulgora_aquilo, 0.9)
 end
 
-local axos = data.raw["space-location"]["axos"]
-if axos then
-  axos.asteroid_spawn_definitions = {
-    { type = "asteroid-chunk", asteroid = "carbonic-asteroid-chunk", probability = asteroid_util.axos_prob, speed = 0.01, angle_when_stopped = 1.0 },
-    { type = "asteroid-chunk", asteroid = "rocky-asteroid-chunk", probability = asteroid_util.axos_prob, speed = 0.01, angle_when_stopped = 1.0 }
-  }
+-- Solar system edge
+local solar_system_edge = data.raw["space-location"]["solar-system-edge"]
+if solar_system_edge then
+    solar_system_edge.asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.aquilo_solar_system_edge, 0.9)
 end
 
-local keria = data.raw["space-location"]["keria"]
-if keria then
-  keria.asteroid_spawn_definitions = {
-    { type = "asteroid-chunk", asteroid = "oxide-asteroid-chunk", probability = asteroid_util.keria_prob, speed = 0.01, angle_when_stopped = 1.0 },
-    { type = "asteroid-chunk", asteroid = "rocky-asteroid-chunk", probability = asteroid_util.keria_prob, speed = 0.01, angle_when_stopped = 1.0 }
-  }
+-- Shattered planet
+local shattered_planet = data.raw["space-location"]["shattered-planet"]
+if shattered_planet then
+    shattered_planet.asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.shattered_planet_trip, 0.9)
 end
+
+---------------------------------------------------------------
 
 -- Adding custom science packs as a lab input to allow researching trigger techs that require it.
 
@@ -418,12 +396,14 @@ if em_plant_recipe then
     }
 end
 
-local electronic_circuit = table.deepcopy(data.raw.recipe["electronic-circuit"])
-if electronic_circuit then
-    electronic_circuit.category = "custom-em-plant"
+local electronic_circuit_custom = table.deepcopy(data.raw.recipe["electronic-circuit"])
+if electronic_circuit_custom then
+    electronic_circuit_custom.name = "electronic-circuit-custom-em-plant"
+    electronic_circuit_custom.category = "custom-em-plant"
+    electronic_circuit_custom.localised_name = {"recipe-name.electronic-circuit"}
+    electronic_circuit_custom.allow_decomposition = false
+    data:extend({electronic_circuit_custom})
 end
-
-data.extend({electronic_circuit})
 
 local advanced_circuit = data.raw.recipe["advanced-circuit"]
 if advanced_circuit then
