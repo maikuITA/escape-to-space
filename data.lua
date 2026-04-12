@@ -9,6 +9,7 @@ require("prototypes.entity.entity")
 require("prototypes.entity.remnants")
 require("prototypes.recipe")
 require("prototypes.technology")
+require("prototypes.custom-belts.custom-belts")
 
 -- Remove recipe surface restrictions globally.
 -- Why: this scenario shifts progression to space; planet-locked recipes can cause

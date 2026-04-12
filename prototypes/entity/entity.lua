@@ -192,6 +192,7 @@ data:extend({
     max_health = 350,
     corpse = "basic-electric-furnace-remnants",
     dying_explosion = data.raw["furnace"]["electric-furnace"].dying_explosion,
+    effect_receiver = { base_effect = { productivity = 0.25 }},
     resistances = {
         {
             type = "fire",

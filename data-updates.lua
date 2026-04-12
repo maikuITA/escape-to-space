@@ -416,6 +416,16 @@ if advanced_circuit then
     }
 end
 
+local processing_unit = data.raw.recipe["processing-unit"]
+if processing_unit then
+    processing_unit.category = "custom-em-plant"
+end
+
+local lds = data.raw.recipe["low-density-structure"]
+if lds then
+    lds.category = "custom-em-plant"
+end
+
 local beacon = data.raw.recipe["beacon"]
 if beacon then
     beacon.category = "custom-em-plant"
@@ -447,4 +457,79 @@ if foundry then
         {type = "item", name = "refined-concrete", amount = 20},
         {type = "fluid", name = "lubricant", amount = 20}
     }
+end
+
+-- Customizing Foundry recipes with a new category and recipe
+
+local foundry = data.raw["assembling-machine"]["foundry"]
+foundry.crafting_categories = {"custom-metallurgy"}
+
+-- Solar panel mk2
+local solar_panel_mk2 = table.deepcopy(data.raw["solar-panel"]["solar-panel"])
+if solar_panel_mk2 then
+    solar_panel_mk2.name = "solar-panel-mk2"
+    solar_panel_mk2.localised_name = {"entity-name.solar-panel-mk2"}
+    solar_panel_mk2.icon = "__escape-to-space__/graphics/icons/solar-panel-mk2.png"
+    solar_panel_mk2.icon_size = 64
+    solar_panel_mk2.minable.result = "solar-panel-mk2"
+    solar_panel_mk2.production = "120kW"
+    solar_panel_mk2.picture =
+    {
+      layers =
+      {
+        {
+          filename = "__escape-to-space__/graphics/entity/solar-panel-mk2/solar-panel-mk2.png",
+          priority = "high",
+          width = 230,
+          height = 224,
+          shift = util.by_pixel(-3, 3.5),
+          scale = 0.5
+        },
+        {
+          filename = "__escape-to-space__/graphics/entity/solar-panel-mk2/solar-panel-mk2-shadow.png",
+          priority = "high",
+          width = 220,
+          height = 180,
+          shift = util.by_pixel(9.5, 6),
+          draw_as_shadow = true,
+          scale = 0.5
+        }
+      }
+    }
+    data:extend({solar_panel_mk2})
+end
+
+-- Solar panel mk3
+local solar_panel_mk3 = table.deepcopy(data.raw["solar-panel"]["solar-panel"])
+if solar_panel_mk3 then
+    solar_panel_mk3.name = "solar-panel-mk3"
+    solar_panel_mk3.localised_name = {"entity-name.solar-panel-mk3"}
+    solar_panel_mk3.icon = "__escape-to-space__/graphics/icons/solar-panel-mk3.png"
+    solar_panel_mk3.icon_size = 64
+    solar_panel_mk3.minable.result = "solar-panel-mk3"
+    solar_panel_mk3.production = "240kW"
+    solar_panel_mk3.picture =
+    {
+      layers =
+      {
+        {
+          filename = "__escape-to-space__/graphics/entity/solar-panel-mk3/solar-panel-mk3.png",
+          priority = "high",
+          width = 230,
+          height = 224,
+          shift = util.by_pixel(-3, 3.5),
+          scale = 0.5
+        },
+        {
+          filename = "__escape-to-space__/graphics/entity/solar-panel-mk3/solar-panel-mk3-shadow.png",
+          priority = "high",
+          width = 220,
+          height = 180,
+          shift = util.by_pixel(9.5, 6),
+          draw_as_shadow = true,
+          scale = 0.5
+        }
+      }
+    }
+    data:extend({solar_panel_mk3})
 end

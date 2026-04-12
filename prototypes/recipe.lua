@@ -404,7 +404,8 @@ data:extend({
         category = "mixing",
 		ingredients = {
           {type = "item", name = "express-transport-belt", amount = 10},
-          {type = "item", name = "beacon", amount = 1}
+          {type = "item", name = "beacon", amount = 1},
+          {type = "item", name = "oxidic-electronic-circuit", amount = 10}
         },
         results = {{type = "fluid", name = "t-two-fluid", amount = 1000}},
         energy_required = 10,
@@ -415,9 +416,9 @@ data:extend({
 		name = "t-three-fluid",
         category = "mixing",
 		ingredients = {
-          {type = "item", name = "express-transport-belt", amount = 10},
-          {type = "item", name = "beacon", amount = 1},
-          {type = "item", name = "oxidic-electronic-circuit", amount = 10}
+          {type = "item", name = "turbo-transport-belt", amount = 10},
+          {type = "item", name = "processing-unit", amount = 5},
+          {type = "item", name = "low-density-structure", amount = 5},
         },
         results = {{type = "fluid", name = "t-three-fluid", amount = 1000}},
         energy_required = 10,
@@ -727,12 +728,25 @@ data:extend({
     {
         type = "recipe",
         name = "tungsten-plate",
-        category = "metallurgy",
+        category = "custom-metallurgy",
         ingredients = {
             {type = "item", name = "tungsten-ore", amount = 1},
             {type = "item", name = "iron-ore", amount = 4},
         },
         results = {{type ="item", name = "tungsten-plate", amount = 1}},
+        energy_required = 2,
+        allow_productivity = true,
+        enabled = false
+    },
+    {
+		type = "recipe",
+		name = "carbon-steel-plate-metallurgy",
+        category = "custom-metallurgy",
+		ingredients = {
+          {type = "item", name = "carbon-steel-ore", amount = 1},
+          {type = "item", name = "iron-ore", amount = 4},
+        },
+        results = {{type = "item", name = "carbon-steel-plate", amount = 1}},
         energy_required = 2,
         allow_productivity = true,
         enabled = false

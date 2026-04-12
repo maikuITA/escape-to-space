@@ -1225,6 +1225,10 @@ if vulcanus then
             type = "unlock-recipe",
             recipe = "carbide-blending"
         },
+        {
+            type = "unlock-recipe",
+            recipe = "carbon-steel-plate-metallurgy"
+        },
     }
     vulcanus.hidden = false
     vulcanus.enabled = true
@@ -1233,6 +1237,27 @@ if vulcanus then
         "logistic-science-pack",
         "military-science-pack",
         "t-two-science-pack",
+    }
+end
+
+-- Turbo transport belt
+local turbo_belt = data.raw["technology"]["turbo-transport-belt"]
+if turbo_belt then
+    turbo_belt.unit = {
+        count = 150,
+        ingredients = {
+            {"earth-science-pack", 1},
+            {"axkeria-science-pack", 1},
+            {"t-one-science-pack", 1},
+            {"t-two-science-pack", 1}
+        },
+        time = 10,
+    }
+    turbo_belt.hidden = false
+    turbo_belt.enabled = true
+    turbo_belt.prerequisites = {
+        "planet-discovery-vulcanus",
+        "logistics-3"
     }
 end
 
@@ -1248,6 +1273,13 @@ if fulgora then
             {"t-two-science-pack", 1}
         },
         time = 10,
+    }
+    fulgora.effects = {
+        {
+            type = "unlock-space-location",
+            space_location = "fulgora",
+            use_icon_overlay_constant = true
+        },
     }
     fulgora.hidden = false
     fulgora.enabled = true
@@ -1658,6 +1690,42 @@ if rocket_turret then
     rocket_turret.hidden = false
     rocket_turret.enabled = true
     rocket_turret.prerequisites = {"t-two-science-pack", "planet-discovery-gleba", "military-3"}
+end
+
+-- Rocketry
+local rocketry = data.raw["technology"]["rocketry"]
+if rocketry then
+    rocketry.unit = {
+        count = 200,
+        ingredients = {
+            {"earth-science-pack", 1},
+            {"axkeria-science-pack", 1},
+            {"t-one-science-pack", 1},
+            {"t-two-science-pack", 1}
+        },
+        time = 10,
+    }
+    rocketry.hidden = false
+    rocketry.enabled = true
+    rocketry.prerequisites = {"rocket-turret"}
+end
+
+-- Explosive rocketry
+local explosive_rocketry = data.raw["technology"]["explosive-rocketry"]
+if explosive_rocketry then
+    explosive_rocketry.unit = {
+        count = 200,
+        ingredients = {
+            {"earth-science-pack", 1},
+            {"axkeria-science-pack", 1},
+            {"t-one-science-pack", 1},
+            {"t-two-science-pack", 1}
+        },
+        time = 10,
+    }
+    explosive_rocketry.hidden = false
+    explosive_rocketry.enabled = true
+    explosive_rocketry.prerequisites = {"rocketry"}
 end
 
 -- Railgun
@@ -2136,6 +2204,36 @@ if laser_dmg_inf then
 end
 
 data:extend({laser_dmg_inf})
+
+-- Railgun damage 1-infinite
+local railgun_damage_inf = data.raw["technology"]["railgun-damage-1"]
+if railgun_damage_inf then
+    railgun_damage_inf.unit = {
+        count_formula = "1^L*100",
+        ingredients = {
+            {"military-data-disk", 1},
+        },
+        time = 10,
+    }
+    railgun_damage_inf.hidden = false
+    railgun_damage_inf.enabled = true
+    railgun_damage_inf.prerequisites = {"military-data-disk", "railgun"}
+end
+
+-- Railgun shooting speed 1-infinite
+local railgun_shooting_speed_inf = data.raw["technology"]["railgun-shooting-speed-1"]
+if railgun_shooting_speed_inf then
+    railgun_shooting_speed_inf.unit = {
+        count_formula = "1^L*100",
+        ingredients = {
+            {"military-data-disk", 1},
+        },
+        time = 10,
+    }
+    railgun_shooting_speed_inf.hidden = false
+    railgun_shooting_speed_inf.enabled = true
+    railgun_shooting_speed_inf.prerequisites = {"military-data-disk", "railgun"}
+end
 
 ---------------------------------------------------------------------------------------------
 --- Final tech

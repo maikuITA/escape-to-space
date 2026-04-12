@@ -1,0 +1,97 @@
+local IR2RB = require("__escape-to-space__.prototypes.custom-belts.code.functions")
+data:extend({
+
+-- Extra sprites for settings
+    -- Arrow style sprites
+    {
+        type = "sprite",
+        name = "default-belt",
+        filename = IR2RB.setting_icons_path.."/default.png",
+        priority = "extra-high",
+        width = 64,
+        height = 64,
+        mipmap_count = 4,
+    },
+    {
+        type = "sprite",
+        name = "no-arrows",
+        filename = IR2RB.setting_icons_path.."/no-arrows.png",
+        priority = "extra-high",
+        width = 64,
+        height = 64,
+        mipmap_count = 4,
+    },
+    {
+        type = "sprite",
+        name = "narrow-belt",
+        filename = IR2RB.setting_icons_path.."/narrow-belt.png",
+        priority = "extra-high",
+        width = 64,
+        height = 64,
+        mipmap_count = 4,
+    },
+    {
+        type = "sprite",
+        name = "red-belt",
+        filename = IR2RB.setting_icons_path.."/red-belt.png",
+        priority = "extra-high",
+        width = 64,
+        height = 64,
+        mipmap_count = 4,
+    },
+    {
+        type = "sprite",
+        name = "turbo-belt",
+        filename = IR2RB.setting_icons_path.."/turbo-belt.png",
+        priority = "extra-high",
+        width = 64,
+        height = 64,
+        mipmap_count = 4,
+    },
+    {
+        type = "sprite",
+        name = "line-thick",
+        filename = IR2RB.setting_icons_path.."/line-thick.png",
+        priority = "extra-high",
+        width = 64,
+        height = 64,
+        mipmap_count = 4,
+    },
+    {
+        type = "sprite",
+        name = "line-thin",
+        filename = IR2RB.setting_icons_path.."/line-thin.png",
+        priority = "extra-high",
+        width = 64,
+        height = 64,
+        mipmap_count = 4,
+    },
+    {
+        type = "sprite",
+        name = "line-side",
+        filename = IR2RB.setting_icons_path.."/line-side.png",
+        priority = "extra-high",
+        width = 64,
+        height = 64,
+        mipmap_count = 4,
+    },
+    -- Rail style sprites
+    {
+        type = "sprite",
+        name = "alt-bases",
+        filename = IR2RB.setting_icons_path.."/alt-bases.png",
+        priority = "extra-high",
+        width = 64,
+        height = 64,
+        mipmap_count = 4,
+    },
+    {
+        type = "sprite",
+        name = "colored-rails",
+        filename = IR2RB.setting_icons_path.."/colored-rails.png",
+        priority = "extra-high",
+        width = 64,
+        height = 64,
+        mipmap_count = 4,
+    }
+})

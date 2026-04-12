@@ -176,6 +176,9 @@ local letter = {"a","b","c","d","e","f","g","h","i"}
     ["coppery"] = "metallic",
     ["rocky"] = "metallic",
     ["tungsten"] = "metallic",
+    ["scrap"] = "metallic",
+    ["alien"] = "carbonic",
+    ["fluorite"] = "oxide",
   }
 
   local function asteroid_variation(asteroid_type, suffix, scale, size)

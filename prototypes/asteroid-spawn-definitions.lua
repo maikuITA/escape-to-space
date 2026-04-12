@@ -313,16 +313,16 @@ asteroid_functions.shattered_planet_trip =
   type_ratios =
   {
     {position = 0.001, ratios = asteroid_functions.system_edge_ratio},
-    {position = 0.002, ratios = { 3/10*16,5/10*16,2/10*16,  0.04, 3/10*16, 3/10*16 , 3/10*16, 0  }},-- 3 5 2
-    {position = 0.2,   ratios = { 5,3,8,    0.40, 5, 5 , 5, 0 }},
-    {position = 0.3,   ratios = { 3,9,4,    2.03, 3, 3 , 3, 0 }},
-    {position = 0.4,   ratios = { 7,6,3,    6.40, 7, 7 , 7, 0 }},
-    {position = 0.5,   ratios = { 9,2,5,   15.63, 9, 9 , 9, 0 }},
-    {position = 0.6,   ratios = { 2,6,8,   32.40, 2, 2 , 2, 0 }},
-    {position = 0.7,   ratios = { 8,2,5,   60.03, 8, 8 , 8, 0 }},
-    {position = 0.8,   ratios = { 3,9,4,  102.40, 3, 3 , 3, 0 }},
-    {position = 0.9,   ratios = { 3,9,4,  131.40, 3, 3 , 3, 0 }},
-    {position = 0.999, ratios = { 10,2,4, 164.03, 10, 10 , 10, 0 }},
+    {position = 0.002, ratios = { 0,5/10*16,2/10*16,  0.04, 3/10*16, 3/10*16 , 3/10*16, 0  }},-- 3 5 2
+    {position = 0.2,   ratios = { 0,3,8,    0.40, 5, 5 , 5, 0 }},
+    {position = 0.3,   ratios = { 0,9,4,    2.03, 3, 3 , 3, 0 }},
+    {position = 0.4,   ratios = { 0,6,3,    6.40, 7, 7 , 7, 0 }},
+    {position = 0.5,   ratios = { 0,2,5,   15.63, 9, 9 , 9, 0 }},
+    {position = 0.6,   ratios = { 0,6,8,   32.40, 2, 2 , 2, 0 }},
+    {position = 0.7,   ratios = { 0,2,5,   60.03, 8, 8 , 8, 0 }},
+    {position = 0.8,   ratios = { 0,9,4,  102.40, 3, 3 , 3, 0 }},
+    {position = 0.9,   ratios = { 0,9,4,  131.40, 3, 3 , 3, 0 }},
+    {position = 0.999, ratios = { 0,2,4, 164.03, 10, 10 , 10, 0 }},
   }
 }
 

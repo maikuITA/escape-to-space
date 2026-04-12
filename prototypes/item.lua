@@ -56,6 +56,45 @@ data:extend({
     weight = 100 * kg,
     random_tint_color = item_tints.iron_rust
   },
+  {
+    type = "item",
+    name = "scrap-asteroid-chunk",
+    icon = "__escape-to-space__/graphics/icons/scrap-asteroid-chunk.png",
+    subgroup = "space-material",
+    order = "e[scrap]-e[chunk]",
+    inventory_move_sound = space_age_item_sounds.rock_inventory_move,
+    pick_sound = space_age_item_sounds.rock_inventory_pickup,
+    drop_sound = space_age_item_sounds.rock_inventory_move,
+    stack_size = 1,
+    weight = 100 * kg,
+    random_tint_color = item_tints.iron_rust
+  },
+  {
+    type = "item",
+    name = "alien-asteroid-chunk",
+    icon = "__escape-to-space__/graphics/icons/alien-asteroid-chunk.png",
+    subgroup = "space-material",
+    order = "f[alien]-e[chunk]",
+    inventory_move_sound = space_age_item_sounds.rock_inventory_move,
+    pick_sound = space_age_item_sounds.rock_inventory_pickup,
+    drop_sound = space_age_item_sounds.rock_inventory_move,
+    stack_size = 1,
+    weight = 100 * kg,
+    random_tint_color = item_tints.organic_green
+  },
+  {
+    type = "item",
+    name = "fluorite-asteroid-chunk",
+    icon = "__escape-to-space__/graphics/icons/fluorite-asteroid-chunk.png",
+    subgroup = "space-material",
+    order = "g[fluorite]-e[chunk]",
+    inventory_move_sound = item_sounds.sulfur_inventory_move,
+    pick_sound = item_sounds.resource_inventory_pickup,
+    drop_sound = item_sounds.sulfur_inventory_move,
+    stack_size = 1,
+    weight = 100 * kg,
+    random_tint_color = item_tints.ice_blue
+  },
 
   -- Items
   {
@@ -264,6 +303,28 @@ data:extend({
     icon = "__escape-to-space__/graphics/icons/blank-data-disk.png",
     subgroup = "intermediate-product",
     order = "z[blank-data-disk]",
+    inventory_move_sound = space_age_item_sounds.space_age_item_sounds,
+    stack_size = 200,
+    weight = data.raw.item["pipe"].weight,
+    random_tint_color = item_tints.iron_rust
+  },
+  {
+    type = "item",
+    name = "solar-panel-mk2",
+    icon = "__escape-to-space__/graphics/icons/solar-panel-mk2.png",
+    subgroup = "intermediate-product",
+    order = "z[solar-panel-mk2]",
+    inventory_move_sound = space_age_item_sounds.space_age_item_sounds,
+    stack_size = 200,
+    weight = data.raw.item["pipe"].weight,
+    random_tint_color = item_tints.iron_rust
+  },
+  {
+    type = "item",
+    name = "solar-panel-mk3",
+    icon = "__escape-to-space__/graphics/icons/solar-panel-mk3.png",
+    subgroup = "intermediate-product",
+    order = "z[solar-panel-mk3]",
     inventory_move_sound = space_age_item_sounds.space_age_item_sounds,
     stack_size = 200,
     weight = data.raw.item["pipe"].weight,
