@@ -1386,4 +1386,57 @@ data:extend({
     },
     fluid_boxes_off_when_no_fluid_recipe = true,
   },
+  -- Radio terminal
+  {
+    type = "container",
+    name = "radio-terminal",
+    icon = "__escape-to-space__/graphics/icons/radio-terminal-icon.png",
+    icon_size = 64,
+    flags = {"placeable-neutral", "placeable-player", "player-creation"},
+    minable = {mining_time = 0.2, result = "radio-terminal"},
+    max_health = 350,
+    corpse = "basic-electric-furnace-remnants",
+    dying_explosion = data.raw["furnace"]["electric-furnace"].dying_explosion,
+    collision_box = {{-0.9, -0.9}, {0.9, 0.9}},
+    selection_box = {{-1.0, -1.0}, {1.0, 1.0}},
+    inventory_size = 10,
+    picture = {
+      layers = {
+        {
+          filename = "__escape-to-space__/graphics/entity/radio-terminal/radio-terminal-hr-animation-1.png",
+          priority = "high",
+          width = 160,
+          height = 290,
+          frame_count = 20,
+          line_length = 8,
+          shift = util.by_pixel(0, 0),
+          scale = 0.5
+        },
+        {
+          filename = "__escape-to-space__/graphics/entity/radio-terminal/radio-terminal-hr-shadow.png",
+          priority = "high",
+          width = 400,
+          height = 350,
+          frame_count = 1,
+          line_length = 1,
+          repeat_count = 20,
+          draw_as_shadow = true,
+          shift = util.by_pixel(0, 0),
+          scale = 0.5
+        },
+        {
+          filename = "__escape-to-space__/graphics/entity/radio-terminal/radio-terminal-hr-emission-1.png",
+          priority = "high",
+          width = 160,
+          height = 290,
+          frame_count = 20,
+          line_length = 8,
+          draw_as_glow = true,
+          blend_mode = "additive",
+          shift = util.by_pixel(0, 0),
+          scale = 0.5
+        }
+      }
+    }
+  }
 })

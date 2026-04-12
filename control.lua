@@ -1,5 +1,7 @@
 -- control.lua
 
+----------------------------------------------------------------------------------------------
+
 -- Periodically resolves platforms stuck waiting for a starter pack.
 -- Why: in this scenario, platforms may share the same orbit; an already active
 -- platform can donate one starter pack item to unblock another waiting platform.
@@ -8,6 +10,13 @@
 local function on_tick(event)
     -- Re-assert early quality progression even across lifecycle edge cases.
     game.forces.player.unlock_quality("uncommon")
+
+    for _, surface in pairs(game.surfaces) do
+        for _, entity in pairs(surface.find_entities_filtered { name = radio_terminal.name }) do
+            radio_terminal_update_storage(entity)
+        end
+    end
+
     for _, force in pairs(game.forces) do
         for _, p in pairs(force.platforms) do
             if p.state == defines.space_platform_state.waiting_for_starter_pack then
@@ -35,6 +44,7 @@ end
 -- Centralizes event registration so init/load/config-change stay consistent.
 local function init_events()
     script.on_nth_tick(30, on_tick)
+    init_radio_events()
 end
 
 local HOME_PLATFORM_NAME = "Noah's Ark"
@@ -91,6 +101,8 @@ local function get_or_create_home_platform(player)
 end
 
 script.on_init(function()
+    ensure_radio_storage()
+    refresh_radio_network()
     -- Pending teleports are deferred until the character entity exists.
     storage.pending_teleport = {}
     storage.home_platform_by_force = {}
@@ -136,6 +148,9 @@ script.on_init(function()
 end)
 
 script.on_load(function()
+    ensure_radio_storage()
+    refresh_radio_network()
+
     -- Reinitialize transient tables and rebind handlers after save load.
     storage.pending_teleport = storage.pending_teleport or {}
     storage.home_platform_by_force = storage.home_platform_by_force or {}
@@ -146,6 +161,8 @@ script.on_load(function()
 end)
 
 script.on_configuration_changed(function()
+    ensure_radio_storage()
+    refresh_radio_network()
     -- Reapply permissions after migrations because external changes can reset groups.
     game.permissions
         .get_group("Default")

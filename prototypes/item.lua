@@ -686,4 +686,19 @@ data:extend({
     durability = 1,
     random_tint_color = item_tints.iron_rust
   },
+
+  -- Container
+  {
+    type = "item",
+    name = "radio-terminal",
+    icon = "__escape-to-space__/graphics/icons/radio-terminal-icon.png",
+    subgroup = "storage",
+    order = "a[items]-b[radio-terminal]",
+    inventory_move_sound = item_sounds.container_inventory_move,
+    pick_sound = item_sounds.container_inventory_pickup,
+    drop_sound = item_sounds.container_inventory_move,
+    place_result = "radio-terminal",
+    stack_size = 50,
+    weight = 100*kg
+  }
 })
