@@ -232,6 +232,36 @@ data:extend({
         energy_required = 0.5,
         enabled = false
     },
+    {
+		type = "recipe",
+		name = "solar-panel-mk2",
+        category = "crafting",
+		ingredients = {
+          {type = "item", name = "carbon-plate", amount = 10},
+          {type = "item", name = "carbon-wheel", amount = 5},
+          {type = "item", name = "carbon-stick", amount = 10},
+          {type = "item", name = "carbon-wire", amount = 10},
+          {type = "item", name = "carbon-electronic-circuit", amount = 10}
+        },
+        results = {{type = "item", name = "solar-panel-mk2", amount = 1}},
+        energy_required = 0.5,
+        enabled = false
+    },
+    {
+		type = "recipe",
+		name = "solar-panel-mk3",
+        category = "crafting",
+		ingredients = {
+          {type = "item", name = "oxidic-plate", amount = 10},
+          {type = "item", name = "oxidic-gear-wheel", amount = 5},
+          {type = "item", name = "oxidic-stick", amount = 10},
+          {type = "item", name = "oxidic-cable", amount = 10},
+          {type = "item", name = "oxidic-electronic-circuit", amount = 10}
+        },
+        results = {{type = "item", name = "solar-panel-mk3", amount = 1}},
+        energy_required = 0.5,
+        enabled = false
+    },
 
     -- Smelting
     {

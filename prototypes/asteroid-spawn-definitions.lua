@@ -14,15 +14,16 @@ asteroid_functions.weighted_average = function(A, B, weight)
 end
 
 -- Rapporti relativi tra i tipi di asteroide nelle varie zone del sistema.
--- L'ordine dei valori e: metallic, carbonic, oxide, promethium, irony, coppery, rocky, tungsten.
-asteroid_functions.axos_ratio        = {0, 5, 0 , 0, 1, 1, 5, 0}
-asteroid_functions.keria_ratio       = {0, 0, 5 , 0, 1, 1, 5, 0}
-asteroid_functions.nauvis_ratio      = {0, 0, 0 , 0, 4, 3, 5, 0}
-asteroid_functions.vulcanus_ratio    = {0, 2, 1 , 0, 4, 3, 5, 5}
-asteroid_functions.gleba_ratio       = {0, 5, 1 , 0, 4, 3, 5, 0}
-asteroid_functions.fulgora_ratio     = {0, 3, 1 , 0, 4, 3, 5, 0}
-asteroid_functions.aquilo_ratio      = {0, 2, 20, 0, 4, 3, 5, 0}
-asteroid_functions.system_edge_ratio = {0, 5, 2 , 0, 4, 3, 5, 0}
+-- L'ordine dei valori e: 
+--metallic, carbonic, oxide, promethium, irony, coppery, rocky, tungsten, scrap, alien, fluorite.
+asteroid_functions.axos_ratio        = {0, 5, 0 , 0, 1, 1, 5, 0, 0, 0, 0}
+asteroid_functions.keria_ratio       = {0, 0, 5 , 0, 1, 1, 5, 0, 0, 0, 0}
+asteroid_functions.nauvis_ratio      = {0, 0, 0 , 0, 4, 3, 5, 0, 0, 0, 0}
+asteroid_functions.gleba_ratio       = {0, 2, 1 , 0, 4, 3, 5, 0, 0, 5, 0}
+asteroid_functions.vulcanus_ratio    = {0, 2, 1 , 0, 4, 3, 5, 5, 0, 0, 0}
+asteroid_functions.fulgora_ratio     = {0, 3, 1 , 0, 4, 3, 5, 0, 5, 0, 0}
+asteroid_functions.aquilo_ratio      = {0, 2, 20, 0, 4, 3, 5, 0, 0, 0, 5}
+asteroid_functions.system_edge_ratio = {0, 5, 2 , 0, 4, 3, 5, 0, 0, 0, 0}
 
 -- Probabilita base per gli asteroidi nelle varie regioni.
 -- Questi valori vengono poi interpolati lungo le connessioni tra location.
@@ -289,13 +290,13 @@ asteroid_functions.aquilo_solar_system_edge =
   type_ratios =
   {
     {position = 0.1, ratios = asteroid_functions.aquilo_ratio},
-    {position = 0.2, ratios = {2,3,10, 0}},
-    {position = 0.3, ratios = {4,2,8, 0}},
-    {position = 0.4, ratios = {6,1,4, 0}},
-    {position = 0.5, ratios = {9,4,3, 0}},
-    {position = 0.6, ratios = {9,5,2, 0}},
-    {position = 0.7, ratios = {9,2,7, 0}},
-    {position = 0.8, ratios = {3,5,1, 0}},
+    {position = 0.2, ratios = {2,3,10, 0, 0, 0, 0, 0, 0, 0, 0}},
+    {position = 0.3, ratios = {4,2,8, 0, 0, 0, 0, 0, 0, 0, 0}},
+    {position = 0.4, ratios = {6,1,4, 0, 0, 0, 0, 0, 0, 0, 0}},
+    {position = 0.5, ratios = {9,4,3, 0, 0, 0, 0, 0, 0, 0, 0}},
+    {position = 0.6, ratios = {9,5,2, 0, 0, 0, 0, 0, 0, 0, 0}},
+    {position = 0.7, ratios = {9,2,7, 0, 0, 0, 0, 0, 0, 0, 0}},
+    {position = 0.8, ratios = {3,5,1, 0, 0, 0, 0, 0, 0, 0, 0}},
     {position = 0.9, ratios = asteroid_functions.system_edge_ratio},
   }
 }
@@ -313,16 +314,16 @@ asteroid_functions.shattered_planet_trip =
   type_ratios =
   {
     {position = 0.001, ratios = asteroid_functions.system_edge_ratio},
-    {position = 0.002, ratios = { 0,5/10*16,2/10*16,  0.04, 3/10*16, 3/10*16 , 3/10*16, 0  }},-- 3 5 2
-    {position = 0.2,   ratios = { 0,3,8,    0.40, 5, 5 , 5, 0 }},
-    {position = 0.3,   ratios = { 0,9,4,    2.03, 3, 3 , 3, 0 }},
-    {position = 0.4,   ratios = { 0,6,3,    6.40, 7, 7 , 7, 0 }},
-    {position = 0.5,   ratios = { 0,2,5,   15.63, 9, 9 , 9, 0 }},
-    {position = 0.6,   ratios = { 0,6,8,   32.40, 2, 2 , 2, 0 }},
-    {position = 0.7,   ratios = { 0,2,5,   60.03, 8, 8 , 8, 0 }},
-    {position = 0.8,   ratios = { 0,9,4,  102.40, 3, 3 , 3, 0 }},
-    {position = 0.9,   ratios = { 0,9,4,  131.40, 3, 3 , 3, 0 }},
-    {position = 0.999, ratios = { 0,2,4, 164.03, 10, 10 , 10, 0 }},
+    {position = 0.002, ratios = { 0,5/10*16,2/10*16,  0.04, 3/10*16, 3/10*16 , 3/10*16, 0, 0, 0, 0 }},-- 3 5 2
+    {position = 0.2,   ratios = { 0,3,8,    0.40, 5,  5,   5, 0, 0, 0, 0  }},
+    {position = 0.3,   ratios = { 0,9,4,    2.03, 3,  3,   3, 0, 0, 0, 0  }},
+    {position = 0.4,   ratios = { 0,6,3,    6.40, 7,  7,   7, 0, 0, 0, 0  }},
+    {position = 0.5,   ratios = { 0,2,5,   15.63, 9,  9,   9, 0, 0, 0, 0  }},
+    {position = 0.6,   ratios = { 0,6,8,   32.40, 2,  2,   2, 0, 0, 0, 0  }},
+    {position = 0.7,   ratios = { 0,2,5,   60.03, 8,  8,   8, 0, 0, 0, 0  }},
+    {position = 0.8,   ratios = { 0,9,4,  102.40, 3,  3,   3, 0, 0, 0, 0  }},
+    {position = 0.9,   ratios = { 0,9,4,  131.40, 3,  3,   3, 0, 0, 0, 0  }},
+    {position = 0.999, ratios = { 0,2,4,  164.03, 10, 10, 10, 0, 0, 0, 0  }},
   }
 }
 
@@ -485,7 +486,7 @@ end
 asteroid_functions.spawn_definitions = function(data, planet)
   local asteroid_spawn_definitions = {}
   local asteroid_sizes = {"chunk", "small", "medium", "big", "huge"}
-  local asteroid_types = {"metallic", "carbonic", "oxide", "irony", "coppery", "rocky", "tungsten"}
+  local asteroid_types = {"metallic", "carbonic", "oxide", "irony", "coppery", "rocky", "tungsten", "scrap", "alien", "fluorite"}
 
   -- Su alcune tratte compare anche il promethium, quindi aggiungiamo il quarto tipo.
   if data.has_promethium_asteroids == true then
@@ -520,6 +521,12 @@ asteroid_functions.spawn_definitions = function(data, planet)
         asteroid_id = 7
       elseif asteroid_type == "tungsten" then
         asteroid_id = 8
+      elseif asteroid_type == "scrap" then
+        asteroid_id = 9
+      elseif asteroid_type == "alien" then
+        asteroid_id = 10
+      elseif asteroid_type == "fluorite" then
+        asteroid_id = 11
       end
 
       local probability_data = {}

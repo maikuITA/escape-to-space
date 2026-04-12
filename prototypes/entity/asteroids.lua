@@ -141,6 +141,77 @@ local asteroids_data =
         ambient_light = {0.01, 0.01, 0.01},
       }
     },
+    scrap =
+    {
+      order = "e",
+      mass = shared_mass,
+      max_health = shared_health,
+      resistances = shared_resistances,
+      shading_data =
+      {
+        normal_strength = 1.2,
+        light_width = 0,
+        brightness = 0.9,
+        specular_strength = 2,
+        specular_power = 2,
+        specular_purity = 0,
+        sss_contrast = 1,
+        sss_amount = 0,
+        lights = {
+          { color = {0.96,1,0.99}, direction = {0.7,0.6,-1} },
+          { color = {0.57,0.33,0.23}, direction = {-0.72,-0.46,1} },
+          { color = {0.1,0.1,0.1}, direction = {-0.4,-0.25,-0.5} },
+        },
+        ambient_light = {0.01, 0.01, 0.01},
+      }
+    },
+  alien =
+    {
+      order = "f",
+      mass = shared_mass,
+      max_health = shared_health,
+      resistances = shared_resistances,
+      shading_data =
+      {
+        normal_strength = 1,
+        light_width = 0,
+        brightness = 0.9,
+        specular_strength = 2.5,
+        specular_power = 0.8,
+        specular_purity = 0,
+        sss_contrast = 1,
+        sss_amount = 0,
+        lights = {
+          { color = {1,1,1}, direction = {0.7,0.6,-1} },
+          { color = {0.16,0.14,0.22}, direction = {-1,-1, 1} },
+        },
+        ambient_light = {0.01, 0.01, 0.01}
+      }
+    },
+  fluorite =
+  {
+    order = "h",
+    mass = shared_mass,
+    max_health = shared_health,
+    resistances = shared_resistances,
+    shading_data =
+    {
+      normal_strength = 1,
+      light_width = 0,
+      brightness = 0.5,
+      specular_strength = 3.5,
+      specular_power = 2,
+      specular_purity = 0.6,
+      sss_contrast = 1,
+      sss_amount = 0.25,
+      lights = {
+        { color = {1,1,1}, direction = {0.7,0.4,-1} },
+        { color = {0.05,0.3,0.3}, direction = {-1,-1,0} },
+        { color = {0.05,0.2,0.25}, direction = {-0.4,-0.1,-1} },
+      },
+      ambient_light = {0.01, 0.020, 0.027},
+    }
+  },  
 }
 
 local collision_radiuses =

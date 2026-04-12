@@ -338,6 +338,14 @@ if landfill then
         },
         {
             type = "unlock-recipe",
+            recipe = "carbonic-asteroid-crushing"
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "solar-panel"
+        },
+        {
+            type = "unlock-recipe",
             recipe = "space-platform-foundation"
         },
         {
@@ -391,6 +399,34 @@ if axkeria_sp then
     axkeria_sp.hidden = false
     axkeria_sp.enabled = true
     axkeria_sp.prerequisites = {"automation-science-pack", "landfill", "steel-processing"}
+end
+
+-- Solar panel mk2
+local solar_panel_mk2 = table.deepcopy(data.raw["technology"]["solar-energy"])
+if solar_panel_mk2 then
+    solar_panel_mk2.name = "solar-energy-mk2"
+    solar_panel_mk2.icon = "__escape-to-space__/graphics/technology/solar-energy-mk2.png"
+    solar_panel_mk2.icon_size = 256
+    solar_panel_mk2.unit = {
+        count = 100,
+        ingredients = {
+            {"earth-science-pack", 1},
+            {"axkeria-science-pack", 1}
+        },
+        time = 10,
+    }
+    solar_panel_mk2.effects = {
+        {
+            type = "unlock-recipe",
+            recipe = "solar-panel-mk2"
+        },
+    }
+    solar_panel_mk2.hidden = false
+    solar_panel_mk2.enabled = true
+    solar_panel_mk2.prerequisites = {"logistic-science-pack", "landfill"}
+    data:extend({
+        solar_panel_mk2
+    })
 end
 
 -- Red ammo
@@ -643,6 +679,35 @@ if t_one_sp then
         "fast-inserter",
         "heavy-armor",
     }
+end
+
+-- Solar panel mk3
+local solar_panel_mk3 = table.deepcopy(data.raw["technology"]["solar-energy"])
+if solar_panel_mk3 then
+    solar_panel_mk3.name = "solar-energy-mk3"
+    solar_panel_mk3.icon = "__escape-to-space__/graphics/technology/solar-energy-mk3.png"
+    solar_panel_mk3.icon_size = 256
+    solar_panel_mk3.unit = {
+        count = 100,
+        ingredients = {
+            {"earth-science-pack", 1},
+            {"axkeria-science-pack", 1},
+            {"t-one-science-pack", 1}
+        },
+        time = 10,
+    }
+    solar_panel_mk3.effects = {
+        {
+            type = "unlock-recipe",
+            recipe = "solar-panel-mk3"
+        },
+    }
+    solar_panel_mk3.hidden = false
+    solar_panel_mk3.enabled = true
+    solar_panel_mk3.prerequisites = {"military-science-pack", "landfill"}
+    data:extend({
+        solar_panel_mk3
+    })
 end
 
 -- Military 2 (oxidic-rounds-magazine)
