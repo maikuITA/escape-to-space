@@ -247,7 +247,20 @@ data:extend({
                     animation_speed = 0.5,
                     shift = util.by_pixel(0, 0),
                     scale = 0.5
-                }
+                },
+                {
+                    filename = "__escape-to-space__/graphics/entity/cybernetics-facility/base/cybernetics-facility-hr-emission-1.png",
+                    priority = "high",
+                    width = 270,  -- tot/8
+                    height = 310, -- tot/8
+                    frame_count = 64,
+                    line_length = 8,
+                    animation_speed = 0.5,
+                    draw_as_glow = true,
+                    blend_mode = "additive",
+                    shift = util.by_pixel(0, 0),
+                    scale = 0.5
+                },
             }
         }
     },
@@ -310,6 +323,7 @@ data:extend({
     dying_explosion = data.raw["assembling-machine"]["electromagnetic-plant"].dying_explosion,
     collision_box = {{-1.9, -1.9}, {1.9, 1.9}},
     selection_box = {{-2.0, -2.0}, {2.0, 2.0}},
+    effect_receiver = { base_effect = { productivity = 0.25 }},
     resistances = data.raw["assembling-machine"]["electromagnetic-plant"].resistances,
     damaged_trigger_effect = data.raw["assembling-machine"]["electromagnetic-plant"].damaged_trigger_effect,
 
@@ -646,30 +660,89 @@ data:extend({
     graphics_set = {
         animation = {
             layers = {
-                {
+              {
+                priority = "high",
+                width = 270,
+                height = 310,
+                frame_count = 80,          -- 64 + 16
+                lines_per_file = 8,
+                animation_speed = 0.5,
+                shift = util.by_pixel(0, 0),
+                scale = 0.5,
+                stripes = {
+                  {
                     filename = "__escape-to-space__/graphics/entity/mixing-station/base/mixing-station-hr-animation-1.png",
-                    priority = "high",
-                    width = 270,  -- tot/8
-                    height = 310, -- tot/8
-                    frame_count = 64,
-                    line_length = 8,
-                    animation_speed = 0.5,
-                    shift = util.by_pixel(0, 0),
-                    scale = 0.5
-                },
-                {
-                    filename = "__escape-to-space__/graphics/entity/mixing-station/base/mixing-station-hr-shadow.png",
-                    priority = "high",
-                    width = 500,
-                    height = 350,
-                    frame_count = 1,
-                    line_length = 1,
-                    repeat_count = 64,
-                    draw_as_shadow = true,
-                    animation_speed = 0.5,
-                    shift = util.by_pixel(0, 0),
-                    scale = 0.5
+                    width_in_frames = 8,
+                    height_in_frames = 8
+                  },
+                  {
+                    filename = "__escape-to-space__/graphics/entity/mixing-station/base/mixing-station-hr-animation-2.png",
+                    width_in_frames = 8,
+                    height_in_frames = 2
+                  }
                 }
+              },
+              {
+                filename = "__escape-to-space__/graphics/entity/mixing-station/base/mixing-station-hr-shadow.png",
+                priority = "high",
+                width = 500,
+                height = 350,
+                frame_count = 1,
+                line_length = 1,
+                repeat_count = 80,         -- deve seguire il frame_count totale
+                draw_as_shadow = true,
+                animation_speed = 0.5,
+                shift = util.by_pixel(0, 0),
+                scale = 0.5
+              },
+              {
+                priority = "high",
+                width = 270,
+                height = 310,
+                frame_count = 80,          -- 64 + 16
+                lines_per_file = 8,
+                animation_speed = 0.5,
+                draw_as_glow = true,
+                blend_mode = "additive",
+                shift = util.by_pixel(0, 0),
+                scale = 0.5,
+                stripes = {
+                  {
+                    filename = "__escape-to-space__/graphics/entity/mixing-station/base/mixing-station-hr-emission1-1.png",
+                    width_in_frames = 8,
+                    height_in_frames = 8
+                  },
+                  {
+                    filename = "__escape-to-space__/graphics/entity/mixing-station/base/mixing-station-hr-emission1-2.png",
+                    width_in_frames = 8,
+                    height_in_frames = 2
+                  }
+                }
+              },
+              {
+                priority = "high",
+                width = 270,
+                height = 310,
+                frame_count = 80,          -- 64 + 16
+                lines_per_file = 8,
+                animation_speed = 0.5,
+                draw_as_glow = true,
+                blend_mode = "additive",
+                shift = util.by_pixel(0, 0),
+                scale = 0.5,
+                stripes = {
+                  {
+                    filename = "__escape-to-space__/graphics/entity/mixing-station/base/mixing-station-hr-emission2-1.png",
+                    width_in_frames = 8,
+                    height_in_frames = 8
+                  },
+                  {
+                    filename = "__escape-to-space__/graphics/entity/mixing-station/base/mixing-station-hr-emission2-2.png",
+                    width_in_frames = 8,
+                    height_in_frames = 2
+                  }
+                }
+              },
             }
         }
     },
@@ -698,7 +771,7 @@ data:extend({
     fluid_boxes_off_when_no_fluid_recipe = true,
   },
 
-  --Chemical station
+  --Chemical stager
   {
     type = "assembling-machine",
     name = "chemical-stager",
@@ -762,6 +835,19 @@ data:extend({
                     repeat_count = 60,
                     draw_as_shadow = true,
                     animation_speed = 0.5,
+                    shift = util.by_pixel(0, 0),
+                    scale = 0.5
+                },
+                {
+                    filename = "__escape-to-space__/graphics/entity/chemical-stager/chemical-stager-hr-emission-1.png",
+                    priority = "high",
+                    width = 400,  -- tot/8
+                    height = 400, -- tot/8
+                    frame_count = 60,
+                    line_length = 8,
+                    animation_speed = 0.5,
+                    draw_as_glow = true,
+                    blend_mode = "additive",
                     shift = util.by_pixel(0, 0),
                     scale = 0.5
                 },
@@ -849,15 +935,26 @@ data:extend({
         animation = {
             layers = {
                 {
-                    filename = "__escape-to-space__/graphics/entity/quantum-stabilizer/quantum-stabilizer-hr-animation-1.png",
-                    priority = "high",
-                    width = 410,  -- tot/8
-                    height = 410, -- tot/8
-                    frame_count = 64,
-                    line_length = 8,
-                    animation_speed = 0.5,
-                    shift = util.by_pixel(0, 0),
-                    scale = 0.5
+                  priority = "high",
+                  width = 410,
+                  height = 410,
+                  frame_count = 100,          -- 64 + 16
+                  lines_per_file = 8,
+                  animation_speed = 0.5,
+                  shift = util.by_pixel(0, 0),
+                  scale = 0.5,
+                  stripes = {
+                    {
+                      filename = "__escape-to-space__/graphics/entity/quantum-stabilizer/quantum-stabilizer-hr-animation-1.png",
+                      width_in_frames = 8,
+                      height_in_frames = 8
+                    },
+                    {
+                      filename = "__escape-to-space__/graphics/entity/quantum-stabilizer/quantum-stabilizer-hr-animation-2.png",
+                      width_in_frames = 8,
+                      height_in_frames = 5
+                    }
+                  }
                 },
                 {
                     filename = "__escape-to-space__/graphics/entity/quantum-stabilizer/quantum-stabilizer-hr-shadow.png",
@@ -866,7 +963,384 @@ data:extend({
                     height = 420,
                     frame_count = 1,
                     line_length = 1,
-                    repeat_count = 64,
+                    repeat_count = 100,         -- deve seguire il frame_count totale
+                    draw_as_shadow = true,
+                    animation_speed = 0.5,
+                    shift = util.by_pixel(0, 0),
+                    scale = 0.5
+                },
+                {
+                priority = "high",
+                width = 410,
+                height = 410,
+                frame_count = 100,          -- 64 + 16
+                lines_per_file = 8,
+                animation_speed = 0.5,
+                draw_as_glow = true,
+                blend_mode = "additive",
+                shift = util.by_pixel(0, 0),
+                scale = 0.5,
+                stripes = {
+                  {
+                    filename = "__escape-to-space__/graphics/entity/quantum-stabilizer/quantum-stabilizer-hr-emission-1.png",
+                    width_in_frames = 8,
+                    height_in_frames = 8
+                  },
+                  {
+                    filename = "__escape-to-space__/graphics/entity/quantum-stabilizer/quantum-stabilizer-hr-emission-2.png",
+                    width_in_frames = 8,
+                    height_in_frames = 5
+                  }
+                }
+              },
+            }
+        }
+    },
+  },
+
+  --Gravity assembler
+  {
+    type = "assembling-machine",
+    name = "gravity-assembler",
+    icon = "__escape-to-space__/graphics/icons/gravity-assembler-icon.png",
+    icon_size = 64,
+    flags = {"placeable-neutral", "placeable-player", "player-creation"},
+    minable = {mining_time = 0.2, result = "gravity-assembler"},
+    circuit_wire_max_distance = furnace_circuit_wire_max_distance,
+    circuit_connector = circuit_connector_definitions["basic-electric-furnace"],
+    max_health = 350,
+    corpse = "basic-electric-furnace-remnants",
+    dying_explosion = data.raw["furnace"]["electric-furnace"].dying_explosion,
+    effect_receiver = { base_effect = { productivity = 0.25 }},
+    resistances =
+    {
+      {
+        type = "fire",
+        percent = 80
+      }
+    },
+    collision_box = {{-2.2, -2.2}, {2.2, 2.2}},
+    selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
+    damaged_trigger_effect = data.raw["furnace"]["electric-furnace"].damaged_trigger_effect,
+    module_slots = 8,
+    icon_draw_specification = {shift = {0, -0.1}},
+    icons_positioning =
+    {
+      {inventory_index = defines.inventory.furnace_modules, shift = {0, 0.8}}
+    },
+    allowed_effects = {"consumption", "speed", "productivity", "pollution", "quality"},
+    crafting_categories = {"basic-crafting", "crafting", "advanced-crafting", "crafting-with-fluid"},
+    result_inventory_size = 1,
+    crafting_speed = 5,
+    energy_usage = "5000kW",
+    source_inventory_size = 1,
+    energy_source =
+    {
+      type = "electric",
+      usage_priority = "secondary-input"
+    },
+    graphics_set = {
+        animation = {
+            layers = {
+                {
+                    filename = "__escape-to-space__/graphics/entity/gravity-assembler/base/gravity-assembler-animation.png",
+                    priority = "high",
+                    width = 320,
+                    height = 320,
+                    frame_count = 100,
+                    line_length = 10,
+                    animation_speed = 0.5,
+                    shift = util.by_pixel(0, 0),
+                    scale = 0.5
+                },
+                {
+                    filename = "__escape-to-space__/graphics/entity/gravity-assembler/base/gravity-assembler-color1.png",
+                    priority = "high",
+                    width = 320,
+                    height = 320,
+                    frame_count = 100,
+                    line_length = 10,
+                    animation_speed = 0.5,
+                    draw_as_glow = false,
+                    blend_mode = "normal",
+                    shift = util.by_pixel(0, 0),
+                    scale = 0.5
+                },
+                {
+                    filename = "__escape-to-space__/graphics/entity/gravity-assembler/base/gravity-assembler-color2.png",
+                    priority = "high",
+                    width = 320,
+                    height = 320,
+                    frame_count = 100,
+                    line_length = 10,
+                    animation_speed = 0.5,
+                    draw_as_glow = false,
+                    blend_mode = "normal",
+                    shift = util.by_pixel(0, 0),
+                    scale = 0.5
+                },
+                {
+                    filename = "__escape-to-space__/graphics/entity/gravity-assembler/base/gravity-assembler-color3.png",
+                    priority = "high",
+                    width = 320,
+                    height = 320,
+                    frame_count = 100,
+                    line_length = 10,
+                    animation_speed = 0.5,
+                    draw_as_glow = false,
+                    blend_mode = "normal",
+                    shift = util.by_pixel(0, 0),
+                    scale = 0.5
+                },
+                {
+                    filename = "__escape-to-space__/graphics/entity/gravity-assembler/base/gravity-assembler-emission1.png",
+                    priority = "high",
+                    width = 320,
+                    height = 320,
+                    frame_count = 100,
+                    line_length = 10,
+                    animation_speed = 0.5,
+                    draw_as_glow = true,
+                    blend_mode = "additive",
+                    shift = util.by_pixel(0, 0),
+                    scale = 0.5
+                },
+                {
+                    filename = "__escape-to-space__/graphics/entity/gravity-assembler/base/gravity-assembler-emission2.png",
+                    priority = "high",
+                    width = 320,
+                    height = 320,
+                    frame_count = 100,
+                    line_length = 10,
+                    animation_speed = 0.5,
+                    draw_as_glow = true,
+                    blend_mode = "additive",
+                    shift = util.by_pixel(0, 0),
+                    scale = 0.5
+                },
+                {
+                    filename = "__escape-to-space__/graphics/entity/gravity-assembler/base/gravity-assembler-emission3.png",
+                    priority = "high",
+                    width = 320,
+                    height = 320,
+                    frame_count = 100,
+                    line_length = 10,
+                    animation_speed = 0.5,
+                    draw_as_glow = true,
+                    blend_mode = "additive",
+                    shift = util.by_pixel(0, 0),
+                    scale = 0.5
+                },
+            }
+        }
+    },
+    fluid_boxes =
+    {
+      {
+        production_type = "input",
+        pipe_picture = util.empty_sprite(),
+        pipe_covers = pipecoverspictures(),
+        always_draw_covers = false,
+        volume = 1000,
+        pipe_connections = {{ flow_direction="input", direction = defines.direction.south, position = {-1, 2} }}
+      },
+      {
+        production_type = "input",
+        pipe_picture = util.empty_sprite(),
+        pipe_covers = pipecoverspictures(),
+        always_draw_covers = false,
+        volume = 1000,
+        pipe_connections = {{ flow_direction="input", direction = defines.direction.south, position = {1, 2} }}
+      },
+      {
+        production_type = "output",
+        pipe_picture = util.empty_sprite(),
+        pipe_covers = pipecoverspictures(),
+        always_draw_covers = false,
+        volume = 100,
+        pipe_connections = {{ flow_direction="output", direction = defines.direction.north, position = {-1, -2} }}
+      },
+      {
+        production_type = "output",
+        pipe_picture = util.empty_sprite(),
+        pipe_covers = pipecoverspictures(),
+        always_draw_covers = false,
+        volume = 100,
+        pipe_connections = {{ flow_direction="output", direction = defines.direction.north, position = {1, -2} }}
+      }
+    },
+    fluid_boxes_off_when_no_fluid_recipe = true,
+  },
+
+  --Greenhouse
+  {
+    type = "assembling-machine",
+    name = "greenhouse",
+    icon = "__escape-to-space__/graphics/icons/greenhouse-icon.png",
+    icon_size = 64,
+    flags = {"placeable-neutral", "placeable-player", "player-creation"},
+    minable = {mining_time = 0.2, result = "greenhouse"},
+    circuit_wire_max_distance = furnace_circuit_wire_max_distance,
+    circuit_connector = circuit_connector_definitions["basic-electric-furnace"],
+    max_health = 350,
+    corpse = "basic-electric-furnace-remnants",
+    dying_explosion = data.raw["furnace"]["electric-furnace"].dying_explosion,
+    resistances =
+    {
+      {
+        type = "fire",
+        percent = 80
+      }
+    },
+    collision_box = {{-2.2, -2.2}, {2.2, 2.2}},
+    selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
+    damaged_trigger_effect = data.raw["furnace"]["electric-furnace"].damaged_trigger_effect,
+    module_slots = 4,
+    icon_draw_specification = {shift = {0, -0.1}},
+    icons_positioning =
+    {
+      {inventory_index = defines.inventory.furnace_modules, shift = {0, 0.8}}
+    },
+    allowed_effects = {"consumption", "speed", "productivity", "pollution", "quality"},
+    crafting_categories = {"bio"},
+    result_inventory_size = 1,
+    crafting_speed = 1,
+    energy_usage = "2000kW",
+    source_inventory_size = 1,
+    energy_source =
+    {
+      type = "electric",
+      usage_priority = "secondary-input"
+    },
+    graphics_set = {
+        animation = {
+            layers = {
+                {
+                  priority = "high",
+                  width = 340,
+                  height = 355,
+                  frame_count = 128,
+                  lines_per_file = 8,
+                  animation_speed = 0.5,
+                  shift = util.by_pixel(0, 0),
+                  scale = 0.5,
+                  stripes = {
+                    {
+                      filename = "__escape-to-space__/graphics/entity/greenhouse/sprite/greenhouse-hr-animation-1.png",
+                      width_in_frames = 8,
+                      height_in_frames = 8
+                    },
+                    {
+                      filename = "__escape-to-space__/graphics/entity/greenhouse/sprite/greenhouse-hr-animation-2.png",
+                      width_in_frames = 8,
+                      height_in_frames = 8
+                    }
+                  }
+                },
+                {
+                  priority = "high",
+                  width = 340,
+                  height = 355,
+                  frame_count = 128,
+                  lines_per_file = 8,
+                  animation_speed = 0.5,
+                  draw_as_glow = false,
+                  blend_mode = "normal",
+                  shift = util.by_pixel(0, 0),
+                  scale = 0.5,
+                  stripes = {
+                    {
+                      filename = "__escape-to-space__/graphics/entity/greenhouse/sprite/greenhouse-hr-color1-1.png",
+                      width_in_frames = 8,
+                      height_in_frames = 8
+                    },
+                    {
+                      filename = "__escape-to-space__/graphics/entity/greenhouse/sprite/greenhouse-hr-color1-2.png",
+                      width_in_frames = 8,
+                      height_in_frames = 8
+                    }
+                  }
+                },
+                {
+                  priority = "high",
+                  width = 340,
+                  height = 355,
+                  frame_count = 128,
+                  lines_per_file = 8,
+                  animation_speed = 0.5,
+                  draw_as_glow = false,
+                  blend_mode = "normal",
+                  shift = util.by_pixel(0, 0),
+                  scale = 0.5,
+                  stripes = {
+                    {
+                      filename = "__escape-to-space__/graphics/entity/greenhouse/sprite/greenhouse-hr-color2-1.png",
+                      width_in_frames = 8,
+                      height_in_frames = 8
+                    },
+                    {
+                      filename = "__escape-to-space__/graphics/entity/greenhouse/sprite/greenhouse-hr-color2-2.png",
+                      width_in_frames = 8,
+                      height_in_frames = 8
+                    }
+                  }
+                },
+                {
+                  priority = "high",
+                  width = 340,
+                  height = 355,
+                  frame_count = 128,
+                  lines_per_file = 8,
+                  animation_speed = 0.5,
+                  draw_as_glow = false,
+                  blend_mode = "normal",
+                  shift = util.by_pixel(0, 0),
+                  scale = 0.5,
+                  stripes = {
+                    {
+                      filename = "__escape-to-space__/graphics/entity/greenhouse/sprite/greenhouse-hr-color3-1.png",
+                      width_in_frames = 8,
+                      height_in_frames = 8
+                    },
+                    {
+                      filename = "__escape-to-space__/graphics/entity/greenhouse/sprite/greenhouse-hr-color3-2.png",
+                      width_in_frames = 8,
+                      height_in_frames = 8
+                    }
+                  }
+                },
+                {
+                  priority = "high",
+                  width = 340,
+                  height = 355,
+                  frame_count = 128,
+                  lines_per_file = 8,
+                  animation_speed = 0.5,
+                  draw_as_glow = true,
+                  blend_mode = "additive",
+                  shift = util.by_pixel(0, 0),
+                  scale = 0.5,
+                  stripes = {
+                    {
+                      filename = "__escape-to-space__/graphics/entity/greenhouse/sprite/greenhouse-hr-emission-1.png",
+                      width_in_frames = 8,
+                      height_in_frames = 8
+                    },
+                    {
+                      filename = "__escape-to-space__/graphics/entity/greenhouse/sprite/greenhouse-hr-emission-2.png",
+                      width_in_frames = 8,
+                      height_in_frames = 8
+                    }
+                  }
+                },
+                {
+                    filename = "__escape-to-space__/graphics/entity/greenhouse/sprite/greenhouse-hr-shadow.png",
+                    priority = "high",
+                    width = 700,
+                    height = 500,
+                    frame_count = 1,
+                    line_length = 1,
+                    repeat_count = 128,         -- deve seguire il frame_count totale
                     draw_as_shadow = true,
                     animation_speed = 0.5,
                     shift = util.by_pixel(0, 0),
@@ -875,5 +1349,41 @@ data:extend({
             }
         }
     },
+    fluid_boxes =
+    {
+      {
+        production_type = "input",
+        pipe_picture = util.empty_sprite(),
+        pipe_covers = pipecoverspictures(),
+        always_draw_covers = false,
+        volume = 1000,
+        pipe_connections = {{ flow_direction="input", direction = defines.direction.south, position = {-1, 2} }}
+      },
+      {
+        production_type = "input",
+        pipe_picture = util.empty_sprite(),
+        pipe_covers = pipecoverspictures(),
+        always_draw_covers = false,
+        volume = 1000,
+        pipe_connections = {{ flow_direction="input", direction = defines.direction.south, position = {1, 2} }}
+      },
+      {
+        production_type = "output",
+        pipe_picture = util.empty_sprite(),
+        pipe_covers = pipecoverspictures(),
+        always_draw_covers = false,
+        volume = 100,
+        pipe_connections = {{ flow_direction="output", direction = defines.direction.north, position = {-1, -2} }}
+      },
+      {
+        production_type = "output",
+        pipe_picture = util.empty_sprite(),
+        pipe_covers = pipecoverspictures(),
+        always_draw_covers = false,
+        volume = 100,
+        pipe_connections = {{ flow_direction="output", direction = defines.direction.north, position = {1, -2} }}
+      }
+    },
+    fluid_boxes_off_when_no_fluid_recipe = true,
   },
 })

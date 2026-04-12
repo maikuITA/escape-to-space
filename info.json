@@ -1,10 +1,10 @@
 {
   "name": "escape-to-space",
-  "version": "0.4.6",
+  "version": "0.4.7",
   "title": "Escape to Space",
   "author": "maikuu",
   "contact": "",
-  "homepage": "",
+  "homepage": "https://github.com/maikuITA/escape-to-space",
   "factorio_version": "2.0",
   "dependencies": [
     "base >= 2.0.0",
@@ -12,12 +12,8 @@
     "VoidChestInstant >= 2.7.1",
     "? flib",
     "? FNEI",
-    "? textplates >= 0.7.2",
-	  "? nixie-tubes >= 2.0.9",
-	  "? newly-constructed-machines-wait-for-their-modules >= 1.1.19",
-	  "? RateCalculator >= 3.3.8",
-	  "!let-me-laser-down-asteroids",
-	  "!Disable_vanilla_spoilage"
+	  "? simplified-thrusters >= 1.0.0",
+	  "? RateCalculator >= 3.3.8"
   ],
   "description": "Start your adventure directly in deep space on an orbital platform. Planets are locked. Harvest asteroids, synthesize materials, and survive in the void. Inspired by SpaceBlock."
 }

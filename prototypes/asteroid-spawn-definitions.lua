@@ -18,10 +18,11 @@ end
 --metallic, carbonic, oxide, promethium, irony, coppery, rocky, tungsten, scrap, alien, fluorite.
 asteroid_functions.axos_ratio        = {0, 5, 0 , 0, 1, 1, 5, 0, 0, 0, 0}
 asteroid_functions.keria_ratio       = {0, 0, 5 , 0, 1, 1, 5, 0, 0, 0, 0}
+asteroid_functions.ropoloid_ratio    = {0, 3, 3 , 0, 1, 1, 5, 0, 0, 0, 0}
 asteroid_functions.nauvis_ratio      = {0, 0, 0 , 0, 4, 3, 5, 0, 0, 0, 0}
-asteroid_functions.gleba_ratio       = {0, 2, 1 , 0, 4, 3, 5, 0, 0, 5, 0}
-asteroid_functions.vulcanus_ratio    = {0, 2, 1 , 0, 4, 3, 5, 5, 0, 0, 0}
-asteroid_functions.fulgora_ratio     = {0, 3, 1 , 0, 4, 3, 5, 0, 5, 0, 0}
+asteroid_functions.gleba_ratio       = {0, 1, 3 , 0, 4, 3, 5, 0, 0, 5, 0}
+asteroid_functions.vulcanus_ratio    = {0, 4, 1 , 0, 4, 3, 5, 5, 0, 0, 0}
+asteroid_functions.fulgora_ratio     = {0, 2, 2 , 0, 4, 3, 5, 0, 5, 0, 0}
 asteroid_functions.aquilo_ratio      = {0, 2, 20, 0, 4, 3, 5, 0, 0, 0, 5}
 asteroid_functions.system_edge_ratio = {0, 5, 2 , 0, 4, 3, 5, 0, 0, 0, 0}
 
@@ -29,6 +30,7 @@ asteroid_functions.system_edge_ratio = {0, 5, 2 , 0, 4, 3, 5, 0, 0, 0, 0}
 -- Questi valori vengono poi interpolati lungo le connessioni tra location.
 asteroid_functions.axos_chunks        = 0.0250
 asteroid_functions.keria_chunks       = 0.0250
+asteroid_functions.ropoloid_chunks    = 0.0250
 asteroid_functions.nauvis_chunks      = 0.0125
 asteroid_functions.vulcanus_chunks    = 0.0020
 asteroid_functions.vulcanus_medium    = 0.0025
@@ -107,6 +109,28 @@ asteroid_functions.axos_keria =
   {
     {position = 0.1, ratios = asteroid_functions.axos_ratio},
     {position = 0.9, ratios = asteroid_functions.keria_ratio},
+  }
+}
+
+-- Dati di transizione da Vulcanus a Ropoloid.
+-- Ogni sezione definisce probabilita e rapporti da interpolare in base alla posizione.
+asteroid_functions.vulcanus_ropoloid =
+{
+  probability_on_range_chunk =
+  {
+    {position = 0.1, probability = asteroid_functions.vulcanus_chunks, angle_when_stopped = asteroid_functions.chunk_angle},
+    {position = 0.9, probability = asteroid_functions.ropoloid_chunks, angle_when_stopped = asteroid_functions.chunk_angle}
+  },
+  probability_on_range_medium =
+  {
+    {position = 0.1, probability = 0, angle_when_stopped = asteroid_functions.medium_angle},
+    {position = 0.5, probability = asteroid_functions.vulcanus_medium * 3, angle_when_stopped = asteroid_functions.medium_angle},
+    {position = 0.9, probability = asteroid_functions.vulcanus_medium, angle_when_stopped = asteroid_functions.medium_angle}
+  },
+  type_ratios =
+  {
+    {position = 0.1, ratios = asteroid_functions.vulcanus_ratio},
+    {position = 0.9, ratios = asteroid_functions.ropoloid_ratio},
   }
 }
 

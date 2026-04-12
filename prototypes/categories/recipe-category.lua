@@ -27,5 +27,9 @@ data:extend(
   {
     type = "recipe-category",
     name = "custom-metallurgy"
+  },
+  {
+    type = "recipe-category",
+    name = "bio"
   }
 })

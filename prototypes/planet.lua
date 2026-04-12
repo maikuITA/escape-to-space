@@ -3,6 +3,7 @@ local asteroid_util = require("__escape-to-space__.prototypes.asteroid-spawn-def
 data:extend({
 
 -------------------------------------------------------------------------- LOCATIONS
+--- Orientation: 0.75 sinistra, 0.5 sotto
   {
     type = "space-location",
     name = "axos",
@@ -37,6 +38,24 @@ data:extend({
     asteroid_spawn_influence = 1,
     asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_keria, 0.9)
   },
+  {
+    type = "space-location",
+    name = "ropoloid",
+    icon = "__escape-to-space__/graphics/icons/ropoloid.png",
+    starmap_icon = "__escape-to-space__/graphics/icons/ropoloid.png",
+    starmap_icon_size = 64,
+    order = "a[ropoloid]",
+    subgroup = "planets",
+    solar_power_in_space = 200,
+    gravity_pull = -20,
+    distance = 20,
+    orientation = 0.95,
+    magnitude = 1.0,
+    label_orientation = 0.15,
+    asteroid_spawn_influence = 1,
+    asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_keria, 0.9)
+  },
+  
 -------------------------------------------------------------------------- MODDED PLANET CONNECTIONS
   {
     type = "space-connection",
@@ -67,6 +86,16 @@ data:extend({
     order = "0-b",
     length = 15000,
     asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.axos_keria)
+  },
+  {
+    type = "space-connection",
+    name = "vulcanus-ropoloid",
+    subgroup = "planet-connections",
+    from = "vulcanus",
+    to = "ropoloid",
+    order = "0-b",
+    length = 30000,
+    asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.vulcanus_ropoloid)
   },
   -------------------------------------------------------------------------- VANILLA PLANET CONNECTIONS
   {

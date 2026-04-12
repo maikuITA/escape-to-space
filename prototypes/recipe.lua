@@ -234,6 +234,30 @@ data:extend({
     },
     {
 		type = "recipe",
+		name = "gravity-assembler",
+        category = "crafting",
+		ingredients = {
+          {type = "item", name = "oxidic-plate", amount = 10},
+        },
+        results = {{type = "item", name = "gravity-assembler", amount = 1}},
+        energy_required = 0.5,
+        enabled = false
+    },
+    {
+		type = "recipe",
+		name = "greenhouse",
+        category = "crafting",
+		ingredients = {
+          {type = "item", name = "oxidic-plate", amount = 10}
+        },
+        results = {{type = "item", name = "greenhouse", amount = 1}},
+        energy_required = 0.5,
+        enabled = false
+    },
+
+    -- Energy factories
+    {
+		type = "recipe",
 		name = "solar-panel-mk2",
         category = "crafting",
 		ingredients = {
@@ -345,7 +369,7 @@ data:extend({
         category = "stabilizing",
 		ingredients = {
           {type = "item", name = "blank-data-disk", amount = 1},
-          {type = "item", name = "wood", amount = 50},
+          {type = "item", name = "greenhouse", amount = 1},
         },
         results = {{type = "item", name = "bio-data-disk", amount = 1}},
         energy_required = 30,
@@ -521,7 +545,7 @@ data:extend({
     },
     {
 		type = "recipe",
-		name = "carbide-blending",
+		name = "tungsten-carbide-blending",
         category = "blending",
 		ingredients = {
           {type = "item", name = "carbon", amount = 1},
@@ -530,6 +554,20 @@ data:extend({
         },
         results = {{type = "item", name = "tungsten-carbide", amount = 1}},
         energy_required = 2,
+        enabled = false
+    },
+    {
+		type = "recipe",
+		name = "battery-blending",
+        category = "blending",
+		ingredients = {
+          {type = "item", name = "iron-plate", amount = 1},
+          {type = "item", name = "copper-plate", amount = 1},
+          {type = "item", name = "carbon-steel-plate", amount = 1},
+          {type = "fluid", name = "sulfuric-acid", amount = 20}
+        },
+        results = {{type = "item", name = "battery", amount = 1}},
+        energy_required = 3,
         enabled = false
     },
 
@@ -756,7 +794,6 @@ data:extend({
     {
         type = "recipe",
         name = "scrap-asteroid-crushing",
-        enabled = true,
         icon = "__escape-to-space__/graphics/icons/scrap-asteroid-crushing.png",
         category = "crushing",
         subgroup="space-crushing",
@@ -766,12 +803,12 @@ data:extend({
             {type="item", name="scrap", amount=20},
             {type = "item", name = "scrap-asteroid-chunk", amount = 1, probability = 0.2}
         },
-        allow_productivity = true
+        allow_productivity = true,
+        enabled = false
     },
     {
         type = "recipe",
         name = "alien-asteroid-crushing",
-        enabled = true,
         icon = "__escape-to-space__/graphics/icons/alien-asteroid-crushing.png",
         category = "crushing",
         subgroup="space-crushing",
@@ -781,12 +818,12 @@ data:extend({
             {type="item", name="yumako-seed", amount=8},
             {type = "item", name = "alien-asteroid-chunk", amount = 1, probability = 0.2}
         },
-        allow_productivity = true
+        allow_productivity = true,
+        enabled = false
     },
     {
         type = "recipe",
         name = "fluorite-asteroid-crushing",
-        enabled = true,
         icon = "__escape-to-space__/graphics/icons/fluorite-asteroid-crushing.png",
         category = "crushing",
         subgroup="space-crushing",
@@ -796,7 +833,8 @@ data:extend({
             {type="item", name="fluorite", amount=8},
             {type = "item", name = "fluorite-asteroid-chunk", amount = 1, probability = 0.2}
         },
-        allow_productivity = true
+        allow_productivity = true,
+        enabled = false
     },
 
     -- Metallurgy recipes
@@ -823,6 +861,68 @@ data:extend({
         },
         results = {{type = "item", name = "carbon-steel-plate", amount = 1}},
         energy_required = 2,
+        allow_productivity = true,
+        enabled = false
+    },
+
+    -- Bio recipes
+    {
+        type = "recipe",
+        name = "tree-seed",
+        icon = "__escape-to-space__/graphics/icons/tree-seed.png",
+        category = "bio",
+        ingredients = {
+            {type = "item", name = "biomass", amount = 10},
+            {type = "fluid", name = "water", amount = 100},
+        },
+        results = {{type ="item", name = "tree-seed", amount = 1}},
+        energy_required = 5,
+        allow_productivity = true,
+        enabled = false
+    },
+    {
+        type = "recipe",
+        name = "tree-seed-2",
+        icon = "__escape-to-space__/graphics/icons/tree-seed.png",
+        category = "bio",
+        ingredients = {
+            {type = "item", name = "wood", amount = 2},
+            {type = "fluid", name = "water", amount = 100},
+        },
+        results = {{type ="item", name = "tree-seed", amount = 1}},
+        energy_required = 5,
+        allow_productivity = true,
+        enabled = false
+    },
+    {
+        type = "recipe",
+        name = "wood",
+        icon = "__base__/graphics/icons/wood.png",
+        category = "bio",
+        ingredients = {
+            {type = "item", name = "tree-seed", amount = 1},
+            {type = "fluid", name = "water", amount = 100},
+        },
+        results = {
+            {type ="item", name = "wood", amount = 4},
+        },
+        energy_required = 5,
+        allow_productivity = true,
+        enabled = false
+    },
+    {
+        type = "recipe",
+        name = "biomass",
+        icon = "__escape-to-space__/graphics/icons/biomass.png",
+        category = "bio",
+        ingredients = {
+            {type = "item", name = "wood", amount = 2},
+            {type = "fluid", name = "water", amount = 100},
+        },
+        results = {
+            {type ="item", name = "biomass", amount = 4}
+        },
+        energy_required = 5,
         allow_productivity = true,
         enabled = false
     },

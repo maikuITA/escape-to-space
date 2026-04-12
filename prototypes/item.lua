@@ -340,8 +340,31 @@ data:extend({
     pick_sound = item_sounds.resource_inventory_pickup,
     drop_sound = item_sounds.resource_inventory_move,
     stack_size = 50,
-    default_import_location = "aquilo",
     weight = 4*kg
+  },
+  {
+    type = "item",
+    name = "biomass",
+    icon = "__escape-to-space__/graphics/icons/biomass.png",
+    subgroup = "intermediate-product",
+    order = "d[biomass]-a[biomass]",
+    inventory_move_sound = item_sounds.resource_inventory_move,
+    pick_sound = item_sounds.resource_inventory_pickup,
+    drop_sound = item_sounds.resource_inventory_move,
+    stack_size = 200,
+    weight = 1*kg
+  },
+  {
+    type = "item",
+    name = "fertilizer",
+    icon = "__escape-to-space__/graphics/icons/fertilizer.png",
+    subgroup = "intermediate-product",
+    order = "d[fertilizer]-a[fertilizer]",
+    inventory_move_sound = item_sounds.resource_inventory_move,
+    pick_sound = item_sounds.resource_inventory_pickup,
+    drop_sound = item_sounds.resource_inventory_move,
+    stack_size = 100,
+    weight = 2*kg
   },
 
   -- Ammo
@@ -458,6 +481,32 @@ data:extend({
     pick_sound = item_sounds.electric_large_inventory_pickup,
     drop_sound = item_sounds.electric_large_inventory_move,
     place_result = "quantum-stabilizer",
+    stack_size = 1,
+    weight = 100*kg
+  },
+  {
+    type = "item",
+    name = "gravity-assembler",
+    icon = "__escape-to-space__/graphics/icons/gravity-assembler-icon.png",
+    subgroup = "smelting-machine",
+    order = "c[gravity-assembler]",
+    inventory_move_sound = item_sounds.electric_large_inventory_move,
+    pick_sound = item_sounds.electric_large_inventory_pickup,
+    drop_sound = item_sounds.electric_large_inventory_move,
+    place_result = "gravity-assembler",
+    stack_size = 1,
+    weight = 100*kg
+  },
+  {
+    type = "item",
+    name = "greenhouse",
+    icon = "__escape-to-space__/graphics/icons/greenhouse-icon.png",
+    subgroup = "smelting-machine",
+    order = "c[greenhouse]",
+    inventory_move_sound = item_sounds.electric_large_inventory_move,
+    pick_sound = item_sounds.electric_large_inventory_pickup,
+    drop_sound = item_sounds.electric_large_inventory_move,
+    place_result = "greenhouse",
     stack_size = 1,
     weight = 100*kg
   },

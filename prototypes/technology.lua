@@ -364,6 +364,16 @@ if landfill then
             type = "unlock-recipe",
             recipe = "thruster"
         },
+        {
+            type = "unlock-space-location",
+            space_location = "axos",
+            use_icon_overlay_constant = true
+        },
+        {
+            type = "unlock-space-location",
+            space_location = "keria",
+            use_icon_overlay_constant = true
+        },
     }
     landfill.hidden = false
     landfill.enabled = true
@@ -727,10 +737,6 @@ if military_2 then
             type = "unlock-recipe",
             recipe = "oxidic-rounds-magazine"
         },
-        {
-            type = "unlock-recipe",
-            recipe = "laser-turret"
-        },
     }
     military_2.hidden = false
     military_2.enabled = true
@@ -1039,6 +1045,10 @@ if blending then
             type = "unlock-recipe",
             recipe = "plastic-blending"
         },
+        {
+            type = "unlock-recipe",
+            recipe = "battery-blending"
+        },
     }
     blending.hidden = false
     blending.enabled = true
@@ -1288,11 +1298,16 @@ if vulcanus then
         },
         {
             type = "unlock-recipe",
-            recipe = "carbide-blending"
+            recipe = "tungsten-carbide-blending"
         },
         {
             type = "unlock-recipe",
             recipe = "carbon-steel-plate-metallurgy"
+        },
+        {
+            type = "unlock-space-location",
+            space_location = "ropoloid",
+            use_icon_overlay_constant = true
         },
     }
     vulcanus.hidden = false
@@ -1392,6 +1407,46 @@ if gleba then
         "military-science-pack",
         "t-two-science-pack",
     }
+end
+
+-- Greenhouse
+local greenhouse = table.deepcopy(data.raw["technology"]["gun-turret"])
+if greenhouse then
+    greenhouse.name = "greenhouse"
+    greenhouse.icon = "__escape-to-space__/graphics/technology/greenhouse-icon.png"
+    greenhouse.icon_size = 640
+    greenhouse.unit = {
+        count = 100,
+        ingredients = {
+            {"earth-science-pack", 1},
+            {"axkeria-science-pack", 1},
+            {"t-one-science-pack", 1},
+            {"t-two-science-pack", 1}
+        },
+        time = 10,
+    }
+    greenhouse.effects = {
+        {
+            type = "unlock-recipe",
+            recipe = "greenhouse"
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "tree-seed"
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "tree-seed-2"
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "wood"
+        },
+    }
+    greenhouse.hidden = false
+    greenhouse.enabled = true
+    greenhouse.prerequisites = {"planet-discovery-gleba"}
+    data:extend({greenhouse})
 end
 
 -- Planet Aquilo
@@ -2034,7 +2089,7 @@ end
 
 data:extend({energy_data_disk})
 
--- Bio data pack
+-- Bio data disk
 local bio_data_disk = table.deepcopy(data.raw["technology"]["gun-turret"])
 if bio_data_disk then
     bio_data_disk.name = "bio-data-disk"
@@ -2057,7 +2112,7 @@ if bio_data_disk then
     }
     bio_data_disk.hidden = false
     bio_data_disk.enabled = true
-    bio_data_disk.prerequisites = {"t-three-science-pack", "data-disks"}
+    bio_data_disk.prerequisites = {"t-three-science-pack", "data-disks", "greenhouse"}
 end
 
 data:extend({bio_data_disk})
