@@ -95,6 +95,9 @@ script.on_init(function()
     storage.pending_teleport = {}
     storage.home_platform_by_force = {}
 
+    -- on_init
+    storage.abandoned_platform_granted = {}
+
     -- Grant baseline technologies to avoid planet-first progression deadlocks.
     --for _, tech_name in ipairs(default_techs) do
         --local tech = game.forces.player.technologies[tech_name]
@@ -136,6 +139,9 @@ script.on_load(function()
     -- Reinitialize transient tables and rebind handlers after save load.
     storage.pending_teleport = storage.pending_teleport or {}
     storage.home_platform_by_force = storage.home_platform_by_force or {}
+
+    -- on_load
+    storage.abandoned_platform_granted = storage.abandoned_platform_granted or {}
     init_events()
 end)
 
@@ -221,4 +227,35 @@ script.on_event(defines.events.on_player_respawned, function(event)
     local player = game.get_player(event.player_index)
     local platform = get_or_create_home_platform(player)
     storage.pending_teleport[player.index] = platform.index
+end)
+
+-- 2nd space platform
+script.on_event(defines.events.on_research_finished, function(event)
+    local research = event.research
+    if not research or research.name ~= "abandoned-space-platform" then
+        return
+    end
+
+    local force = research.force
+    storage.abandoned_platform_granted = storage.abandoned_platform_granted or {}
+
+    if storage.abandoned_platform_granted[force.name] then
+        return
+    end
+
+    if not force.is_space_platforms_unlocked() then
+        force.unlock_space_platforms()
+    end
+
+    local platform = force.create_space_platform{
+        planet = "nauvis",
+        name = "Abandoned Platform",
+        starter_pack = { name = "space-platform-starter-pack", count = 1 }
+    }
+
+    if platform and platform.valid then
+        platform:apply_starter_pack()
+    end
+
+    storage.abandoned_platform_granted[force.name] = true
 end)

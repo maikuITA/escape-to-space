@@ -12,7 +12,7 @@ data:extend({
     starmap_icon_size = 64,
     order = "a[axos]",
     subgroup = "planets",
-    solar_power_in_space = 400,
+    solar_power_in_space = 1000,
     gravity_pull = -20,
     distance = 2,
     orientation = 0.24,
@@ -46,14 +46,31 @@ data:extend({
     starmap_icon_size = 64,
     order = "a[ropoloid]",
     subgroup = "planets",
-    solar_power_in_space = 200,
+    solar_power_in_space = 150,
     gravity_pull = -20,
     distance = 20,
     orientation = 0.95,
     magnitude = 1.0,
     label_orientation = 0.15,
     asteroid_spawn_influence = 1,
-    asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_keria, 0.9)
+    asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.vulcanus_ropoloid, 0.9)
+  },
+  {
+    type = "space-location",
+    name = "nekohaven",
+    icon = "__escape-to-space__/graphics/icons/nekohaven.png",
+    starmap_icon = "__escape-to-space__/graphics/icons/nekohaven.png",
+    starmap_icon_size = 64,
+    order = "a[nekohaven]",
+    subgroup = "planets",
+    solar_power_in_space = 400,
+    gravity_pull = -20,
+    distance = 10,
+    orientation = 0.83,
+    magnitude = 1.0,
+    label_orientation = 0.15,
+    asteroid_spawn_influence = 1,
+    asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.vulcanus_nekohaven, 0.9)
   },
   
 -------------------------------------------------------------------------- MODDED PLANET CONNECTIONS
@@ -97,6 +114,37 @@ data:extend({
     length = 30000,
     asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.vulcanus_ropoloid)
   },
+  {
+    type = "space-connection",
+    name = "vulcanus-nekohaven",
+    subgroup = "planet-connections",
+    from = "vulcanus",
+    to = "nekohaven",
+    order = "0-b",
+    length = 20000,
+    asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.vulcanus_nekohaven)
+  },
+  {
+    type = "space-connection",
+    name = "axos-nekohaven",
+    subgroup = "planet-connections",
+    from = "axos",
+    to = "nekohaven",
+    order = "0-b",
+    length = 15000,
+    asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.axos_nekohaven)
+  },
+  {
+    type = "space-connection",
+    name = "ropoloid-nekohaven",
+    subgroup = "planet-connections",
+    from = "ropoloid",
+    to = "nekohaven",
+    order = "0-b",
+    length = 20000,
+    asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.ropoloid_nekohaven)
+  },
+
   -------------------------------------------------------------------------- VANILLA PLANET CONNECTIONS
   {
     type = "space-connection",

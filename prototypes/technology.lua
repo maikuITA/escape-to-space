@@ -1265,6 +1265,68 @@ end
 
 data:extend({t_two_sp})
 
+-- Planet Nekohaven
+local nekohaven = table.deepcopy(data.raw["technology"]["planet-discovery-vulcanus"])
+if nekohaven then
+    nekohaven.name = "planet-discovery-nekohaven"
+    nekohaven.icons = util.technology_icon_constant_planet("__escape-to-space__/graphics/technology/nekohaven.png")
+    nekohaven.icon_size = 512
+    nekohaven.unit = {
+        count = 500,
+        ingredients = {
+            {"earth-science-pack", 1},
+            {"axkeria-science-pack", 1},
+            {"t-one-science-pack", 1},
+            {"t-two-science-pack", 1}
+        },
+        time = 10,
+    }
+    nekohaven.effects = {
+        {
+            type = "unlock-space-location",
+            space_location = "nekohaven",
+            use_icon_overlay_constant = true
+        },
+    }
+    nekohaven.hidden = false
+    nekohaven.enabled = true
+    nekohaven.prerequisites = {
+        "t-two-science-pack",
+    }
+    data:extend({nekohaven})
+end
+
+-- Planet Ropoloid
+local ropoloid = table.deepcopy(data.raw["technology"]["planet-discovery-vulcanus"])
+if ropoloid then
+    ropoloid.name = "planet-discovery-ropoloid"
+    ropoloid.icons = util.technology_icon_constant_planet("__escape-to-space__/graphics/technology/ropoloid.png")
+    ropoloid.icon_size = 512
+    ropoloid.unit = {
+        count = 500,
+        ingredients = {
+            {"earth-science-pack", 1},
+            {"axkeria-science-pack", 1},
+            {"t-one-science-pack", 1},
+            {"t-two-science-pack", 1}
+        },
+        time = 10,
+    }
+    ropoloid.effects = {
+        {
+            type = "unlock-space-location",
+            space_location = "ropoloid",
+            use_icon_overlay_constant = true
+        },
+    }
+    ropoloid.hidden = false
+    ropoloid.enabled = true
+    ropoloid.prerequisites = {
+        "t-two-science-pack",
+    }
+    data:extend({ropoloid})
+end
+
 -- Planet Vulcanus
 local vulcanus = data.raw["technology"]["planet-discovery-vulcanus"]
 if vulcanus then
@@ -1303,11 +1365,6 @@ if vulcanus then
         {
             type = "unlock-recipe",
             recipe = "carbon-steel-plate-metallurgy"
-        },
-        {
-            type = "unlock-space-location",
-            space_location = "ropoloid",
-            use_icon_overlay_constant = true
         },
     }
     vulcanus.hidden = false
@@ -1445,8 +1502,36 @@ if greenhouse then
     }
     greenhouse.hidden = false
     greenhouse.enabled = true
-    greenhouse.prerequisites = {"planet-discovery-gleba"}
+    greenhouse.prerequisites = {"planet-discovery-nekohaven"}
     data:extend({greenhouse})
+end
+
+-- Abandoned space platform
+local space_platform = table.deepcopy(data.raw["technology"]["gun-turret"])
+if space_platform then
+    space_platform.name = "abandoned-space-platform"
+    space_platform.icon = data.raw["technology"]["rocket-silo"].icon
+    space_platform.icon_size = data.raw["technology"]["rocket-silo"].icon_size
+    space_platform.unit = {
+        count = 100,
+        ingredients = {
+            {"earth-science-pack", 1},
+            {"axkeria-science-pack", 1},
+            {"t-one-science-pack", 1},
+            {"t-two-science-pack", 1}
+        },
+        time = 10,
+    }
+    space_platform.effects = {
+        {
+            type = "unlock-recipe",
+            recipe = "pipe"
+        },
+    }
+    space_platform.hidden = false
+    space_platform.enabled = true
+    space_platform.prerequisites = {"planet-discovery-ropoloid"}
+    data:extend({space_platform})
 end
 
 -- Planet Aquilo
