@@ -330,6 +330,19 @@ data:extend({
     weight = data.raw.item["pipe"].weight,
     random_tint_color = item_tints.iron_rust
   },
+  {
+    type = "item",
+    name = "fluorite",
+    icon = "__escape-to-space__/graphics/icons/fluorite.png",
+    subgroup = "aquilo-processes",
+    order = "d[fluorite]-a[fluorite]",
+    inventory_move_sound = item_sounds.resource_inventory_move,
+    pick_sound = item_sounds.resource_inventory_pickup,
+    drop_sound = item_sounds.resource_inventory_move,
+    stack_size = 50,
+    default_import_location = "aquilo",
+    weight = 4*kg
+  },
 
   -- Ammo
   {

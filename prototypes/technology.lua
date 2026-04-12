@@ -1345,6 +1345,10 @@ if fulgora then
             space_location = "fulgora",
             use_icon_overlay_constant = true
         },
+        {
+            type = "unlock-recipe",
+            recipe = "scrap-asteroid-crushing"
+        },
     }
     fulgora.hidden = false
     fulgora.enabled = true
@@ -1369,6 +1373,17 @@ if gleba then
         },
         time = 10,
     }
+    gleba.effects = {
+        {
+            type = "unlock-space-location",
+            space_location = "gleba",
+            use_icon_overlay_constant = true
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "alien-asteroid-crushing"
+        },
+    }
     gleba.hidden = false
     gleba.enabled = true
     gleba.prerequisites = {
@@ -1391,6 +1406,17 @@ if aquilo then
             {"t-two-science-pack", 1}
         },
         time = 10,
+    }
+    aquilo.effects = {
+        {
+            type = "unlock-space-location",
+            space_location = "aquilo",
+            use_icon_overlay_constant = true
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "fluorite-asteroid-crushing"
+        },
     }
     aquilo.hidden = false
     aquilo.enabled = true

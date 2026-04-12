@@ -753,6 +753,51 @@ data:extend({
         allow_productivity = true,
         enabled = false
     },
+    {
+        type = "recipe",
+        name = "scrap-asteroid-crushing",
+        enabled = true,
+        icon = "__escape-to-space__/graphics/icons/scrap-asteroid-crushing.png",
+        category = "crushing",
+        subgroup="space-crushing",
+        energy_required = 2,
+        ingredients = {{type="item", name="scrap-asteroid-chunk", amount=1}},
+        results = {
+            {type="item", name="scrap", amount=20},
+            {type = "item", name = "scrap-asteroid-chunk", amount = 1, probability = 0.2}
+        },
+        allow_productivity = true
+    },
+    {
+        type = "recipe",
+        name = "alien-asteroid-crushing",
+        enabled = true,
+        icon = "__escape-to-space__/graphics/icons/alien-asteroid-crushing.png",
+        category = "crushing",
+        subgroup="space-crushing",
+        energy_required = 2,
+        ingredients = {{type="item", name="alien-asteroid-chunk", amount=1}},
+        results = {
+            {type="item", name="yumako-seed", amount=8},
+            {type = "item", name = "alien-asteroid-chunk", amount = 1, probability = 0.2}
+        },
+        allow_productivity = true
+    },
+    {
+        type = "recipe",
+        name = "fluorite-asteroid-crushing",
+        enabled = true,
+        icon = "__escape-to-space__/graphics/icons/fluorite-asteroid-crushing.png",
+        category = "crushing",
+        subgroup="space-crushing",
+        energy_required = 2,
+        ingredients = {{type="item", name="fluorite-asteroid-chunk", amount=1}},
+        results = {
+            {type="item", name="fluorite", amount=8},
+            {type = "item", name = "fluorite-asteroid-chunk", amount = 1, probability = 0.2}
+        },
+        allow_productivity = true
+    },
 
     -- Metallurgy recipes
     {
