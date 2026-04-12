@@ -10,6 +10,7 @@
     "base >= 2.0.0",
     "space-age >= 2.0.0",
     "VoidChestInstant >= 2.7.1",
+    "maikuu-radio-terminal >= 1.0.0",
     "? flib",
     "? FNEI",
 	  "? simplified-thrusters >= 1.0.0",
