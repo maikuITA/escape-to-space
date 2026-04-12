@@ -2011,7 +2011,7 @@ local energy_data_disk = table.deepcopy(data.raw["technology"]["gun-turret"])
 if energy_data_disk then
     energy_data_disk.name = "energy-data-disk"
     energy_data_disk.icon = "__escape-to-space__/graphics/technology/energy-data-disk.png"
-    energy_data_disk.icon_size = 256
+    energy_data_disk.icon_size = 128
     energy_data_disk.unit = {
         count = 500,
         ingredients = {
@@ -2039,7 +2039,7 @@ local bio_data_disk = table.deepcopy(data.raw["technology"]["gun-turret"])
 if bio_data_disk then
     bio_data_disk.name = "bio-data-disk"
     bio_data_disk.icon = "__escape-to-space__/graphics/technology/bio-data-disk.png"
-    bio_data_disk.icon_size = 256
+    bio_data_disk.icon_size = 128
     bio_data_disk.unit = {
         count = 500,
         ingredients = {
@@ -2067,7 +2067,7 @@ local promethium_data_disk = table.deepcopy(data.raw["technology"]["gun-turret"]
 if promethium_data_disk then
     promethium_data_disk.name = "promethium-data-disk"
     promethium_data_disk.icon = "__escape-to-space__/graphics/technology/promethium-data-disk.png"
-    promethium_data_disk.icon_size = 256
+    promethium_data_disk.icon_size = 128
     promethium_data_disk.unit = {
         count = 500,
         ingredients = {
@@ -2103,7 +2103,7 @@ local mechanical_data_disk = table.deepcopy(data.raw["technology"]["gun-turret"]
 if mechanical_data_disk then
     mechanical_data_disk.name = "mechanical-data-disk"
     mechanical_data_disk.icon = "__escape-to-space__/graphics/technology/mechanical-data-disk.png"
-    mechanical_data_disk.icon_size = 256
+    mechanical_data_disk.icon_size = 128
     mechanical_data_disk.unit = {
         count = 500,
         ingredients = {
@@ -2131,7 +2131,7 @@ local military_data_disk = table.deepcopy(data.raw["technology"]["gun-turret"])
 if military_data_disk then
     military_data_disk.name = "military-data-disk"
     military_data_disk.icon = "__escape-to-space__/graphics/technology/military-data-disk.png"
-    military_data_disk.icon_size = 256
+    military_data_disk.icon_size = 128
     military_data_disk.unit = {
         count = 500,
         ingredients = {
