@@ -957,8 +957,8 @@ end
 local dissoluting = table.deepcopy(data.raw["technology"]["gun-turret"])
 if dissoluting then
     dissoluting.name = "dissoluting"
-    dissoluting.icon = "__escape-to-space__/graphics/technology/chemical-stager-icon.png"
-    dissoluting.icon_size = 256
+    dissoluting.icon = "__escape-to-space__/graphics/technology/chemical-stager-icon-big.png"
+    dissoluting.icon_size = 320
     dissoluting.unit = {
         count = 100,
         ingredients = {
@@ -1005,8 +1005,8 @@ data:extend({dissoluting})
 local blending = table.deepcopy(data.raw["technology"]["gun-turret"])
 if blending then
     blending.name = "blending"
-    blending.icon = "__escape-to-space__/graphics/technology/mixing-station-icon.png"
-    blending.icon_size = 256
+    blending.icon = "__escape-to-space__/graphics/technology/mixing-station-icon-big.png"
+    blending.icon_size = 640
     blending.unit = {
         count = 100,
         ingredients = {
