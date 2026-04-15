@@ -1,6 +1,6 @@
 {
   "name": "escape-to-space",
-  "version": "0.4.9",
+  "version": "0.5.0",
   "title": "Escape to Space",
   "author": "maikuu",
   "contact": "",
@@ -11,6 +11,7 @@
     "space-age >= 2.0.0",
     "VoidChestInstant >= 2.7.1",
     "maikuu-radio-terminal >= 1.1.0",
+    "maikuu-walk-on-space-platform >= 1.1.0",
     "? flib",
     "? FNEI",
 	  "? simplified-thrusters >= 1.0.0",

@@ -115,10 +115,23 @@ end
 -- https://wiki.factorio.com/Technology
 -- LEFT TO RIGHT, TOP TO BOTTOM
 
--- ROW 0
 
 local steam_power = data.raw.technology["steam-power"]
 if steam_power then
+    steam_power.effects = {
+        {
+            type = "unlock-recipe",
+            recipe = "pipe"
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "pipe-to-ground"
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "engine-unit"
+        },
+    }
     steam_power.hidden = false
     steam_power.enabled = true
 end
@@ -1525,7 +1538,7 @@ if space_platform then
     space_platform.effects = {
         {
             type = "unlock-recipe",
-            recipe = "pipe"
+            recipe = "radio-terminal"
         },
     }
     space_platform.hidden = false
@@ -2464,6 +2477,31 @@ if railgun_shooting_speed_inf then
     railgun_shooting_speed_inf.hidden = false
     railgun_shooting_speed_inf.enabled = true
     railgun_shooting_speed_inf.prerequisites = {"military-data-disk", "railgun"}
+end
+
+--Gravity assembler
+local gravity_assembler = table.deepcopy(data.raw["technology"]["gun-turret"])
+if gravity_assembler then
+    gravity_assembler.name = "gravity-assembler"
+    gravity_assembler.icon = "__escape-to-space__/graphics/technology/gravity-assembler-icon-big.png"
+    gravity_assembler.icon_size = 640
+    gravity_assembler.unit = {
+        count = 500,
+        ingredients = {
+            {"mechanical-data-disk", 1},
+        },
+        time = 10,
+    }
+    gravity_assembler.effects = {
+        {
+            type = "unlock-recipe",
+            recipe = "gravity-assembler"
+        },
+    }
+    gravity_assembler.hidden = false
+    gravity_assembler.enabled = true
+    gravity_assembler.prerequisites = {"mechanical-data-disk"}
+    data:extend({gravity_assembler})
 end
 
 ---------------------------------------------------------------------------------------------
