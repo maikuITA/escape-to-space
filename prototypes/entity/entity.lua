@@ -1386,4 +1386,122 @@ data:extend({
     },
     fluid_boxes_off_when_no_fluid_recipe = true,
   },
+  -- Solar panel mk2
+  {
+    type = "solar-panel",
+    name = "solar-panel-mk2",
+    icon = "__escape-to-space__/graphics/icons/solar-panel-mk2.png",
+    flags = {"placeable-neutral", "player-creation"},
+    minable = {mining_time = 0.1, result = "solar-panel-mk2"},
+    fast_replaceable_group = "solar-panel",
+    max_health = 200,
+    corpse = "solar-panel-remnants",
+    dying_explosion = "solar-panel-explosion",
+    collision_box = {{-1.4, -1.4}, {1.4, 1.4}},
+    selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
+    damaged_trigger_effect = data.raw["solar-panel"]["solar-panel"].damaged_trigger_effect,
+    energy_source =
+    {
+      type = "electric",
+      usage_priority = "solar"
+    },
+    picture =
+    {
+      layers =
+      {
+        {
+          filename = "__escape-to-space__/graphics/entity/solar-panel/solar-panel-mk2.png",
+          priority = "high",
+          width = 230,
+          height = 224,
+          shift = util.by_pixel(-3, 3.5),
+          scale = 0.5
+        },
+        {
+          filename = "__escape-to-space__/graphics/entity/solar-panel/solar-panel-mk2-shadow.png",
+          priority = "high",
+          width = 220,
+          height = 180,
+          shift = util.by_pixel(9.5, 6),
+          draw_as_shadow = true,
+          scale = 0.5
+        }
+      }
+    },
+    overlay =
+    {
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/solar-panel/solar-panel-shadow-overlay.png",
+          priority = "high",
+          width = 214,
+          height = 180,
+          shift = util.by_pixel(10.5, 6),
+          scale = 0.5
+        }
+      }
+    },
+    impact_category = "glass",
+    production = "120kW"
+  },
+  -- Solar panel mk3
+  {
+    type = "solar-panel",
+    name = "solar-panel-mk3",
+    icon = "__escape-to-space__/graphics/icons/solar-panel-mk3.png",
+    flags = {"placeable-neutral", "player-creation"},
+    minable = {mining_time = 0.1, result = "solar-panel-mk3"},
+    fast_replaceable_group = "solar-panel",
+    max_health = 200,
+    corpse = "solar-panel-remnants",
+    dying_explosion = "solar-panel-explosion",
+    collision_box = {{-1.4, -1.4}, {1.4, 1.4}},
+    selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
+    damaged_trigger_effect = data.raw["solar-panel"]["solar-panel"].damaged_trigger_effect,
+    energy_source =
+    {
+      type = "electric",
+      usage_priority = "solar"
+    },
+    picture =
+    {
+      layers =
+      {
+        {
+          filename = "__escape-to-space__/graphics/entity/solar-panel/solar-panel-mk3.png",
+          priority = "high",
+          width = 230,
+          height = 224,
+          shift = util.by_pixel(-3, 3.5),
+          scale = 0.5
+        },
+        {
+          filename = "__escape-to-space__/graphics/entity/solar-panel/solar-panel-mk3-shadow.png",
+          priority = "high",
+          width = 220,
+          height = 180,
+          shift = util.by_pixel(9.5, 6),
+          draw_as_shadow = true,
+          scale = 0.5
+        }
+      }
+    },
+    overlay =
+    {
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/solar-panel/solar-panel-shadow-overlay.png",
+          priority = "high",
+          width = 214,
+          height = 180,
+          shift = util.by_pixel(10.5, 6),
+          scale = 0.5
+        }
+      }
+    },
+    impact_category = "glass",
+    production = "120kW"
+  },
 })

@@ -262,3 +262,30 @@ script.on_event(defines.events.on_research_finished, function(event)
 
     storage.abandoned_platform_granted[force.name] = true
 end)
+
+-- Update technologies after a new update
+script.on_configuration_changed(function(data)
+    -- Questo codice viene eseguito automaticamente solo quando si carica
+    -- un salvataggio e il gioco nota che le mod sono state modificate/aggiornate.
+    
+    for _, force in pairs(game.forces) do
+        force.reset_technologies()
+        force.reset_recipes()
+    end
+    
+    for _, player in pairs(game.players) do
+        player.print("[!] escape-to-space has been updated. All technologies have been reset to accommodate changes in the tech tree. Please review the technology tree for any new or modified technologies.")
+    end
+end)
+
+-- PLAYTEST ONLY
+commands.add_command("dev_tech", "Resetta velocemente le tecnologie per il playtest", function(event)
+    local player = game.get_player(event.player_index)
+    if player and player.admin then
+        for _, force in pairs(game.forces) do
+            force.reset_technologies()
+            force.reset_recipes()
+        end
+        player.print("Albero tecnologico aggiornato con successo.")
+    end
+end)

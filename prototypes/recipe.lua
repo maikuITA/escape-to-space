@@ -41,7 +41,7 @@ data:extend({
           {type = "item", name = "carbon", amount = 2}
         },
         results = {{type = "item", name = "carbon-plate", amount = 1}},
-        energy_required = 0.5,
+        energy_required = 3.2,
         enabled = false
     },
     {
@@ -64,7 +64,7 @@ data:extend({
           {type = "item", name = "copper-cable", amount = 3}
         },
         results = {{type = "item", name = "carbon-electronic-circuit", amount = 1}},
-        energy_required = 0.5,
+        energy_required = 1.5,
         enabled = false
     },
     {
@@ -77,7 +77,7 @@ data:extend({
           {type = "item", name = "steel-plate", amount = 1}
         },
         results = {{type = "item", name = "carbon-engine-unit", amount = 1}},
-        energy_required = 0.5,
+        energy_required = 10,
         enabled = false
     },
     {

@@ -315,6 +315,7 @@ data:extend({
     subgroup = "energy",
     order = "z[solar-panel-mk2]",
     inventory_move_sound = space_age_item_sounds.space_age_item_sounds,
+    place_result = "solar-panel-mk2",
     stack_size = 200,
     weight = data.raw.item["pipe"].weight,
     random_tint_color = item_tints.iron_rust
@@ -326,6 +327,7 @@ data:extend({
     subgroup = "energy",
     order = "z[solar-panel-mk3]",
     inventory_move_sound = space_age_item_sounds.space_age_item_sounds,
+    place_result = "solar-panel-mk3",
     stack_size = 200,
     weight = data.raw.item["pipe"].weight,
     random_tint_color = item_tints.iron_rust

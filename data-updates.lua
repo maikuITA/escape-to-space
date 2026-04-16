@@ -205,9 +205,10 @@ end
 local space_platf = data.raw.recipe["space-platform-foundation"]
 if space_platf then
     space_platf.ingredients = {
-        {type = "item", name = "sand", amount = 50},
-        {type = "item", name = "carbon-wire", amount = 50}
+        {type = "item", name = "sand", amount = 25},
+        {type = "item", name = "carbon-wire", amount = 25}
     }
+    space_platf.energy_required = 8
 end
 
 local ast_collector = data.raw.recipe["asteroid-collector"]
@@ -264,11 +265,11 @@ end
 local thrust_fuel = data.raw.recipe["thruster-fuel"]
 if thrust_fuel then
     thrust_fuel.ingredients = {
-        {type = "item", name = "sand", amount = 4},
-        {type = "item", name = "copper-ore", amount = 2}
+        {type = "item", name = "sand", amount = 2},
+        {type = "item", name = "copper-ore", amount = 1}
     }
     thrust_fuel.results = {
-        {type = "fluid", name = "thruster-fuel", amount = 240},
+        {type = "fluid", name = "thruster-fuel", amount = 90},
     }
     thrust_fuel.main_product = "thruster-fuel"
 end
@@ -276,11 +277,11 @@ end
 local thrust_oxy = data.raw.recipe["thruster-oxidizer"]
 if thrust_oxy then
     thrust_oxy.ingredients = {
-        {type = "item", name = "sand", amount = 4},
-        {type = "item", name = "iron-ore", amount = 2}
+        {type = "item", name = "sand", amount = 2},
+        {type = "item", name = "iron-ore", amount = 1}
     }
     thrust_oxy.results = {
-        {type = "fluid", name = "thruster-oxidizer", amount = 240},
+        {type = "fluid", name = "thruster-oxidizer", amount = 90},
     }
     thrust_oxy.main_product = "thruster-oxidizer"
 end
