@@ -48,56 +48,6 @@ end
 
 ---------------------------------------------------------------
 
--- Adding custom science packs as a lab input to allow researching trigger techs that require it.
-
-local lab = data.raw.lab["lab"]
-if lab then
-    lab.inputs = lab.inputs or {}
-    table.insert(lab.inputs, "earth-science-pack")
-    table.insert(lab.inputs, "axkeria-science-pack")
-end
-
--- CREDITS: yunrus-space-block
--- Hide and disable the void chest recipe to prevent bypassing intended progression,
--- while keeping the prototype available for internal/indirect usage.
-local recipe = data.raw.recipe["void-chest"]
-if recipe then
-    recipe.enabled = false   -- disables crafting
-    recipe.hidden = true     -- hides from crafting menu and techs
-    recipe.allow_as_intermediate = false -- optional: stops auto-use in factories
-    recipe.ingredients = recipe.ingredients or {} -- keep ingredients, don't touch
-end
-
-local item = data.raw.item["void-chest"]
-if item then
-  -- Retheme the item to match the platform trash depot identity in this scenario.
-  item.icon = "__escape-to-space__/graphics/icons/platform-trash-depot.png"
-  item.icon_size = 64
-end
-
-local chest = data.raw["infinity-container"]["void-chest"]
-if chest then
-  -- Override visuals for consistency: avoid exposing default art that suggests base behavior.
-  chest.picture = {
-    layers = {
-      {
-        filename = "__escape-to-space__/graphics/entity/platform-trash-depot/platform-trash-depot.png",
-        width = 66,
-        height = 76,
-        shift = util.by_pixel(0, -2),
-        scale = 0.5,
-        hr_version = {
-          filename = "__escape-to-space__/graphics/entity/platform-trash-depot/platform-trash-depot.png",
-          width = 66,
-          height = 76,
-          shift = util.by_pixel(0, -2),
-          scale = 0.5
-        }
-      }
-    }
-  }
-end
-
 -- Hiding specific recipes from the player
 
 local to_hide = {
@@ -180,6 +130,56 @@ for _, name in pairs(to_hide) do
         recipe.enabled = false
         recipe.hidden = true
     end
+end
+
+-- Adding custom science packs as a lab input to allow researching trigger techs that require it.
+
+local lab = data.raw.lab["lab"]
+if lab then
+    lab.inputs = lab.inputs or {}
+    table.insert(lab.inputs, "earth-science-pack")
+    table.insert(lab.inputs, "axkeria-science-pack")
+end
+
+-- CREDITS: yunrus-space-block
+-- Hide and disable the void chest recipe to prevent bypassing intended progression,
+-- while keeping the prototype available for internal/indirect usage.
+local recipe = data.raw.recipe["void-chest"]
+if recipe then
+    recipe.enabled = false   -- disables crafting
+    recipe.hidden = true     -- hides from crafting menu and techs
+    recipe.allow_as_intermediate = false -- optional: stops auto-use in factories
+    recipe.ingredients = recipe.ingredients or {} -- keep ingredients, don't touch
+end
+
+local item = data.raw.item["void-chest"]
+if item then
+  -- Retheme the item to match the platform trash depot identity in this scenario.
+  item.icon = "__escape-to-space__/graphics/icons/platform-trash-depot.png"
+  item.icon_size = 64
+end
+
+local chest = data.raw["infinity-container"]["void-chest"]
+if chest then
+  -- Override visuals for consistency: avoid exposing default art that suggests base behavior.
+  chest.picture = {
+    layers = {
+      {
+        filename = "__escape-to-space__/graphics/entity/platform-trash-depot/platform-trash-depot.png",
+        width = 66,
+        height = 76,
+        shift = util.by_pixel(0, -2),
+        scale = 0.5,
+        hr_version = {
+          filename = "__escape-to-space__/graphics/entity/platform-trash-depot/platform-trash-depot.png",
+          width = 66,
+          height = 76,
+          shift = util.by_pixel(0, -2),
+          scale = 0.5
+        }
+      }
+    }
+  }
 end
 
 -- Changing piercing-rounds-magazine icon
