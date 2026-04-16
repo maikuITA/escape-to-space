@@ -463,7 +463,10 @@ end
 -- Customizing Foundry recipes with a new category and recipe
 
 local foundry = data.raw["assembling-machine"]["foundry"]
-foundry.crafting_categories = {"custom-metallurgy"}
+if foundry then
+    foundry.crafting_categories = {"custom-metallurgy"}
+    foundry.effect_receiver = { base_effect = { productivity = 0.25 }}
+end
 
 -- Solar panel mk2
 local solar_panel_mk2 = table.deepcopy(data.raw["solar-panel"]["solar-panel"])

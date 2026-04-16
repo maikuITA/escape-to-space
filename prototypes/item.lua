@@ -512,6 +512,20 @@ data:extend({
     stack_size = 1,
     weight = 100*kg
   },
+  {
+    type = "item",
+    name = "arc-furnace",
+    icon = "__escape-to-space__/graphics/icons/arc-furnace-icon.png",
+    icon_size = 64,
+    subgroup = "smelting-machine",
+    order = "c[arc-furnace]",
+    inventory_move_sound = item_sounds.electric_large_inventory_move,
+    pick_sound = item_sounds.electric_large_inventory_pickup,
+    drop_sound = item_sounds.electric_large_inventory_move,
+    place_result = "arc-furnace",
+    stack_size = 1,
+    weight = 100*kg
+  },
 
   -- Lab
   {
