@@ -121,7 +121,8 @@ local to_hide = {
     "utility-science-pack",
     "stone-furnace",
     "steel-furnace",
-    "burner-inserter",  
+    "burner-inserter",
+    "radio-terminal",
 }
 
 for _, name in pairs(to_hide) do

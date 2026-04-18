@@ -1443,7 +1443,7 @@ data:extend({
       }
     },
     impact_category = "glass",
-    production = "120kW"
+    production = "180kW"
   },
   -- Solar panel mk3
   {
@@ -1502,7 +1502,7 @@ data:extend({
       }
     },
     impact_category = "glass",
-    production = "120kW"
+    production = "360kW"
   },
   -- Arc furnace
   {

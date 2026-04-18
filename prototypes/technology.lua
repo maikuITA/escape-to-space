@@ -172,6 +172,42 @@ if solar_panel_mk3 then
     })
 end
 
+local advanced_fuel = table.deepcopy(data.raw["technology"]["gun-turret"])
+if advanced_fuel then
+    advanced_fuel.name = "advanced-fuel-processing"
+    advanced_fuel.icon = "__space-age__/graphics/technology/calcite-processing.png"
+    advanced_fuel.icon_size = 256
+    advanced_fuel.unit = {
+        count = 100,
+        ingredients = {
+            {"earth-science-pack", 1},
+            {"axkeria-science-pack", 1},
+            {"t-one-science-pack", 1}
+        },
+        time = 10,
+    }
+    advanced_fuel.effects = {
+        {
+            type = "unlock-recipe",
+            recipe = "crush-oxide-chunk2"
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "advanced-thruster-fuel"
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "advanced-thruster-oxidizer"
+        },
+    }
+    advanced_fuel.hidden = false
+    advanced_fuel.enabled = true
+    advanced_fuel.prerequisites = {"military-science-pack"}
+    data:extend({
+        advanced_fuel
+    })
+end
+
 --Dissoluting
 local dissoluting = table.deepcopy(data.raw["technology"]["gun-turret"])
 if dissoluting then

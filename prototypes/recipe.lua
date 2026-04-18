@@ -261,14 +261,14 @@ data:extend({
 		name = "solar-panel-mk2",
         category = "crafting",
 		ingredients = {
-          {type = "item", name = "carbon-plate", amount = 10},
+          {type = "item", name = "solar-panel", amount = 1},
           {type = "item", name = "carbon-wheel", amount = 5},
           {type = "item", name = "carbon-stick", amount = 10},
           {type = "item", name = "carbon-wire", amount = 10},
           {type = "item", name = "carbon-electronic-circuit", amount = 10}
         },
         results = {{type = "item", name = "solar-panel-mk2", amount = 1}},
-        energy_required = 0.5,
+        energy_required = 10,
         enabled = false
     },
     {
@@ -276,14 +276,14 @@ data:extend({
 		name = "solar-panel-mk3",
         category = "crafting",
 		ingredients = {
-          {type = "item", name = "oxidic-plate", amount = 10},
+          {type = "item", name = "solar-panel-mk2", amount = 1},
           {type = "item", name = "oxidic-gear-wheel", amount = 5},
           {type = "item", name = "oxidic-stick", amount = 10},
           {type = "item", name = "oxidic-cable", amount = 10},
           {type = "item", name = "oxidic-electronic-circuit", amount = 10}
         },
         results = {{type = "item", name = "solar-panel-mk3", amount = 1}},
-        energy_required = 0.5,
+        energy_required = 10,
         enabled = false
     },
 
@@ -304,7 +304,7 @@ data:extend({
 		name = "oxidic-plate",
         category = "smelting",
 		ingredients = {
-          {type = "item", name = "oxidic-ore", amount = 2}
+          {type = "item", name = "oxidic-ore", amount = 1}
         },
         results = {{type = "item", name = "oxidic-plate", amount = 1}},
         energy_required = 1,
@@ -748,7 +748,7 @@ data:extend({
         subgroup="space-crushing",
         icon = "__escape-to-space__/graphics/icons/crush-stone.png",
         ingredients = {
-            {type = "item", name = "stone", amount = 5}
+            {type = "item", name = "stone", amount = 4}
         },
         results = {
             {type = "item", name = "sand", amount = 10},
@@ -767,7 +767,24 @@ data:extend({
             {type = "item", name = "oxide-asteroid-chunk", amount = 1}
         },
         results = {
-            {type = "item", name = "oxidic-ore", amount = 2},
+            {type = "item", name = "oxidic-ore", amount = 4},
+            {type = "item", name = "oxide-asteroid-chunk", amount = 1, probability = 0.20, ignored_by_productivity = 1}
+        },
+        energy_required = 5,
+        allow_productivity = true,
+        enabled = false
+    },
+    {
+        type = "recipe",
+        name = "crush-oxide-chunk2",
+        category = "crushing",
+        subgroup="space-crushing",
+        icon = data.raw["recipe"]["oxide-asteroid-crushing"].icon,
+        ingredients = {
+            {type = "item", name = "oxide-asteroid-chunk", amount = 1}
+        },
+        results = {
+            {type = "item", name = "calcite", amount = 2},
             {type = "item", name = "oxide-asteroid-chunk", amount = 1, probability = 0.20, ignored_by_productivity = 1}
         },
         energy_required = 5,
