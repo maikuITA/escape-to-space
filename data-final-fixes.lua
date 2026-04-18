@@ -1,5 +1,105 @@
 -- data.final-fixes.lua
 
+-- Bob's adjustable inserters technologies
+
+if
+  (settings.startup["bobmods-inserters-long1"].value == true)
+  or (
+    settings.startup["bobmods-logistics-inserteroverhaul"]
+    and settings.startup["bobmods-logistics-inserteroverhaul"].value == true
+  )
+then
+    local bob_long_inserters_1 = data.raw.technology["bob-long-inserters-1"]
+    if bob_long_inserters_1 then
+        bob_long_inserters_1.prerequisites = {
+            "logistic-science-pack",
+            "fast-inserter",
+        }
+        bob_long_inserters_1.unit = {
+            count = 20,
+            ingredients = {
+                {"earth-science-pack", 1},
+                {"axkeria-science-pack", 1},
+            },
+            time = 15,
+        }
+        bob_long_inserters_1.hidden = false
+        bob_long_inserters_1.enabled = true
+    end
+
+    local bob_long_inserters_2 = data.raw.technology["bob-long-inserters-2"]
+    if settings.startup["bobmods-inserters-long2"].value == true and bob_long_inserters_2 then
+        bob_long_inserters_2.prerequisites = {
+          "bob-long-inserters-1",
+          "logistic-science-pack",
+          "fast-inserter",
+        }
+        bob_long_inserters_2.unit = {
+          count = 50,
+          ingredients = {
+            {"earth-science-pack", 1},
+            {"axkeria-science-pack", 1},
+          },
+          time = 15,
+        }
+        bob_long_inserters_2.hidden = false
+        bob_long_inserters_2.enabled = true
+    end
+
+    local bob_near_inserters = data.raw.technology["bob-near-inserters"]
+    if bob_near_inserters then
+        bob_near_inserters.prerequisites = {
+            "logistic-science-pack",
+            "fast-inserter",
+        }
+        bob_near_inserters.unit = {
+            count = 25,
+            ingredients = {
+                {"earth-science-pack", 1},
+                {"axkeria-science-pack", 1},
+            },
+            time = 15,
+        }
+        bob_near_inserters.hidden = false
+        bob_near_inserters.enabled = true
+    end
+
+    local bob_more_inserters_1 = data.raw.technology["bob-more-inserters-1"]
+    if bob_more_inserters_1 then
+        bob_more_inserters_1.prerequisites = {
+            "logistic-science-pack",
+            "fast-inserter",
+        }
+        bob_more_inserters_1.unit = {
+            count = 25,
+            ingredients = {
+                {"earth-science-pack", 1},
+                {"axkeria-science-pack", 1},
+            },
+            time = 15,
+        }
+        bob_more_inserters_1.hidden = false
+        bob_more_inserters_1.enabled = true
+    end
+
+    local bob_more_inserters_2 = data.raw.technology["bob-more-inserters-2"]
+    if settings.startup["bobmods-inserters-more2"].value == true and bob_more_inserters_2 then
+        bob_more_inserters_2.prerequisites = {
+            "bob-more-inserters-1",
+            "fast-inserter",
+        }
+        bob_more_inserters_2.unit = {
+            count = 50,
+            ingredients = {
+                {"earth-science-pack", 1},
+                {"axkeria-science-pack", 1},
+            },
+            time = 15,
+        }
+        bob_more_inserters_2.hidden = false
+        bob_more_inserters_2.enabled = true
+    end
+end
 -- Modifiche alle technologies del base game
 
 local steam_power = data.raw.technology["steam-power"]

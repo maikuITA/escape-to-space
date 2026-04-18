@@ -12,6 +12,7 @@
     "VoidChestInstant >= 2.7.1",
     "maikuu-radio-terminal >= 1.1.0",
     "maikuu-walk-on-space-platform >= 1.1.0",
+    "bobinserters >= 2.0.3",
     "? flib",
     "? FNEI",
 	  "? simplified-thrusters >= 1.0.0",

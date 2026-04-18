@@ -907,23 +907,3 @@ if gravity_assembler then
     gravity_assembler.prerequisites = {"mechanical-data-disk"}
     data:extend({gravity_assembler})
 end
-
--- Advanced space platform
-local space_platform_advanced = {
-    type = "recipe",
-    name = "space-platform-advanced",
-    category = "custom-metallurgy",
-    enabled = false,
-    ingredients = {
-        {type = "item", name = "sand", amount = 25},
-        {type = "item", name = "carbon-wire", amount = 25},
-        {type = "fluid", name = "fluoroketone-cold", amount = 5},
-    },
-    results = {
-        {type = "item", name = "space-platform-foundation", amount = 1},
-        {type = "fluid", name = "fluoroketone-hot", amount = 5, affected_by_productivity = false},
-    },
-    energy_required = 6,
-}
-
-data:extend({space_platform_advanced})

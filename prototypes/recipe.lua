@@ -920,6 +920,24 @@ data:extend({
         allow_productivity = true,
         enabled = false
     },
+    {
+        type = "recipe",
+        name = "space-platform-advanced",
+        icon = "__space-age__/graphics/icons/space-platform-foundation.png",
+        icon_size = 64,
+        category = "custom-metallurgy",
+        enabled = false,
+        ingredients = {
+            {type = "item", name = "sand", amount = 25},
+            {type = "item", name = "carbon-wire", amount = 25},
+            {type = "fluid", name = "fluoroketone-cold", amount = 5},
+        },
+        results = {
+            {type = "item", name = "space-platform-foundation", amount = 1},
+            {type = "fluid", name = "fluoroketone-hot", amount = 5, affected_by_productivity = false},
+        },
+        energy_required = 6,
+    },
 
     -- Bio recipes
     {
