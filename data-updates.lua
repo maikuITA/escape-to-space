@@ -207,7 +207,7 @@ local space_platf = data.raw.recipe["space-platform-foundation"]
 if space_platf then
     space_platf.ingredients = {
         {type = "item", name = "sand", amount = 25},
-        {type = "item", name = "carbon-wire", amount = 25}
+        {type = "item", name = "carbon-wire", amount = 25},
     }
     space_platf.energy_required = 8
 end

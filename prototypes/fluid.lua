@@ -39,5 +39,5 @@ data:extend({
     icon_size = 64,
     auto_barrel = true,
     order = "a[fluid]-b[t-three-fluid]"
-  }
+  },
 })

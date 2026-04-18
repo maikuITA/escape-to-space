@@ -1159,6 +1159,10 @@ if vulcanus then
             type = "unlock-recipe",
             recipe = "carbon-steel-plate-metallurgy"
         },
+        {
+            type = "unlock-recipe",
+            recipe = "space-platform-advanced"
+        },
     }
     vulcanus.hidden = false
     vulcanus.enabled = true

@@ -647,6 +647,35 @@ data:extend({
         energy_required = 2,
         enabled = false
     },
+    {
+		type = "recipe",
+		name = "coolant-dissolution",
+        category = "dissolution",
+		ingredients = {
+          {type = "item", name = "calcite", amount = 1},
+          {type = "fluid", name = "water", amount = 100}
+        },
+        results = {{type = "fluid", name = "fluoroketone-cold", amount = 20}},
+        energy_required = 2,
+        enabled = false,
+        icon = "__escape-to-space__/graphics/icons/fluid/fluoroketone-cold.png",
+        subgroup = "fluid-recipes",
+        order = "c[coolant]-a[coolant-dissolution]"
+    },
+    {
+		type = "recipe",
+		name = "coolant-cooling",
+        category = "dissolution",
+		ingredients = {
+          {type = "fluid", name = "fluoroketone-hot", amount = 20},
+        },
+        results = {{type = "fluid", name = "fluoroketone-cold", amount = 20}},
+        energy_required = 1,
+        enabled = false,
+        icon = "__escape-to-space__/graphics/icons/fluid/fluoroketone-cooling.png",
+        subgroup = "fluid-recipes",
+        order = "c[coolant]-b[coolant-cooling]"
+    },
 
     -- Bottling recipes for science packs
     {
@@ -859,11 +888,16 @@ data:extend({
         type = "recipe",
         name = "tungsten-plate",
         category = "custom-metallurgy",
+        icon = "__space-age__/graphics/icons/tungsten-plate.png",
         ingredients = {
             {type = "item", name = "tungsten-ore", amount = 1},
             {type = "item", name = "iron-ore", amount = 4},
+            {type = "fluid", name = "fluoroketone-cold", amount = 5},
         },
-        results = {{type ="item", name = "tungsten-plate", amount = 1}},
+        results = {
+            {type ="item", name = "tungsten-plate", amount = 1},
+            {type = "fluid", name = "fluoroketone-hot", amount = 5, affected_by_productivity = false},
+        },
         energy_required = 2,
         allow_productivity = true,
         enabled = false
@@ -872,11 +906,16 @@ data:extend({
 		type = "recipe",
 		name = "carbon-steel-plate-metallurgy",
         category = "custom-metallurgy",
+        icon = "__escape-to-space__/graphics/icons/carbon-steel-plate.png",
 		ingredients = {
           {type = "item", name = "carbon-steel-ore", amount = 1},
           {type = "item", name = "iron-ore", amount = 4},
+          {type = "fluid", name = "fluoroketone-cold", amount = 5},
         },
-        results = {{type = "item", name = "carbon-steel-plate", amount = 1}},
+        results = {
+            {type = "item", name = "carbon-steel-plate", amount = 1},
+            {type = "fluid", name = "fluoroketone-hot", amount = 5, affected_by_productivity = false},
+        },
         energy_required = 2,
         allow_productivity = true,
         enabled = false
