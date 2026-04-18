@@ -240,6 +240,20 @@ local cybernetic_lab = {
 
 data:extend({cybernetic_lab})
 
+-- Scrubber
+local scrubber = {
+  type = "item",
+  name = "scrubber",
+  icon = "__escape-to-space__/graphics/icons/scrubber-icon.png",
+  icon_size = 64,
+  subgroup = "production-machine",
+  order = "a[production-machine]-k[scrubber]",
+  place_result = "scrubber",
+  stack_size = 50
+}
+
+data:extend({scrubber})
+
 --- END MACHINES
 --------------------------------------------------------------------------
 
