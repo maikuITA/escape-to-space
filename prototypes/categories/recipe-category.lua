@@ -1,5 +1,10 @@
 data:extend(
 {
+  -- Cybernetics
+  {
+    type = "recipe-category",
+    name = "cybernetics"
+  },
   {
     type = "recipe-category",
     name = "bottling"

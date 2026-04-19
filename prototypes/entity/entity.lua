@@ -195,7 +195,6 @@ local cybernetics_facility = {
   max_health = 350,
   corpse = "basic-electric-furnace-remnants",
   dying_explosion = data.raw["furnace"]["electric-furnace"].dying_explosion,
-  effect_receiver = { base_effect = { productivity = 0.25 }},
   resistances = {
       {
           type = "fire",
@@ -214,7 +213,7 @@ local cybernetics_facility = {
       }
   },
   allowed_effects = {"consumption", "speed", "productivity", "quality"},
-  crafting_categories = {"bottling", "mixing"},
+  crafting_categories = {"cybernetics"},
   result_inventory_size = 1,
   crafting_speed = 1,
   energy_usage = "500kW",
@@ -1630,7 +1629,7 @@ local scrubber = {
           frame_count = 60,
           line_length = 10,
           shift = util.by_pixel(0, 4),
-          scale = 0.42
+          scale = 0.43
         },
         {
           filename = "__escape-to-space__/graphics/entity/scrubber/base/scrubber-color1.png",
@@ -1642,7 +1641,7 @@ local scrubber = {
           draw_as_glow = true,
           blend_mode = "additive",
           shift = util.by_pixel(0, 4),
-          scale = 0.42
+          scale = 0.43
         },
         {
           filename = "__escape-to-space__/graphics/entity/scrubber/base/scrubber-shadow.png",
@@ -1654,7 +1653,7 @@ local scrubber = {
           repeat_count = 60,
           draw_as_shadow = true,
           shift = util.by_pixel(12, 4.75),
-          scale = 0.42
+          scale = 0.43
         }
       }
     },

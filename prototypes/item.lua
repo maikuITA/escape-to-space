@@ -260,7 +260,21 @@ data:extend({scrubber})
 --------------------------------------------------------------------------
 --- START TOOLS
 
--- Memory card
+-- Blank memory card
+local blank_memory_card = {
+    type = "item",
+    name = "blank-memory-card",
+    icon = "__escape-to-space__/graphics/icons/blank-memory-card.png",
+    icon_size = 64,
+    subgroup = "tool",
+    order = "a[raw]-i[blank-memory-card]",
+    stack_size = 200,
+    weight = 1*kg,
+}
+
+data:extend({blank_memory_card})
+
+-- Basic memory card
 local basic_memory_card = {
   type = "tool",
   name = "basic-memory-card",
@@ -280,3 +294,124 @@ data:extend({basic_memory_card})
 
 --- END TOOLS
 --------------------------------------------------------------------------
+
+--------------------------------------------------------------------------
+--- START ITEMS
+
+-- Sand
+local sand = {
+    type = "item",
+    name = "sand",
+    icon = "__escape-to-space__/graphics/icons/sand.png",
+    icon_size = 64,
+    subgroup = "raw-material",
+    order = "a[raw]-g[sand]",
+    stack_size = 200
+}
+
+data:extend({sand})
+
+-- Gravel
+local gravel = {
+    type = "item",
+    name = "gravel",
+    icon = "__escape-to-space__/graphics/icons/gravel.png",
+    icon_size = 64,
+    subgroup = "raw-material",
+    order = "a[raw]-h[gravel]",
+    stack_size = 200
+}
+
+data:extend({gravel})
+
+-- Carbon gear wheel
+local carbon_gear_wheel = {
+    type = "item",
+    name = "carbon-gear-wheel",
+    icon = "__escape-to-space__/graphics/icons/carbon-gear-wheel.png",
+    icon_size = 64,
+    subgroup = "intermediate-product",
+    order = "a[intermediate]-a[carbon-gear-wheel]",
+    stack_size = 100
+}
+
+data:extend({carbon_gear_wheel})
+
+-- Carbon plate
+local carbon_plate = {
+    type = "item",
+    name = "carbon-plate",
+    icon = "__escape-to-space__/graphics/icons/carbon-plate.png",
+    icon_size = 64,
+    subgroup = "intermediate-product",
+    order = "a[intermediate]-b[carbon-plate]",
+    stack_size = 100
+}
+
+data:extend({carbon_plate})
+
+-- Carbon wire 
+local carbon_wire = {
+    type = "item",
+    name = "carbon-wire",
+    icon = "__escape-to-space__/graphics/icons/carbon-wire.png",
+    icon_size = 64,
+    subgroup = "intermediate-product",
+    order = "a[intermediate]-c[carbon-wire]",
+    stack_size = 200
+}
+
+data:extend({carbon_wire})
+
+-- Carbon stick
+local carbon_stick = {
+    type = "item",
+    name = "carbon-stick",
+    icon = "__escape-to-space__/graphics/icons/carbon-stick.png",
+    icon_size = 64,
+    subgroup = "intermediate-product",
+    order = "a[intermediate]-d[carbon-stick]",
+    stack_size = 200
+}
+
+data:extend({carbon_stick})
+
+-- Carbon pipe
+local carbon_pipe = {
+    type = "item",
+    name = "carbon-pipe",
+    icon = "__escape-to-space__/graphics/icons/carbon-pipe.png",
+    icon_size = 64,
+    subgroup = "intermediate-product",
+    order = "a[intermediate]-e[carbon-pipe]",
+    stack_size = 200
+}
+
+data:extend({carbon_pipe})
+
+-- Carbon engine unit
+local carbon_engine_unit = {
+    type = "item",
+    name = "carbon-engine-unit",
+    icon = "__escape-to-space__/graphics/icons/carbon-engine-unit.png",
+    icon_size = 64,
+    subgroup = "intermediate-product",
+    order = "a[intermediate]-f[carbon-engine-unit]",
+    stack_size = 50
+}
+
+data:extend({carbon_engine_unit})
+
+-- Memory card mk1
+local memory_card_mk1 = {
+    type = "item",
+    name = "memory-card-mk1",
+    icon = "__escape-to-space__/graphics/icons/memory-card-mk1.png",
+    icon_size = 64,
+    subgroup = "tool",
+    order = "a[tool]-b[memory-card-mk1]",
+    stack_size = 200,
+    weight = 1*kg,
+}
+
+data:extend({memory_card_mk1})
