@@ -18,7 +18,7 @@ then
         bob_long_inserters_1.unit = {
             count = 100,
             ingredients = {
-                {"basic-memory-card", 1},
+                {"basic-data-disk", 1},
             },
             time = 10,
         }
@@ -35,7 +35,7 @@ then
         bob_long_inserters_2.unit = {
           count = 100,
             ingredients = {
-                {"basic-memory-card", 1},
+                {"basic-data-disk", 1},
             },
             time = 10,
         }
@@ -51,7 +51,7 @@ then
         bob_near_inserters.unit = {
             count = 100,
             ingredients = {
-                {"basic-memory-card", 1},
+                {"basic-data-disk", 1},
             },
             time = 10,
         }
@@ -67,7 +67,7 @@ then
         bob_more_inserters_1.unit = {
             count = 100,
             ingredients = {
-                {"basic-memory-card", 1},
+                {"basic-data-disk", 1},
             },
             time = 10,
         }
@@ -84,7 +84,7 @@ then
         bob_more_inserters_2.unit = {
             count = 100,
             ingredients = {
-                {"basic-memory-card", 1},
+                {"basic-data-disk", 1},
             },
             time = 10,
         }

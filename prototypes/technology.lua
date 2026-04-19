@@ -18,11 +18,11 @@ if electronics_tech then
         },
         {
             type = "unlock-recipe",
-            recipe = "blank-memory-card"
+            recipe = "blank-data-disk"
         },
         {
             type = "unlock-recipe",
-            recipe = "basic-memory-card"
+            recipe = "basic-data-disk"
         },
     }
     electronics_tech.research_trigger =
@@ -46,7 +46,7 @@ local space_machines_tech = {
     unit = {
         count = 100,
         ingredients = {
-            {"basic-memory-card", 1},
+            {"basic-data-disk", 1},
         },
         time = 10
     },
@@ -95,7 +95,7 @@ local fast_inserter_tech = {
     unit = {
         count = 100,
         ingredients = {
-            {"basic-memory-card", 1},
+            {"basic-data-disk", 1},
         },
         time = 10
     },
@@ -124,7 +124,7 @@ local axos_discovery = {
     unit = {
         count = 250,
         ingredients = {
-            {"basic-memory-card", 1},
+            {"basic-data-disk", 1},
         },
         time = 10,
     },
@@ -160,7 +160,7 @@ local keria_discovery = {
     unit = {
         count = 250,
         ingredients = {
-            {"basic-memory-card", 1},
+            {"basic-data-disk", 1},
         },
         time = 10,
     },
@@ -200,7 +200,7 @@ local carbon_processing = {
     unit = {
         count = 100,
         ingredients = {
-            {"basic-memory-card", 1},
+            {"basic-data-disk", 1},
         },
         time = 10,
     },
@@ -243,23 +243,23 @@ if carbon_processing then
 end
 --------------------------------------------------------------------------
 
--- Memory card mk1
-local memory_card_mk1 = {
+-- Data disk mk1
+local data_disk_mk1 = {
     type = "technology",
-    name = "memory-card-mk1",
-    icon = "__escape-to-space__/graphics/technology/memory-card-mk1.png",
+    name = "data-disk-mk1",
+    icon = "__escape-to-space__/graphics/technology/data-disk-mk1.png",
     icon_size = 256,
     unit = {
         count = 200,
         ingredients = {
-            {"basic-memory-card", 1},
+            {"basic-data-disk", 1},
         },
         time = 10,
     },
     effects = {
         {
             type = "unlock-recipe",
-            recipe = "memory-card-mk1"
+            recipe = "data-disk-mk1"
         },
     },
     hidden = false,
@@ -272,7 +272,7 @@ local memory_card_mk1 = {
     }
 }
 
-if memory_card_mk1 then
-    data:extend({memory_card_mk1})
+if data_disk_mk1 then
+    data:extend({data_disk_mk1})
 end
 --------------------------------------------------------------------------

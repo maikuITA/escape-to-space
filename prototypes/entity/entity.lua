@@ -343,7 +343,8 @@ local oxide_lab = {
 
   researching_speed = 1,
   inputs = {
-    "basic-memory-card",
+    "basic-data-disk",
+    "data-disk-mk1",
   },
   module_slots = 4,
   allowed_effects = {"consumption", "speed", "productivity", "pollution", "quality"},
@@ -489,7 +490,7 @@ local cybernetic_lab = {
   module_slots = 8,
   researching_speed = 3,
   inputs = {
-    "basic-memory-card",
+    "basic-data-disk",
   },
   source_inventory_size = 1,
   on_animation = {

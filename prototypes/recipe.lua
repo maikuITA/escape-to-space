@@ -202,66 +202,66 @@ end
 --------------------------------------------------------------------------
 --- START TOOL RECIPES
 
--- Blank memory card
-local blank_memory_card_recipe = {
+-- Blank data disk
+local blank_data_disk_recipe = {
     type = "recipe",
-    name = "blank-memory-card",
+    name = "blank-data-disk",
     category = "crafting",
-    icon = "__escape-to-space__/graphics/icons/blank-memory-card.png",
+    icon = "__escape-to-space__/graphics/icons/blank-data-disk.png",
     icon_size = 64,
     ingredients = {
         {type = "item", name = "electronic-circuit", amount = 1},
         {type = "item", name = "iron-plate", amount = 1}
     },
-    results = {{type = "item", name = "blank-memory-card", amount = 1}},
+    results = {{type = "item", name = "blank-data-disk", amount = 1}},
     energy_required = 0.75,
     enabled = false
 }
 
-if blank_memory_card_recipe then
-    data:extend({blank_memory_card_recipe})
+if blank_data_disk_recipe then
+    data:extend({blank_data_disk_recipe})
 end
 
--- Basic memory card
-local basic_memory_card_recipe = {
+-- Basic data disk
+local basic_data_disk_recipe = {
     type = "recipe",
-    name = "basic-memory-card",
+    name = "basic-data-disk",
     category = "cybernetics",
-    icon = "__escape-to-space__/graphics/icons/basic-memory-card.png",
+    icon = "__escape-to-space__/graphics/icons/basic-data-disk.png",
     icon_size = 64,
     ingredients = {
-        {type = "item", name = "blank-memory-card", amount = 1},
+        {type = "item", name = "blank-data-disk", amount = 1},
         {type = "item", name = "iron-gear-wheel", amount = 1},
         {type = "item", name = "copper-plate", amount = 1}
     },
-    results = {{type = "item", name = "basic-memory-card", amount = 1}},
+    results = {{type = "item", name = "basic-data-disk", amount = 1}},
     energy_required = 1.5,
     enabled = false
 }
 
-if basic_memory_card_recipe then
-    data:extend({basic_memory_card_recipe})
+if basic_data_disk_recipe then
+    data:extend({basic_data_disk_recipe})
 end
 
--- Memory card mk1
-local memory_card_mk1 = {
+-- Data disk mk1
+local data_disk_mk1 = {
     type = "recipe",
-    name = "memory-card-mk1",
+    name = "data-disk-mk1",
     category = "cybernetics",
-    icon = "__escape-to-space__/graphics/icons/memory-card-mk1.png",
+    icon = "__escape-to-space__/graphics/icons/data-disk-mk1.png",
     icon_size = 64,
     ingredients = {
-        {type = "item", name = "blank-memory-card", amount = 1},
+        {type = "item", name = "blank-data-disk", amount = 1},
         {type = "item", name = "ice", amount = 2},
         {type = "item", name = "carbon-gear-wheel", amount = 1}
     },
-    results = {{type = "item", name = "memory-card-mk1", amount = 1}},
+    results = {{type = "item", name = "data-disk-mk1", amount = 1}},
     energy_required = 1.5,
     enabled = false
 }
 
-if memory_card_mk1 then
-    data:extend({memory_card_mk1})
+if data_disk_mk1 then
+    data:extend({data_disk_mk1})
 end
 
 --- END TOOL RECIPES

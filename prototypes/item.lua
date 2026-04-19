@@ -260,28 +260,28 @@ data:extend({scrubber})
 --------------------------------------------------------------------------
 --- START TOOLS
 
--- Blank memory card
-local blank_memory_card = {
+-- Blank data disk
+local blank_data_disk = {
     type = "item",
-    name = "blank-memory-card",
-    icon = "__escape-to-space__/graphics/icons/blank-memory-card.png",
+    name = "blank-data-disk",
+    icon = "__escape-to-space__/graphics/icons/blank-data-disk.png",
     icon_size = 64,
     subgroup = "tool",
-    order = "a[raw]-i[blank-memory-card]",
+    order = "a[raw]-i[blank-data-disk]",
     stack_size = 200,
     weight = 1*kg,
 }
 
-data:extend({blank_memory_card})
+data:extend({blank_data_disk})
 
--- Basic memory card
-local basic_memory_card = {
+-- Basic data disk
+local basic_data_disk = {
   type = "tool",
-  name = "basic-memory-card",
-  icon = "__escape-to-space__/graphics/icons/basic-memory-card.png",
+  name = "basic-data-disk",
+  icon = "__escape-to-space__/graphics/icons/basic-data-disk.png",
   icon_size = 64,
   subgroup = "tool",
-  order = "a[tool]-a[memory-card]",
+  order = "a[tool]-a[data-disk-mk1]",
   stack_size = 200,
   weight = 1*kg,
   durability = 1,
@@ -290,7 +290,7 @@ local basic_memory_card = {
   durability_description_value = "description.science-pack-remaining-amount-value",
 }
 
-data:extend({basic_memory_card})
+data:extend({basic_data_disk})
 
 --- END TOOLS
 --------------------------------------------------------------------------
@@ -402,16 +402,16 @@ local carbon_engine_unit = {
 
 data:extend({carbon_engine_unit})
 
--- Memory card mk1
-local memory_card_mk1 = {
+-- Data disk mk1
+local data_disk_mk1 = {
     type = "item",
-    name = "memory-card-mk1",
-    icon = "__escape-to-space__/graphics/icons/memory-card-mk1.png",
+    name = "data-disk-mk1",
+    icon = "__escape-to-space__/graphics/icons/data-disk-mk1.png",
     icon_size = 64,
     subgroup = "tool",
-    order = "a[tool]-b[memory-card-mk1]",
+    order = "a[tool]-b[data-disk-mk1]",
     stack_size = 200,
     weight = 1*kg,
 }
 
-data:extend({memory_card_mk1})
+data:extend({data_disk_mk1})

@@ -81,7 +81,7 @@ for tech_name, tech in pairs(data.raw.technology) do
     else
         -- Non eliminare il prototype: altri oggetti lo referenziano.
         -- Manteniamo la tech valida con un requisito minimo.
-        tech.unit.ingredients = {{"basic-memory-card", 1}}
+        tech.unit.ingredients = {{"basic-data-disk", 1}}
         tech.hidden = true
         tech.enabled = false
     end
