@@ -49,3 +49,24 @@ end
 
 --- END PLANETS
 --------------------------------------------------------------------------
+
+--------------------------------------------------------------------------
+--- START TIERS
+
+-- Scrubber mk2
+local scrubber_mk2 = table.deepcopy(data.raw["assembling-machine"]["scrubber"])
+if scrubber_mk2 then
+    scrubber_mk2.name = "scrubber-mk2"
+    scrubber_mk2.minable.result = "scrubber-mk2"
+    scrubber_mk2.crafting_speed = 1
+    data:extend({scrubber_mk2})
+end
+
+-- Scrubber mk3
+local scrubber_mk3 = table.deepcopy(data.raw["assembling-machine"]["scrubber"])
+if scrubber_mk3 then
+    scrubber_mk3.name = "scrubber-mk3"
+    scrubber_mk3.minable.result = "scrubber-mk3"
+    scrubber_mk3.crafting_speed = 2
+    data:extend({scrubber_mk3})
+end

@@ -1614,7 +1614,7 @@ local scrubber = {
   collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
   selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
   damaged_trigger_effect = data.raw["assembling-machine"]["assembling-machine-2"].damaged_trigger_effect,
-  --fast_replaceable_group = "assembling-machine",
+  fast_replaceable_group = "assembling-machine",
   --next_upgrade = "assembling-machine-3",
   graphics_set =
   {

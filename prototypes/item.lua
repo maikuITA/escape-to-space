@@ -254,6 +254,34 @@ local scrubber = {
 
 data:extend({scrubber})
 
+-- Scrubber mk2
+local scrubber_mk2 = {
+    type = "item",
+    name = "scrubber-mk2",
+    icon = "__escape-to-space__/graphics/icons/scrubber-icon.png",
+    icon_size = 64,
+    subgroup = "production-machine",
+    order = "a[production-machine]-l[scrubber-mk2]",
+    place_result = "scrubber-mk2",
+    stack_size = 50
+}
+
+data:extend({scrubber_mk2})
+
+-- Scrubber mk3
+local scrubber_mk3 = {
+    type = "item",
+    name = "scrubber-mk3",
+    icon = "__escape-to-space__/graphics/icons/scrubber-icon.png",
+    icon_size = 64,
+    subgroup = "production-machine",
+    order = "a[production-machine]-m[scrubber-mk3]",
+    place_result = "scrubber-mk3",
+    stack_size = 50
+}
+
+data:extend({scrubber_mk3})
+
 --- END MACHINES
 --------------------------------------------------------------------------
 

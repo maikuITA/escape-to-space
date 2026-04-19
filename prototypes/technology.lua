@@ -119,7 +119,7 @@ end
 local axos_discovery = {
     type = "technology",
     name = "planet-discovery-axos",
-    icon = "__space-age__/graphics/technology/space-platform-thruster.png",
+    icons = util.technology_icon_constant_planet("__escape-to-space__/graphics/technology/axos.png"),
     icon_size = 256,
     unit = {
         count = 250,
@@ -155,7 +155,7 @@ end
 local keria_discovery = {
     type = "technology",
     name = "planet-discovery-keria",
-    icon = "__space-age__/graphics/technology/space-platform-thruster.png",
+    icons = util.technology_icon_constant_planet("__escape-to-space__/graphics/technology/keria.png"),
     icon_size = 256,
     unit = {
         count = 250,
@@ -274,5 +274,38 @@ local data_disk_mk1 = {
 
 if data_disk_mk1 then
     data:extend({data_disk_mk1})
+end
+--------------------------------------------------------------------------
+
+-- Scrubber mk2
+local scrubber_mk2 = {
+    type = "technology",
+    name = "scrubber-mk2",
+    icon = "__escape-to-space__/graphics/technology/scrubber-icon-big.png",
+    icon_size = 256,
+    unit = {
+        count = 200,
+        ingredients = {
+            {"basic-data-disk", 1},
+            {"data-disk-mk1", 1},
+        },
+        time = 10,
+    },
+    effects = {
+        {
+            type = "unlock-recipe",
+            recipe = "scrubber-mk2"
+        },
+    },
+    hidden = false,
+    enabled = true,
+    prerequisites = {
+        "space-machines",
+        "data-disk-mk1",
+    }
+}
+
+if scrubber_mk2 then
+    --data:extend({scrubber_mk2})
 end
 --------------------------------------------------------------------------
