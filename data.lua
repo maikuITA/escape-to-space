@@ -2,7 +2,7 @@
 
 --- HIDE ALL RECIPES
 for _, recipe in pairs(data.raw["recipe"]) do
-    recipe.hidden = true
+    recipe.enabled = false
 end
 
 -- Nasconde e disattiva tutte le tecnologie non custom.
@@ -44,8 +44,8 @@ for _, name in ipairs(to_hide) do
 
   local recipe = data.raw.recipe[name]
   if recipe then
-    recipe.enabled = false
     recipe.hidden = true
+    recipe.enabled = false
   end
 
   local tool = data.raw.tool[name]

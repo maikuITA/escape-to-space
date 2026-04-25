@@ -31,11 +31,13 @@ then
         bob_long_inserters_2.prerequisites = {
           "bob-long-inserters-1",
           "fast-inserter",
+          "data-disk-mk1",
         }
         bob_long_inserters_2.unit = {
           count = 100,
             ingredients = {
                 {"basic-data-disk", 1},
+                {"data-disk-mk1", 1},
             },
             time = 10,
         }
@@ -80,11 +82,13 @@ then
         bob_more_inserters_2.prerequisites = {
             "bob-more-inserters-1",
             "fast-inserter",
+            "data-disk-mk1",
         }
         bob_more_inserters_2.unit = {
             count = 100,
             ingredients = {
                 {"basic-data-disk", 1},
+                {"data-disk-mk1", 1},
             },
             time = 10,
         }

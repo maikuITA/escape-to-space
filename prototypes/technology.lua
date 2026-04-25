@@ -69,6 +69,10 @@ local space_machines_tech = {
         },
         {
             type = "unlock-recipe",
+            recipe = "chemical-plant"
+        },
+        {
+            type = "unlock-recipe",
             recipe = "thruster-fuel"
         },
         {
@@ -243,6 +247,25 @@ if carbon_processing then
 end
 --------------------------------------------------------------------------
 
+-- Circuit network
+local circuit_network = data.raw.technology["circuit-network"]
+if circuit_network then
+    circuit_network.prerequisites = {
+        "electronics",
+    }
+    circuit_network.unit = {
+        count = 100,
+        ingredients = {
+            {"basic-data-disk", 1},
+        },
+        time = 10,
+    }
+    circuit_network.hidden = false
+    circuit_network.enabled = true
+end
+
+--------------------------------------------------------------------------
+
 -- Data disk mk1
 local data_disk_mk1 = {
     type = "technology",
@@ -307,5 +330,25 @@ local scrubber_mk2 = {
 
 if scrubber_mk2 then
     --data:extend({scrubber_mk2})
+end
+--------------------------------------------------------------------------
+
+-- Advanced combinators
+local advanced_combinators = data.raw.technology["advanced-combinators"]
+if advanced_combinators then
+    advanced_combinators.prerequisites = {
+        "circuit-network",
+        "data-disk-mk1",
+    }
+    advanced_combinators.unit = {
+        count = 200,
+        ingredients = {
+            {"basic-data-disk", 1},
+            {"data-disk-mk1", 1},
+        },
+        time = 10,
+    }
+    advanced_combinators.hidden = false
+    advanced_combinators.enabled = true
 end
 --------------------------------------------------------------------------

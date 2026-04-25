@@ -70,3 +70,6 @@ if scrubber_mk3 then
     scrubber_mk3.crafting_speed = 2
     data:extend({scrubber_mk3})
 end
+
+--- END TIERS
+--------------------------------------------------------------------------

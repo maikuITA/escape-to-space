@@ -320,6 +320,24 @@ local basic_data_disk = {
 
 data:extend({basic_data_disk})
 
+-- Data disk mk1
+local data_disk_mk1 = {
+  type = "tool",
+  name = "data-disk-mk1",
+  icon = "__escape-to-space__/graphics/icons/data-disk-mk1.png",
+  icon_size = 64,
+  subgroup = "tool",
+  order = "a[tool]-b[data-disk-mk1]",
+  stack_size = 200,
+  weight = 1*kg,
+  durability = 1,
+  durability_description_key = "description.science-pack-remaining-amount-key",
+  factoriopedia_durability_description_key = "description.factoriopedia-science-pack-remaining-amount-key",
+  durability_description_value = "description.science-pack-remaining-amount-value",
+}
+
+data:extend({data_disk_mk1})
+
 --- END TOOLS
 --------------------------------------------------------------------------
 
@@ -429,17 +447,3 @@ local carbon_engine_unit = {
 }
 
 data:extend({carbon_engine_unit})
-
--- Data disk mk1
-local data_disk_mk1 = {
-    type = "item",
-    name = "data-disk-mk1",
-    icon = "__escape-to-space__/graphics/icons/data-disk-mk1.png",
-    icon_size = 64,
-    subgroup = "tool",
-    order = "a[tool]-b[data-disk-mk1]",
-    stack_size = 200,
-    weight = 1*kg,
-}
-
-data:extend({data_disk_mk1})
