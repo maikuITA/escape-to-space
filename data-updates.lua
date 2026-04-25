@@ -73,3 +73,34 @@ end
 
 --- END TIERS
 --------------------------------------------------------------------------
+
+-- Void chest
+
+local void_chest_entity = data.raw["infinity-container"]["void-chest"]
+if void_chest_entity then
+  -- Override visuals for consistency: avoid exposing default art that suggests base behavior.
+  void_chest_entity.picture = {
+    layers = {
+      {
+        filename = "__escape-to-space__/graphics/entity/platform-trash-depot/platform-trash-depot.png",
+        width = 66,
+        height = 76,
+        shift = util.by_pixel(0, -2),
+        scale = 0.5,
+        hr_version = {
+          filename = "__escape-to-space__/graphics/entity/platform-trash-depot/platform-trash-depot.png",
+          width = 66,
+          height = 76,
+          shift = util.by_pixel(0, -2),
+          scale = 0.5
+        }
+      }
+    }
+  }
+end
+
+-- As
+local ast_coll = data.raw["asteroid-collector"]["asteroid-collector"]
+if ast_coll then
+  ast_coll.collection_radius = 10
+end

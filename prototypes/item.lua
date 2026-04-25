@@ -11,7 +11,7 @@ local irony_asteroid_chunk = {
   icon_size = 64,
   subgroup = "raw-material",
   order = "a[raw]-a[irony-asteroid-chunk]",
-  stack_size = 100
+  stack_size = 1
 }
 
 data:extend({irony_asteroid_chunk})
@@ -24,7 +24,7 @@ local coppery_asteroid_chunk = {
   icon_size = 64,
   subgroup = "raw-material",
   order = "a[raw]-b[coppery-asteroid-chunk]",
-  stack_size = 100
+  stack_size = 1
 }
 
 data:extend({coppery_asteroid_chunk})
@@ -37,7 +37,7 @@ local rocky_asteroid_chunk = {
   icon_size = 64,
   subgroup = "raw-material",
   order = "a[raw]-c[rocky-asteroid-chunk]",
-  stack_size = 100
+  stack_size = 1
 }
 
 data:extend({rocky_asteroid_chunk})
@@ -50,7 +50,7 @@ local tungsten_asteroid_chunk = {
   icon_size = 64,
   subgroup = "raw-material",
   order = "a[raw]-d[tungsten-asteroid-chunk]",
-  stack_size = 100
+  stack_size = 1
 }
 
 data:extend({tungsten_asteroid_chunk})
@@ -63,7 +63,7 @@ local scrap_asteroid_chunk = {
   icon_size = 64,
   subgroup = "raw-material",
   order = "a[raw]-e[scrap-asteroid-chunk]",
-  stack_size = 100
+  stack_size = 1
 }
 
 data:extend({scrap_asteroid_chunk})
@@ -76,7 +76,7 @@ local alien_asteroid_chunk = {
   icon_size = 64,
   subgroup = "raw-material",
   order = "a[raw]-f[alien-asteroid-chunk]",
-  stack_size = 100
+  stack_size = 1
 }
 
 data:extend({alien_asteroid_chunk})
@@ -89,7 +89,7 @@ local fluorite_asteroid_chunk = {
   icon_size = 64,
   subgroup = "raw-material",
   order = "a[raw]-f[fluorite-asteroid-chunk]",
-  stack_size = 100
+  stack_size = 1
 }
 
 data:extend({fluorite_asteroid_chunk})
@@ -352,7 +352,7 @@ local sand = {
     icon_size = 64,
     subgroup = "raw-material",
     order = "a[raw]-g[sand]",
-    stack_size = 200
+    stack_size = 100
 }
 
 data:extend({sand})
@@ -365,7 +365,7 @@ local gravel = {
     icon_size = 64,
     subgroup = "raw-material",
     order = "a[raw]-h[gravel]",
-    stack_size = 200
+    stack_size = 100
 }
 
 data:extend({gravel})
@@ -437,13 +437,21 @@ data:extend({carbon_pipe})
 
 -- Carbon engine unit
 local carbon_engine_unit = {
-    type = "item",
-    name = "carbon-engine-unit",
-    icon = "__escape-to-space__/graphics/icons/carbon-engine-unit.png",
-    icon_size = 64,
-    subgroup = "intermediate-product",
-    order = "a[intermediate]-f[carbon-engine-unit]",
-    stack_size = 50
+  type = "item",
+  name = "carbon-engine-unit",
+  icon = "__escape-to-space__/graphics/icons/carbon-engine-unit.png",
+  icon_size = 64,
+  subgroup = "intermediate-product",
+  order = "a[intermediate]-f[carbon-engine-unit]",
+  stack_size = 50
 }
 
 data:extend({carbon_engine_unit})
+
+-- Void chest
+local void_chest = data.raw.item["void-chest"]
+if void_chest then
+  -- Retheme the item to match the platform trash depot identity in this scenario.
+  void_chest.icon = "__escape-to-space__/graphics/icons/platform-trash-depot.png"
+  void_chest.icon_size = 64
+end

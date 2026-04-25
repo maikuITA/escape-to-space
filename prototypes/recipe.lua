@@ -45,7 +45,7 @@ local irony_asteroid_crushing_recipe = {
         {type = "item", name = "irony-asteroid-chunk", amount = 1}
     },
     results = {
-        {type = "item", name = "iron-ore", amount = 8},
+        {type = "item", name = "iron-ore", amount = 12},
         {type = "item", name = "gravel", amount = 1, probability = 0.10}
     },
     energy_required = 2,
@@ -68,7 +68,7 @@ local coppery_asteroid_crushing_recipe = {
         {type = "item", name = "coppery-asteroid-chunk", amount = 1}
     },
     results = {
-        {type = "item", name = "copper-ore", amount = 5},
+        {type = "item", name = "copper-ore", amount = 10},
         {type = "item", name = "gravel", amount = 1, probability = 0.10}
     },
     energy_required = 2,
@@ -215,7 +215,7 @@ local blank_data_disk_recipe = {
         {type = "item", name = "iron-plate", amount = 1}
     },
     results = {{type = "item", name = "blank-data-disk", amount = 1}},
-    energy_required = 0.75,
+    energy_required = 0.5,
     enabled = false
 }
 
@@ -236,7 +236,7 @@ local basic_data_disk_recipe = {
         {type = "item", name = "copper-plate", amount = 1}
     },
     results = {{type = "item", name = "basic-data-disk", amount = 1}},
-    energy_required = 1.5,
+    energy_required = 5,
     enabled = false
 }
 
@@ -257,7 +257,7 @@ local data_disk_mk1 = {
         {type = "item", name = "carbon-gear-wheel", amount = 1}
     },
     results = {{type = "item", name = "data-disk-mk1", amount = 1}},
-    energy_required = 1.5,
+    energy_required = 6,
     enabled = false
 }
 
@@ -468,6 +468,17 @@ end
 
 --------------------------------------------------------------------------
 --- START ITEMS
+
+-- Void chest
+local void_chest_recipe = data.raw.recipe["void-chest"]
+if void_chest_recipe then
+    void_chest_recipe.enabled = true   -- disables crafting
+    void_chest_recipe.hidden = false     -- hides from crafting menu and techs
+    void_chest_recipe.allow_as_intermediate = false -- optional: stops auto-use in factories
+    void_chest_recipe.ingredients = {
+        {type = "item", name = "iron-plate", amount = 1}
+    }
+end
 
 -- Carbon gear wheel
 local carbon_gear_wheel = {
