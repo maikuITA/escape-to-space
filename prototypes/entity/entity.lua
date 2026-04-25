@@ -1668,7 +1668,7 @@ local scrubber = {
     fade_in_ticks = 4,
     fade_out_ticks = 20
   },
-  crafting_categories = {"basic-crafting", "crafting", "advanced-crafting", "crafting-with-fluid", "pressing"},
+  crafting_categories = data.raw["assembling-machine"]["assembling-machine-2"].crafting_categories,
 
   crafting_speed = 0.5,
   energy_source =

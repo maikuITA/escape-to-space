@@ -9,6 +9,7 @@ local default_rcp = {
     "iron-stick",
     "steel-plate",
     "copper-plate",
+    "copper-cable",
     "electronic-circuit",
     "transport-belt",
     "inserter",
@@ -336,7 +337,7 @@ end
 local cybernetics_facility = {
     type = "recipe",
     name = "cybernetics-facility",
-    category = "cybernetics",
+    category = "crafting",
     icon = "__escape-to-space__/graphics/icons/cybernetics-facility-icon.png",
     icon_size = 64,
     ingredients = {
