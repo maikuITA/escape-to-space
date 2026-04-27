@@ -46,7 +46,8 @@ local irony_asteroid_crushing_recipe = {
     },
     results = {
         {type = "item", name = "iron-ore", amount = 12},
-        {type = "item", name = "gravel", amount = 1, probability = 0.10}
+        {type = "item", name = "gravel", amount = 1, probability = 0.10},
+        {type = "item", name = "irony-asteroid-chunk", amount = 1, probability = 0.20, ignored_by_productivity = 1}
     },
     energy_required = 2,
     enabled = true
@@ -69,7 +70,8 @@ local coppery_asteroid_crushing_recipe = {
     },
     results = {
         {type = "item", name = "copper-ore", amount = 10},
-        {type = "item", name = "gravel", amount = 1, probability = 0.10}
+        {type = "item", name = "gravel", amount = 1, probability = 0.10},
+        {type = "item", name = "coppery-asteroid-chunk", amount = 1, probability = 0.20, ignored_by_productivity = 1}
     },
     energy_required = 2,
     enabled = true
@@ -93,7 +95,8 @@ local rocky_asteroid_crushing_recipe = {
     results = {
         {type = "item", name = "stone", amount = 5},
         {type = "item", name = "coal", amount = 1, probability = 0.20},
-        {type = "item", name = "gravel", amount = 1, probability = 0.10}
+        {type = "item", name = "gravel", amount = 1, probability = 0.10},
+        {type = "item", name = "rocky-asteroid-chunk", amount = 1, probability = 0.20, ignored_by_productivity = 1}
     },
     energy_required = 2,
     enabled = true
@@ -116,7 +119,8 @@ local rocky_asteroid_crushing_recipe2 = {
     },
     results = {
         {type = "item", name = "coal", amount = 2},
-        {type = "item", name = "gravel", amount = 1, probability = 0.10}
+        {type = "item", name = "gravel", amount = 1, probability = 0.10},
+        {type = "item", name = "rocky-asteroid-chunk", amount = 1, probability = 0.20, ignored_by_productivity = 1}
     },
     energy_required = 2,
     enabled = false
@@ -162,7 +166,8 @@ local carbonic_asteroid_crushing_recipe = {
     },
     results = {
         {type = "item", name = "carbon", amount = 8},
-        {type = "item", name = "gravel", amount = 1, probability = 0.10}
+        {type = "item", name = "gravel", amount = 1, probability = 0.10},
+        {type = "item", name = "carbonic-asteroid-chunk", amount = 1, probability = 0.20, ignored_by_productivity = 1}
     },
     energy_required = 2,
     hidden = false,
@@ -186,7 +191,8 @@ local oxide_asteroid_crushing_recipe = {
     },
     results = {
         {type = "item", name = "ice", amount = 4},
-        {type = "item", name = "gravel", amount = 1, probability = 0.10}
+        {type = "item", name = "gravel", amount = 1, probability = 0.10},
+        {type = "item", name = "oxide-asteroid-chunk", amount = 1, probability = 0.20, ignored_by_productivity = 1}
     },
     energy_required = 2,
     hidden = false,
@@ -195,6 +201,30 @@ local oxide_asteroid_crushing_recipe = {
 
 if oxide_asteroid_crushing_recipe then
     data:extend({oxide_asteroid_crushing_recipe})
+end
+
+-- Oxidic ore
+local oxidic_ore = {
+    type = "recipe",
+    name = "oxidic-ore",
+    category = "crushing",
+    subgroup="space-crushing",
+    icon = data.raw["recipe"]["oxide-asteroid-crushing"].icon,
+    ingredients = {
+        {type = "item", name = "oxide-asteroid-chunk", amount = 1}
+    },
+    results = {
+        {type = "item", name = "oxidic-ore", amount = 8},
+        {type = "item", name = "gravel", amount = 1, probability = 0.10},
+        {type = "item", name = "oxide-asteroid-chunk", amount = 1, probability = 0.20, ignored_by_productivity = 1}
+    },
+    energy_required = 5,
+    allow_productivity = true,
+    enabled = false
+}
+
+if oxidic_ore then
+    data:extend({oxidic_ore})
 end
 
 --- END ASTEROID RECIPES
@@ -594,6 +624,111 @@ local carbon_engine_unit = {
 
 if carbon_engine_unit then
     data:extend({carbon_engine_unit})
+end
+
+-- Oxidic plate
+local oxidic_plate = {
+    type = "recipe",
+    name = "oxidic-plate",
+    category = "smelting",
+    ingredients = {
+        {type = "item", name = "oxidic-ore", amount = 2}
+    },
+    results = {{type = "item", name = "oxidic-plate", amount = 1}},
+    energy_required = 1,
+    enabled = false
+}
+
+if oxidic_plate then
+    data:extend({oxidic_plate})
+end
+
+-- Oxidic gear wheel
+local oxidic_gear_wheel_recipe = {
+    type = "recipe",
+    name = "oxidic-gear-wheel",
+    category = "crafting",
+    ingredients = {
+        {type = "item", name = "oxidic-plate", amount = 2},
+    },
+    results = {{type = "item", name = "oxidic-gear-wheel", amount = 1}},
+    energy_required = 0.5,
+    enabled = false
+}
+
+if oxidic_gear_wheel_recipe then
+    data:extend({oxidic_gear_wheel_recipe})
+end
+
+-- Oxidic stick
+local oxidic_stick_recipe = {
+    type = "recipe",
+    name = "oxidic-stick",
+    category = "crafting",
+    ingredients = {
+        {type = "item", name = "oxidic-plate", amount = 2},
+    },
+    results = {{type = "item", name = "oxidic-stick", amount = 1}},
+    energy_required = 0.5,
+    enabled = false
+}
+
+if oxidic_stick_recipe then
+    data:extend({oxidic_stick_recipe})
+end
+
+-- Oxidic cable
+local oxidic_cable_recipe = {
+    type = "recipe",
+    name = "oxidic-cable",
+    category = "crafting",
+    ingredients = {
+        {type = "item", name = "oxidic-plate", amount = 2},
+    },
+    results = {{type = "item", name = "oxidic-cable", amount = 1}},
+    energy_required = 0.5,
+    enabled = false
+}
+
+if oxidic_cable_recipe then
+    data:extend({oxidic_cable_recipe})
+end
+
+-- Oxidic rounds magazine
+local oxidic_rounds_magazine_recipe =  {
+    type = "recipe",
+    name = "oxidic-rounds-magazine",
+    category = "crafting",
+    ingredients = {
+        {type = "item", name = "oxidic-plate", amount = 2},
+        {type = "item", name = "piercing-rounds-magazine", amount = 2}
+    },
+    results = {{type = "item", name = "oxidic-rounds-magazine", amount = 2}},
+    energy_required = 0.5,
+    enabled = false
+}
+
+if oxidic_rounds_magazine_recipe then
+    data:extend({oxidic_rounds_magazine_recipe})
+end
+
+-- Oxidic electronic circuit
+local oxidic_electronic_circuit = {
+    type = "recipe",
+    name = "oxidic-electronic-circuit",
+    category = "custom-em-plant",
+    ingredients = {
+        {type = "item", name = "oxidic-cable", amount = 2},
+        {type = "item", name = "electronic-circuit", amount = 2},
+        {type = "item", name = "plastic-bar", amount = 2}
+    },
+    results = {{type = "item", name = "oxidic-electronic-circuit", amount = 1}},
+    energy_required = 1,
+    enabled = false
+}
+
+if oxidic_electronic_circuit then
+    data:extend({oxidic_electronic_circuit})
 end
 
 --------------------------------------------------------------------------

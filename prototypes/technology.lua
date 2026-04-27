@@ -273,7 +273,7 @@ local data_disk_mk1 = {
     icon = "__escape-to-space__/graphics/technology/data-disk-mk1.png",
     icon_size = 256,
     unit = {
-        count = 200,
+        count = 150,
         ingredients = {
             {"basic-data-disk", 1},
         },
@@ -307,7 +307,7 @@ local scrubber_mk2 = {
     icon = "__escape-to-space__/graphics/technology/scrubber-icon-big.png",
     icon_size = 256,
     unit = {
-        count = 200,
+        count = 150,
         ingredients = {
             {"basic-data-disk", 1},
             {"data-disk-mk1", 1},
@@ -341,7 +341,7 @@ if advanced_combinators then
         "data-disk-mk1",
     }
     advanced_combinators.unit = {
-        count = 200,
+        count = 150,
         ingredients = {
             {"basic-data-disk", 1},
             {"data-disk-mk1", 1},
@@ -350,5 +350,58 @@ if advanced_combinators then
     }
     advanced_combinators.hidden = false
     advanced_combinators.enabled = true
+end
+--------------------------------------------------------------------------
+
+-- Oxidic processing
+local oxidic_processing = {
+    type = "technology",
+    name = "oxidic-processing",
+    icon = "__escape-to-space__/graphics/technology/oxidic-processing.png",
+    icon_size = 256,
+    unit = {
+        count = 150,
+        ingredients = {
+            {"basic-data-disk", 1},
+            {"data-disk-mk1", 1},
+        },
+        time = 10,
+    },
+    effects = {
+        {
+            type = "unlock-recipe",
+            recipe = "oxidic-ore"
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "oxidic-plate"
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "oxidic-gear-wheel"
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "oxidic-cable"
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "oxidic-stick"
+        },
+        {
+            type = "unlock-recipe",
+            recipe = "oxidic-electronic-circuit"
+        },
+    },
+    hidden = false,
+    enabled = true,
+    prerequisites = {
+        "data-disk-mk1",
+        "planet-discovery-keria",
+    }
+}
+
+if oxidic_processing then
+    data:extend({oxidic_processing})
 end
 --------------------------------------------------------------------------

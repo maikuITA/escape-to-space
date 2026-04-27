@@ -1,5 +1,9 @@
 -- item.lua
 
+local item_sounds = require("__base__.prototypes.item_sounds")
+local space_age_item_sounds = require("__space-age__.prototypes.item_sounds")
+local item_tints = require("__base__.prototypes.item-tints")
+
 --------------------------------------------------------------------------
 --- START ASTEROIDS
 
@@ -455,3 +459,141 @@ if void_chest then
   void_chest.icon = "__escape-to-space__/graphics/icons/platform-trash-depot.png"
   void_chest.icon_size = 64
 end
+
+-- Oxidic ore
+local oxidic_ore = {
+  type = "item",
+  name = "oxidic-ore",
+  icon = "__escape-to-space__/graphics/icons/oxidic-ore.png",
+  subgroup = "intermediate-product",
+  order = "z[oxidic-ore]",
+  inventory_move_sound = space_age_item_sounds.space_age_item_sounds,
+  stack_size = data.raw.item["pipe"].stack_size,
+  weight = data.raw.item["pipe"].weight,
+  random_tint_color = item_tints.iron_rust
+}
+
+data:extend({oxidic_ore})
+
+-- Oxidic plate
+local oxidic_plate = {
+  type = "item",
+  name = "oxidic-plate",
+  icon = "__escape-to-space__/graphics/icons/oxidic-plate.png",
+  subgroup = "intermediate-product",
+  order = "z[oxidic-plate]",
+  inventory_move_sound = space_age_item_sounds.space_age_item_sounds,
+  stack_size = data.raw.item["pipe"].stack_size,
+  weight = data.raw.item["pipe"].weight,
+  random_tint_color = item_tints.iron_rust
+}
+data:extend({oxidic_plate})
+
+-- Oxidic gear wheel
+local oxidic_gear_wheel = {
+  type = "item",
+  name = "oxidic-gear-wheel",
+  icon = "__escape-to-space__/graphics/icons/oxidic-gear-wheel.png",
+  subgroup = "intermediate-product",
+  order = "z[oxidic-gear-wheel]",
+  inventory_move_sound = space_age_item_sounds.space_age_item_sounds,
+  stack_size = data.raw.item["pipe"].stack_size,
+  weight = data.raw.item["pipe"].weight,
+  random_tint_color = item_tints.iron_rust
+}
+data:extend({oxidic_gear_wheel})
+
+-- Oxidic stick
+local oxidic_stick = {
+  type = "item",
+  name = "oxidic-stick",
+  icon = "__escape-to-space__/graphics/icons/oxidic-stick.png",
+  subgroup = "intermediate-product",
+  order = "z[oxidic-stick]",
+  inventory_move_sound = space_age_item_sounds.space_age_item_sounds,
+  stack_size = data.raw.item["pipe"].stack_size,
+  weight = data.raw.item["pipe"].weight,
+  random_tint_color = item_tints.iron_rust
+}
+data:extend({oxidic_stick})
+
+-- Oxidic cable
+local oxidic_cable = {
+  type = "item",
+  name = "oxidic-cable",
+  icon = "__escape-to-space__/graphics/icons/oxidic-cable.png",
+  subgroup = "intermediate-product",
+  order = "z[oxidic-cable]",
+  inventory_move_sound = space_age_item_sounds.space_age_item_sounds,
+  stack_size = data.raw.item["pipe"].stack_size,
+  weight = data.raw.item["pipe"].weight,
+  random_tint_color = item_tints.iron_rust
+}
+data:extend({oxidic_cable})
+
+-- Oxidic electronic circuit
+local oxidic_electronic_circuit = {
+  type = "item",
+  name = "oxidic-electronic-circuit",
+  icon = "__escape-to-space__/graphics/icons/oxidic-electronic-circuit.png",
+  subgroup = "intermediate-product",
+  order = "z[oxidic-electronic-circuit]",
+  inventory_move_sound = space_age_item_sounds.space_age_item_sounds,
+  stack_size = data.raw.item["pipe"].stack_size,
+  weight = data.raw.item["pipe"].weight,
+  random_tint_color = item_tints.iron_rust
+}
+data:extend({oxidic_electronic_circuit})
+
+-- Oxidic roudns magazine
+local oxidic_rounds_magazine = {
+  type = "ammo",
+  name = "oxidic-rounds-magazine",
+  icon = "__escape-to-space__/graphics/icons/oxidic-rounds-magazine.png",
+  ammo_category = "bullet",
+  ammo_type =
+  {
+    action =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        source_effects =
+        {
+          type = "create-explosion",
+          entity_name = "explosion-gunshot",
+          only_when_visible = true
+        },
+        target_effects =
+        {
+          {
+            type = "create-entity",
+            entity_name = "explosion-hit",
+            offsets = {{0, 1}},
+            offset_deviation = {{-0.5, -0.5}, {0.5, 0.5}},
+            only_when_visible = true
+          },
+          {
+            type = "damage",
+            damage = {amount = 16, type = "physical"}
+          },
+          {
+            type = "activate-impact",
+            deliver_category = "bullet"
+          }
+        }
+      }
+    }
+  },
+  magazine_size = 10,
+  subgroup = "ammo",
+  order = "a[basic-clips]-b[oxidic-rounds-magazine]",
+  inventory_move_sound = item_sounds.ammo_small_inventory_move,
+  pick_sound = item_sounds.ammo_small_inventory_pickup,
+  drop_sound = item_sounds.ammo_small_inventory_move,
+  stack_size = 100,
+  weight = 20*kg
+}
+
+data:extend({oxidic_rounds_magazine})
